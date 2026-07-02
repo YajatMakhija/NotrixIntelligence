@@ -1,26 +1,86 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --dark-bg: #0c0c0c;
+  --dark-text: #f5f5f0;
+  --light-bg: #fafaf8;
+  --light-text: #1a1a1a;
+  --muted-dark: rgba(245, 245, 240, 0.65);
+  --muted-light: rgba(26, 26, 26, 0.65);
+  --border-dark: rgba(245, 245, 240, 0.12);
+  --border-light: rgba(26, 26, 26, 0.1);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-serif: var(--font-newsreader), Georgia, serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --color-dark-bg: var(--dark-bg);
+  --color-dark-text: var(--dark-text);
+  --color-light-bg: var(--light-bg);
+  --color-light-text: var(--light-text);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--dark-bg);
+}
+
+.section-dark {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+.section-light {
+  background-color: var(--light-bg);
+  color: var(--light-text);
+}
+
+.section-fade-dark-to-light {
+  background: linear-gradient(
+    to bottom,
+    var(--dark-bg) 0%,
+    var(--light-bg) 100%
+  );
+}
+
+.hero-ken-burns {
+  animation: kenBurns 24s ease-in-out infinite alternate;
+}
+
+@keyframes kenBurns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.lenis.lenis-smooth {
+    scroll-behavior: auto;
+  }
+
+  .hero-ken-burns {
+    animation: none;
+  }
 }

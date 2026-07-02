@@ -1,0 +1,27 @@
+"use client";
+
+import { FadeIn, SectionTheme } from "@/components/giga/SectionTheme";
+import { FEATURES } from "@/lib/constants";
+
+export function FeatureGrid() {
+  return (
+    <SectionTheme theme="light">
+      <FadeIn>
+        <h2 className="max-w-2xl font-serif text-3xl md:text-4xl">
+          Built for enterprise scale
+        </h2>
+      </FadeIn>
+
+      <div className="mt-16 grid gap-12 md:grid-cols-3">
+        {FEATURES.map((feature, i) => (
+          <FadeIn key={feature.title} delay={i * 0.1}>
+            <h3 className="text-lg font-medium">{feature.title}</h3>
+            <p className="mt-3 text-sm leading-relaxed text-[#1a1a1a]/65">
+              {feature.description}
+            </p>
+          </FadeIn>
+        ))}
+      </div>
+    </SectionTheme>
+  );
+}

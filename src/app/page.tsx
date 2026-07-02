@@ -1,65 +1,84 @@
-import Image from "next/image";
+import { CinematicHero } from "@/components/giga/CinematicHero";
+import { ClosingCTA } from "@/components/giga/ClosingCTA";
+import { CustomerSpotlight } from "@/components/giga/CustomerSpotlight";
+import { FeatureGrid } from "@/components/giga/FeatureGrid";
+import { ImproveSection } from "@/components/giga/ImproveSection";
+import { ProductShowcase } from "@/components/giga/ProductShowcase";
+import { ProductSpotlight } from "@/components/giga/ProductSpotlight";
+import { StatsBand } from "@/components/giga/StatsBand";
+import { StepFlow } from "@/components/giga/StepFlow";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <CinematicHero />
+      <ProductSpotlight />
+      <StatsBand />
+      <FeatureGrid />
+      <ProductShowcase
+        id="knowledge-layer"
+        eyebrow="Knowledge Layer"
+        title="Turn company data into intelligence"
+        description="Notrix ingests documents, tickets, CRM records, and conversations — then builds a unified, permission-aware knowledge graph your entire organization can query and act on."
+        exploreLabel="Explore Knowledge Layer"
+        theme="dark"
+        mockType="knowledge"
+        steps={[
+          { title: "Connect", description: "Plug into 50+ enterprise data sources." },
+          { title: "Chunk", description: "Intelligent segmentation with context preservation." },
+          { title: "Enrich", description: "Entity extraction, tagging, and relationship mapping." },
+          { title: "Govern", description: "RBAC, audit logs, and data residency controls." },
+          { title: "Query", description: "Hybrid semantic + keyword retrieval with citations." },
+        ]}
+      />
+      <StepFlow />
+      <ProductShowcase
+        id="agent-runtime"
+        eyebrow="Agent Runtime"
+        title="Agents that execute, not just answer"
+        description="Build autonomous agents grounded in your knowledge layer. Define policies in plain language, connect tools, and deploy agents that handle complex multi-step workflows."
+        exploreLabel="Explore Agent Runtime"
+        theme="dark"
+        mockType="agent"
+        steps={[
+          { title: "Create the agent", description: "Ground agents in brand standards and compliance rules." },
+          { title: "Define policies", description: "Set guardrails for automation, escalation, and sensitive cases." },
+          { title: "Design the logic", description: "Map flows and connect tools across your enterprise stack." },
+          { title: "Test and launch", description: "Simulate edge cases and validate before production." },
+          { title: "Monitor and improve", description: "Track outcomes and refine policies from live data." },
+        ]}
+      />
+      <ImproveSection />
+      <ProductShowcase
+        id="enterprise-search"
+        eyebrow="Enterprise Search"
+        title="Find anything. Instantly."
+        description="Semantic search across every document, ticket, wiki, and conversation. Every answer cited, every result permission-filtered."
+        exploreLabel="Explore Enterprise Search"
+        theme="dark"
+        mockType="search"
+        steps={[
+          { title: "Ask naturally", description: "Natural language queries across all connected sources." },
+          { title: "Get cited answers", description: "Every response linked to source documents." },
+          { title: "Filter by context", description: "Department, date, project, and access-level filters." },
+        ]}
+      />
+      <ProductShowcase
+        id="workflow-engine"
+        eyebrow="Workflow Engine"
+        title="Automate what takes armies of people"
+        description="Multi-step agentic pipelines that trigger on events, branch on conditions, and execute across systems — with full audit trails."
+        exploreLabel="Explore Workflow Engine"
+        theme="light"
+        mockType="workflow"
+        steps={[
+          { title: "Define triggers", description: "Events, schedules, or agent-initiated starts." },
+          { title: "Branch logic", description: "Conditional paths with human-in-the-loop checkpoints." },
+          { title: "Execute actions", description: "API calls, agent tasks, notifications, and approvals." },
+        ]}
+      />
+      <CustomerSpotlight />
+      <ClosingCTA />
+    </>
   );
 }
