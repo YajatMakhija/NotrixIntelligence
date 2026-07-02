@@ -1,7 +1,7 @@
 "use client";
 
+import Image from "next/image";
 import { FadeIn } from "@/components/giga/SectionTheme";
-import { NotrixOSSimulation } from "@/components/giga/NotrixOSSimulation";
 
 export function ProductSpotlight() {
   return (
@@ -26,7 +26,17 @@ export function ProductSpotlight() {
         </FadeIn>
 
         <FadeIn delay={0.15} className="mt-12">
-          <NotrixOSSimulation />
+          <div className="overflow-hidden rounded-2xl border border-[#E8E8E8]/80 bg-white shadow-[0_24px_80px_rgba(0,0,0,0.18)]">
+            <Image
+              src="/notrix-ecosystem.png"
+              alt="Notrix unified knowledge core connecting company tools with autonomous AI departments"
+              width={2048}
+              height={1365}
+              priority
+              sizes="(max-width: 768px) 100vw, 1152px"
+              className="h-auto w-full"
+            />
+          </div>
         </FadeIn>
       </div>
     </section>

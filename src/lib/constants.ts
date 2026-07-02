@@ -5,8 +5,10 @@ export const SITE = {
 };
 
 export const NAV_LINKS = [
-  { href: "/platform", label: "Platform" },
-  { href: "/use-cases", label: "Use Cases" },
+  { href: "/platform", label: "Products" },
+  { href: "/use-cases", label: "Solutions" },
+  { href: "/about", label: "About Us" },
+  { href: "/case-studies", label: "Case Studies" },
 ];
 
 export const STATS = [

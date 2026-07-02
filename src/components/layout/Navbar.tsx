@@ -29,16 +29,21 @@ export function Navbar() {
       )}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-        <Link href="/" className="flex flex-col items-center gap-1 text-[#f5f5f0]">
+        <Link
+          href="/"
+          className="flex flex-col items-center gap-1 text-white"
+        >
           <Image
             src="/notrix-logo.png"
             alt=""
-            width={40}
-            height={40}
+            width={44}
+            height={44}
             priority
-            className="h-10 w-10 object-contain"
+            className="h-11 w-11 shrink-0 object-contain"
           />
-          <span className="font-serif text-lg tracking-tight">{SITE.name}</span>
+          <span className="font-serif text-sm font-medium leading-none tracking-tight text-[#f5f5f0] antialiased md:text-base">
+            {SITE.name}
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">

@@ -35,7 +35,7 @@ export function CinematicHero() {
           <h1 className="mt-6 max-w-4xl font-serif text-4xl leading-[1.1] tracking-tight text-[#f5f5f0] md:text-6xl lg:text-7xl">
             AI that knows your company.
             <br />
-            Automates your workflows.
+            Automates your departments.
           </h1>
         </FadeIn>
 
