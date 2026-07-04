@@ -11,11 +11,22 @@ export const NAV_LINKS = [
   { href: "/case-studies", label: "Case Studies" },
 ];
 
-export const STATS = [
-  { value: "10M+", label: "Documents indexed" },
-  { value: "50+", label: "Enterprise integrations" },
-  { value: "2 weeks", label: "Average time to deploy" },
-  { value: "99.9%", label: "Platform uptime" },
+export const PILLARS = [
+  {
+    title: "Experts inside your team",
+    description:
+      "Notrix engineers work embedded with your teams — designing, deploying, and improving AI systems tied to the outcomes you define, not generic demos.",
+  },
+  {
+    title: "Connected across your stack",
+    description:
+      "One governed knowledge layer across documents, CRM, tickets, and databases. Agents act inside the tools where your work already happens.",
+  },
+  {
+    title: "Your data stays yours",
+    description:
+      "Permission-aware access, full audit trails, and no training on your data. What you build with Notrix compounds for you — not for anyone else.",
+  },
 ];
 
 export const FEATURES = [
@@ -64,21 +75,6 @@ export const LIFECYCLE_STEPS = [
   },
 ];
 
-export const IMPROVE_FEATURES = [
-  {
-    title: "Performance analytics",
-    description: "Track resolution rates, latency, and agent accuracy in real time.",
-  },
-  {
-    title: "Custom suggestions",
-    description: "AI surfaces policy and knowledge gaps based on your business metrics.",
-  },
-  {
-    title: "Auto-refinement",
-    description: "Ready-to-apply improvements to knowledge bases and agent policies.",
-  },
-];
-
 export const PLATFORM_MODULES = [
   {
     id: "knowledge-layer",
@@ -87,7 +83,7 @@ export const PLATFORM_MODULES = [
     description:
       "Notrix ingests documents, tickets, CRM records, and conversations — then builds a unified, permission-aware knowledge graph your entire organization can query and act on.",
     exploreLabel: "Explore Knowledge Layer",
-    theme: "dark" as const,
+    theme: "light" as const,
     steps: [
       { title: "Connect", description: "Plug into 50+ enterprise data sources." },
       { title: "Chunk", description: "Intelligent segmentation with context preservation." },
@@ -103,7 +99,7 @@ export const PLATFORM_MODULES = [
     description:
       "Build autonomous agents grounded in your knowledge layer. Define policies in plain language, connect tools, and deploy agents that handle complex multi-step workflows.",
     exploreLabel: "Explore Agent Runtime",
-    theme: "dark" as const,
+    theme: "light" as const,
     steps: [
       { title: "Create the agent", description: "Ground agents in brand standards and compliance rules." },
       { title: "Define policies", description: "Set guardrails for automation, escalation, and sensitive cases." },
@@ -119,7 +115,7 @@ export const PLATFORM_MODULES = [
     description:
       "Semantic search across every document, ticket, wiki, and conversation. Every answer cited, every result permission-filtered.",
     exploreLabel: "Explore Enterprise Search",
-    theme: "dark" as const,
+    theme: "light" as const,
     steps: [
       { title: "Ask naturally", description: "Natural language queries across all connected sources." },
       { title: "Get cited answers", description: "Every response linked to source documents." },
@@ -157,7 +153,7 @@ export const USE_CASES = [
   {
     title: "Operations automation",
     metric: "85%",
-    metricLabel: "workflow steps automated",
+    metricLabel: "of workflow steps targeted for automation",
     problem:
       "Manual handoffs between systems slow operations and introduce errors across refunds, onboarding, and approvals.",
     solution:
@@ -166,7 +162,7 @@ export const USE_CASES = [
   {
     title: "Internal knowledge search",
     metric: "<1s",
-    metricLabel: "answers across 10M+ docs",
+    metricLabel: "target answer latency across all sources",
     problem:
       "Critical knowledge is scattered across wikis, Slack threads, tickets, and shared drives. Teams waste hours searching.",
     solution:
@@ -175,7 +171,7 @@ export const USE_CASES = [
   {
     title: "Customer support intelligence",
     metric: "90%",
-    metricLabel: "resolution without escalation",
+    metricLabel: "target resolution rate without escalation",
     problem:
       "Support teams drown in volume. Agents lack context from past interactions and internal knowledge bases.",
     solution:
@@ -184,7 +180,7 @@ export const USE_CASES = [
   {
     title: "Sales & revenue ops",
     metric: "3x",
-    metricLabel: "faster deal prep",
+    metricLabel: "designed for faster deal preparation",
     problem:
       "Reps spend hours assembling context from CRM, emails, and internal docs before every call.",
     solution:

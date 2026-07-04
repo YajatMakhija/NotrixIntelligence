@@ -41,42 +41,38 @@ export function ProductShowcase({
   const Mock = mocks[mockType];
 
   return (
-    <SectionTheme theme={theme} id={id}>
+    <SectionTheme
+      theme={theme}
+      id={id}
+      className={theme === "light" ? "border-t border-[var(--border)]" : undefined}
+    >
       <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
         <div>
           <FadeIn>
-            <p className="font-mono text-xs uppercase tracking-[0.2em] opacity-50">
+            <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--text-secondary)]">
               {eyebrow}
             </p>
-            <h2 className="mt-4 font-serif text-3xl leading-tight md:text-4xl">
+            <h2 className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-[var(--text-primary)] md:text-4xl">
               {title}
             </h2>
-            <p className="mt-4 text-sm leading-relaxed opacity-65 md:text-base">
+            <p className="mt-4 text-sm leading-relaxed text-[var(--text-secondary)] md:text-base">
               {description}
             </p>
             <Link
               href="/platform"
-              className="mt-6 inline-flex items-center gap-2 text-sm font-medium opacity-80 transition-opacity hover:opacity-100"
+              className="group mt-6 inline-flex items-center gap-2 text-sm font-medium text-[var(--brand-primary)] transition-colors hover:text-[var(--brand-primary-hover)]"
             >
               {exploreLabel}
-              <ArrowRight className="h-4 w-4" />
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </FadeIn>
 
           <div className="mt-12 space-y-6">
             {steps.map((step, i) => (
               <FadeIn key={step.title} delay={0.1 + i * 0.08}>
-                <div
-                  className="border-l-2 border-current pl-4 opacity-80"
-                  style={{
-                    borderColor:
-                      theme === "dark"
-                        ? "rgba(245,245,240,0.2)"
-                        : "rgba(26,26,26,0.15)",
-                  }}
-                >
-                  <p className="font-medium">{step.title}</p>
-                  <p className="mt-1 text-sm opacity-60">{step.description}</p>
+                <div className="border-l-2 border-[var(--brand-primary)]/40 pl-4">
+                  <p className="font-medium text-[var(--text-primary)]">{step.title}</p>
+                  <p className="mt-1 text-sm text-[var(--text-secondary)]">{step.description}</p>
                 </div>
               </FadeIn>
             ))}

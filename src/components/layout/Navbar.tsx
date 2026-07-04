@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { NAV_LINKS, SITE } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/Button";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -24,24 +23,21 @@ export function Navbar() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-all duration-500",
         scrolled
-          ? "border-b border-white/10 bg-[#0c0c0c]/70 backdrop-blur-xl"
+          ? "border-b border-[var(--border)] bg-[var(--bg)]/90 backdrop-blur-xl"
           : "border-b border-transparent bg-transparent",
       )}
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
-        <Link
-          href="/"
-          className="flex flex-col items-center gap-1 text-white"
-        >
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <Link href="/" className="flex flex-col items-center gap-1">
           <Image
-            src="/notrix-logo.png"
+            src="/notrix-n-logo.png"
             alt=""
-            width={44}
-            height={44}
+            width={120}
+            height={120}
             priority
-            className="h-11 w-11 shrink-0 object-contain"
+            className="h-10 w-10 shrink-0 object-contain md:h-11 md:w-11"
           />
-          <span className="font-serif text-sm font-medium leading-none tracking-tight text-[#f5f5f0] antialiased md:text-base">
+          <span className="font-serif text-xs font-medium leading-none tracking-tight text-[var(--text-primary)] antialiased md:text-sm">
             {SITE.name}
           </span>
         </Link>
@@ -52,20 +48,16 @@ export function Navbar() {
               key={link.href}
               href={link.href}
               className={cn(
-                "text-sm transition-colors",
+                "nav-link text-sm transition-colors",
                 pathname === link.href
-                  ? "text-[#f5f5f0]"
-                  : "text-[#f5f5f0]/65 hover:text-[#f5f5f0]",
+                  ? "nav-link-active text-[var(--brand-primary)]"
+                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]",
               )}
             >
               {link.label}
             </Link>
           ))}
         </nav>
-
-        <Button href="/demo" variant="dark" className="text-xs md:text-sm">
-          Talk to us
-        </Button>
       </div>
     </header>
   );

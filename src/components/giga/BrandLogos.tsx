@@ -1,61 +1,17 @@
-export function GitHubLogo({ className = "h-7 w-7" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="#111111" aria-hidden>
-      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12z" />
-    </svg>
-  );
-}
+export type BrandApp = {
+  id: string;
+  label: string;
+  src: string;
+};
 
-export function SlackLogo({ className = "h-7 w-7" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" aria-hidden>
-      <path fill="#E01E5A" d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.528 2.528 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.528 2.528 0 0 1-2.52-2.523 2.527 2.527 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z" />
-    </svg>
-  );
-}
-
-export function GoogleDriveLogo({ className = "h-7 w-7" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" aria-hidden>
-      <path fill="#0066DA" d="M7.71 2.5L1.15 12l3.43 5.93L11.13 12 7.71 2.5z" />
-      <path fill="#00AC47" d="M16.29 2.5H7.71l3.42 9.5h8.58L16.29 2.5z" />
-      <path fill="#EA4335" d="M22.85 12l-3.43-5.93H10.72L7.29 12l3.43 5.93h8.7L22.85 12z" />
-      <path fill="#FFBA00" d="M16.29 21.5l6.56-9.5h-8.58l-3.42 9.5h5.44z" />
-    </svg>
-  );
-}
-
-export function SalesforceLogo({ className = "h-7 w-7" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" aria-hidden>
-      <path fill="#00A1E0" d="M10.5 3.2c.9-1 2.3-1.5 3.7-1.2 1.1.2 2 .8 2.7 1.6.8-.3 1.7-.4 2.6-.1 1.5.5 2.6 1.8 2.9 3.4.1.5.1 1 0 1.5 1.2.7 2 2 2 3.4 0 1.5-.9 2.8-2.2 3.4.1.5.1 1 0 1.5-.4 1.8-1.8 3.2-3.6 3.5-.6.1-1.2.1-1.8-.1-.7 1-1.9 1.6-3.2 1.6-1.1 0-2.1-.4-2.9-1.1-.8.5-1.7.7-2.7.6-1.9-.2-3.4-1.6-3.8-3.4-.1-.5-.1-1 0-1.5-1.2-.7-2-2-2-3.4 0-1.5.9-2.8 2.2-3.4-.1-.5-.1-1 0-1.5.5-1.9 2.1-3.3 4-3.4.6 0 1.2.1 1.8.3z" />
-    </svg>
-  );
-}
-
-export function JiraLogo({ className = "h-7 w-7" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" aria-hidden>
-      <path fill="#2684FF" d="M11.53 2C6.38 7.15 6.38 15.57 11.53 20.72l1.06-1.06C8.17 14.24 8.17 8.48 12.59 4.06L11.53 2z" />
-      <path fill="#2684FF" d="M12.47 2l1.06 2.06c4.42 4.42 4.42 10.18 0 14.6l-1.06-1.06c4.15-4.15 4.15-10.57 0-14.72z" opacity="0.7" />
-    </svg>
-  );
-}
-
-export function AWSLogo({ className = "h-8 w-8" }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" aria-hidden>
-      <path fill="#FF9900" d="M6.5 17.5c4.2 2.5 9.8 2.5 14 0 .3-.2.3-.5 0-.7l-1.2-.7c-.3-.2-.6-.1-.8.1-3.3 2.3-7.7 2.3-11 0-.2-.2-.5-.2-.8-.1l-1.2.7c-.3.2-.3.5 0 .7z" />
-      <path fill="#111111" d="M12 4.5l8.5 4.9v1.2L12 15.5 3.5 10.6V9.4L12 4.5zm0 2.2L6.5 10 12 13.3 17.5 10 12 6.7z" />
-    </svg>
-  );
-}
-
-export const BRAND_APPS = [
-  { id: "github", Logo: GitHubLogo },
-  { id: "slack", Logo: SlackLogo },
-  { id: "drive", Logo: GoogleDriveLogo },
-  { id: "salesforce", Logo: SalesforceLogo },
-  { id: "jira", Logo: JiraLogo },
-  { id: "aws", Logo: AWSLogo },
-] as const;
+export const BRAND_APPS: BrandApp[] = [
+  { id: "github", label: "GitHub", src: "/logos/github.svg" },
+  { id: "slack", label: "Slack", src: "/logos/slack.svg" },
+  { id: "drive", label: "Google Drive", src: "/logos/google-drive.svg" },
+  { id: "salesforce", label: "Salesforce", src: "/logos/salesforce-icon.svg" },
+  { id: "jira", label: "Jira", src: "/logos/jira.svg" },
+  { id: "aws", label: "AWS", src: "/logos/aws.svg" },
+  { id: "notion", label: "Notion", src: "/logos/notion.svg" },
+  { id: "snowflake", label: "Snowflake", src: "/logos/snowflake.svg" },
+  { id: "teams", label: "Teams", src: "/logos/teams.svg" },
+];

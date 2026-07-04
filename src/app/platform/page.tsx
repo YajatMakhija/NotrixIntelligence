@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ClosingCTA } from "@/components/giga/ClosingCTA";
 import { FadeIn, PageHero, SectionTheme } from "@/components/giga/SectionTheme";
 import { ProductShowcase } from "@/components/giga/ProductShowcase";
@@ -27,8 +28,10 @@ export default function PlatformPage() {
 
       <SectionTheme theme="light">
         <FadeIn>
-          <h2 className="font-serif text-3xl md:text-4xl">How it works</h2>
-          <p className="mt-4 max-w-2xl text-[#1a1a1a]/65">
+          <h2 className="text-3xl font-semibold tracking-tight text-[var(--text-primary)] md:text-4xl">
+            How it works
+          </h2>
+          <p className="mt-4 max-w-2xl text-[var(--text-secondary)]">
             Data flows from your enterprise systems into a unified knowledge layer.
             Agents, search, and workflows all read from the same source of truth.
           </p>
@@ -39,16 +42,29 @@ export default function PlatformPage() {
             {["Ingest", "Knowledge Layer", "Agents", "Search", "Workflows"].map(
               (step, i) => (
                 <div key={step} className="relative flex flex-col items-center">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-black/15 font-mono text-xs">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-[var(--border)] font-mono text-xs text-[var(--brand-primary)]">
                     {String(i + 1).padStart(2, "0")}
                   </div>
-                  <p className="mt-3 text-center text-sm font-medium">{step}</p>
+                  <p className="mt-3 text-center text-sm font-medium text-[var(--text-primary)]">{step}</p>
                   {i < 4 && (
-                    <div className="absolute left-[calc(50%+24px)] top-6 hidden h-px w-[calc(100%-48px)] bg-black/10 md:block" />
+                    <div className="absolute left-[calc(50%+24px)] top-6 hidden h-px w-[calc(100%-48px)] bg-[var(--border)] md:block" />
                   )}
                 </div>
               ),
             )}
+          </div>
+        </FadeIn>
+
+        <FadeIn delay={0.25} className="mt-16">
+          <div className="overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--card)] shadow-[0_8px_40px_rgba(0,0,0,0.4)]">
+            <Image
+              src="/notrix-ecosystem.png"
+              alt="Notrix unified knowledge core connecting company tools with autonomous AI departments"
+              width={2048}
+              height={1365}
+              sizes="(max-width: 768px) 100vw, 1152px"
+              className="h-auto w-full"
+            />
           </div>
         </FadeIn>
       </SectionTheme>
@@ -77,15 +93,17 @@ export default function PlatformPage() {
 
       <SectionTheme theme="light">
         <FadeIn>
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#1a1a1a]/50">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--text-secondary)]">
             Integrations
           </p>
-          <h2 className="mt-4 font-serif text-3xl">Connect your entire stack</h2>
+          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[var(--text-primary)]">
+            Connect your entire stack
+          </h2>
         </FadeIn>
         <div className="mt-12 flex flex-wrap gap-3">
           {INTEGRATIONS.map((name, i) => (
             <FadeIn key={name} delay={i * 0.05}>
-              <span className="rounded-full border border-black/10 px-5 py-2.5 text-sm text-[#1a1a1a]/75">
+              <span className="rounded-full border border-[var(--border)] bg-[var(--card)] px-5 py-2.5 text-sm text-[var(--text-secondary)]">
                 {name}
               </span>
             </FadeIn>
@@ -95,17 +113,17 @@ export default function PlatformPage() {
 
       <SectionTheme theme="dark">
         <FadeIn>
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#f5f5f0]/50">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--text-secondary)]">
             Security & governance
           </p>
-          <h2 className="mt-4 font-serif text-3xl md:text-4xl">
+          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-[var(--text-primary)] md:text-4xl">
             Enterprise-grade from day one
           </h2>
         </FadeIn>
         <div className="mt-12 grid gap-4 sm:grid-cols-2 md:grid-cols-3">
           {SECURITY_FEATURES.map((feature, i) => (
             <FadeIn key={feature} delay={i * 0.08}>
-              <div className="rounded-xl border border-white/10 bg-white/5 px-5 py-4 text-sm text-[#f5f5f0]/80">
+              <div className="card-hover rounded-xl border border-[var(--border)] bg-[var(--card)] px-5 py-4 text-sm text-[var(--text-secondary)]">
                 {feature}
               </div>
             </FadeIn>

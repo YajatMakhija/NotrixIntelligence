@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { SITE } from "./constants";
 
 export const defaultMetadata: Metadata = {
+  metadataBase: new URL("https://notrix.ai"),
   title: {
     default: `${SITE.name} — ${SITE.tagline}`,
     template: `%s | ${SITE.name}`,

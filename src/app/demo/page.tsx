@@ -17,7 +17,7 @@ export default function DemoPage() {
         description="Notrix ingests your company data, builds a knowledge layer, and deploys agents, search, and workflows — live in weeks. Tell us what you'd automate and we'll show you how."
       />
 
-      <SectionTheme theme="light">
+      <SectionTheme theme="dark">
         <FadeIn>
           <div className="mx-auto max-w-xl">
             <ContactForm />

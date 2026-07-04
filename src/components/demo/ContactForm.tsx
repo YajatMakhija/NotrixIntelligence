@@ -31,9 +31,11 @@ export function ContactForm() {
 
   if (isSubmitSuccessful) {
     return (
-      <div className="rounded-2xl border border-white/10 bg-white/5 p-8 text-center">
-        <p className="font-serif text-2xl text-[#f5f5f0]">Thank you.</p>
-        <p className="mt-3 text-sm text-[#f5f5f0]/65">
+      <div className="rounded-2xl border border-[var(--border)] bg-[var(--card)] p-8 text-center shadow-[0_4px_24px_rgba(0,0,0,0.04)]">
+        <p className="text-2xl font-semibold tracking-tight text-[var(--text-primary)]">
+          Thank you.
+        </p>
+        <p className="mt-3 text-sm text-[var(--text-secondary)]">
           Your email client should open shortly. We&apos;ll be in touch within one business day.
         </p>
       </div>
@@ -41,7 +43,7 @@ export function ContactForm() {
   }
 
   const inputClass =
-    "w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-sm text-[#f5f5f0] placeholder:text-[#f5f5f0]/30 outline-none transition-colors focus:border-white/30";
+    "w-full rounded-xl border border-[var(--border)] bg-[var(--card)] px-4 py-3 text-sm text-[var(--text-primary)] placeholder:text-[var(--text-secondary)] outline-none transition-colors focus:border-[var(--brand-primary)]/50";
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
@@ -53,7 +55,7 @@ export function ContactForm() {
             className={inputClass}
           />
           {errors.name && (
-            <p className="mt-1 text-xs text-red-400">{errors.name.message}</p>
+            <p className="mt-1 text-xs text-[var(--status-error)]">{errors.name.message}</p>
           )}
         </div>
         <div>
@@ -70,7 +72,7 @@ export function ContactForm() {
             className={inputClass}
           />
           {errors.email && (
-            <p className="mt-1 text-xs text-red-400">{errors.email.message}</p>
+            <p className="mt-1 text-xs text-[var(--status-error)]">{errors.email.message}</p>
           )}
         </div>
       </div>
@@ -83,7 +85,7 @@ export function ContactForm() {
             className={inputClass}
           />
           {errors.company && (
-            <p className="mt-1 text-xs text-red-400">{errors.company.message}</p>
+            <p className="mt-1 text-xs text-[var(--status-error)]">{errors.company.message}</p>
           )}
         </div>
         <div>
@@ -93,7 +95,7 @@ export function ContactForm() {
             className={inputClass}
           />
           {errors.role && (
-            <p className="mt-1 text-xs text-red-400">{errors.role.message}</p>
+            <p className="mt-1 text-xs text-[var(--status-error)]">{errors.role.message}</p>
           )}
         </div>
       </div>
@@ -106,15 +108,18 @@ export function ContactForm() {
           className={`${inputClass} resize-none`}
         />
         {errors.message && (
-          <p className="mt-1 text-xs text-red-400">{errors.message.message}</p>
+          <p className="mt-1 text-xs text-[var(--status-error)]">{errors.message.message}</p>
         )}
       </div>
 
-      <SubmitButton variant="dark">Talk to us</SubmitButton>
+      <SubmitButton variant="accent">Get in touch</SubmitButton>
 
-      <p className="text-xs text-[#f5f5f0]/40">
+      <p className="text-xs text-[var(--text-secondary)]">
         Or email us directly at{" "}
-        <a href={`mailto:${SITE.email}`} className="underline hover:text-[#f5f5f0]/60">
+        <a
+          href={`mailto:${SITE.email}`}
+          className="text-[var(--brand-primary)] underline hover:text-[var(--brand-primary-hover)]"
+        >
           {SITE.email}
         </a>
         . We don&apos;t share your data.

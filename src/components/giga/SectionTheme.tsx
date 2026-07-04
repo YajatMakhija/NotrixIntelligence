@@ -40,7 +40,7 @@ export function SectionTheme({ theme, children, className, id }: SectionThemePro
       id={id}
       className={cn(
         theme === "dark" ? "section-dark" : "section-light",
-        "px-6 py-24 md:py-32",
+        "relative px-6 py-24 md:py-32",
         className,
       )}
     >
@@ -57,17 +57,18 @@ interface PageHeroProps {
 
 export function PageHero({ eyebrow, title, description }: PageHeroProps) {
   return (
-    <section className="section-dark px-6 pb-24 pt-32 md:pt-40">
-      <div className="mx-auto max-w-6xl">
+    <section className="section-dark relative overflow-hidden px-6 pb-24 pt-32 md:pt-40">
+      <div aria-hidden className="aurora-echo" />
+      <div className="relative z-10 mx-auto max-w-6xl">
         <FadeIn>
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-[#f5f5f0]/50">
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-[var(--text-secondary)]">
             {eyebrow}
           </p>
-          <h1 className="mt-4 max-w-4xl font-serif text-4xl leading-tight md:text-6xl">
+          <h1 className="mt-4 max-w-4xl text-4xl font-semibold leading-tight tracking-tight text-[var(--text-primary)] md:text-5xl">
             {title}
           </h1>
           {description && (
-            <p className="mt-6 max-w-2xl text-[#f5f5f0]/65">{description}</p>
+            <p className="mt-6 max-w-2xl text-[var(--text-secondary)]">{description}</p>
           )}
         </FadeIn>
       </div>

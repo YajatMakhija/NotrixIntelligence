@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-type ButtonVariant = "dark" | "light" | "ghost-dark" | "ghost-light";
+type ButtonVariant = "accent" | "dark" | "light" | "ghost-dark" | "ghost-light";
 
 interface ButtonProps extends React.ComponentPropsWithoutRef<typeof Link> {
   variant?: ButtonVariant;
@@ -9,14 +9,19 @@ interface ButtonProps extends React.ComponentPropsWithoutRef<typeof Link> {
 }
 
 const variants: Record<ButtonVariant, string> = {
-  dark: "bg-[#f5f5f0] text-[#0c0c0c] hover:bg-white",
-  light: "bg-[#1a1a1a] text-[#fafaf8] hover:bg-black",
-  "ghost-dark": "border border-[rgba(245,245,240,0.25)] text-[#f5f5f0] hover:bg-white/10",
-  "ghost-light": "border border-[rgba(26,26,26,0.15)] text-[#1a1a1a] hover:bg-black/5",
+  accent:
+    "btn-lift btn-lift-primary bg-[var(--brand-primary)] text-white hover:bg-[var(--brand-primary-hover)]",
+  light:
+    "btn-lift btn-lift-primary bg-[var(--brand-primary)] text-white hover:bg-[var(--brand-primary-hover)]",
+  dark: "btn-lift border border-[var(--border)] bg-[var(--text-primary)] text-white hover:bg-[#27272a]",
+  "ghost-dark":
+    "btn-lift border border-[var(--border)] bg-transparent text-[var(--text-primary)] hover:bg-[var(--surface)]",
+  "ghost-light":
+    "btn-lift border border-[var(--border)] bg-transparent text-[var(--text-primary)] hover:bg-[var(--surface)]",
 };
 
 export function Button({
-  variant = "dark",
+  variant = "accent",
   className,
   children,
   ...props
@@ -24,7 +29,7 @@ export function Button({
   return (
     <Link
       className={cn(
-        "inline-flex items-center justify-center rounded-full px-6 py-2.5 text-sm font-medium transition-colors duration-300",
+        "inline-flex items-center justify-center rounded-full px-6 py-2.5 text-sm font-medium",
         variants[variant],
         className,
       )}
@@ -36,11 +41,11 @@ export function Button({
 }
 
 interface SubmitButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "dark" | "light";
+  variant?: "accent" | "dark" | "light";
 }
 
 export function SubmitButton({
-  variant = "dark",
+  variant = "accent",
   className,
   children,
   ...props
@@ -49,7 +54,7 @@ export function SubmitButton({
     <button
       type="submit"
       className={cn(
-        "inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-sm font-medium transition-colors duration-300 sm:w-auto",
+        "inline-flex w-full items-center justify-center rounded-full px-6 py-3 text-sm font-medium sm:w-auto",
         variants[variant],
         className,
       )}
