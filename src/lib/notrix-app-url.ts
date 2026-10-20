@@ -1,10 +1,10 @@
 /** The marketing site never authenticates customers. It sends them to the real app. */
 export function notrixAppUrl(path: "/login" | "/signup"): string {
-  const configured = process.env.NOTRIX_APP_URL;
-  if (!configured && process.env.NODE_ENV === "production") {
-    throw new Error("NOTRIX_APP_URL is required in production");
-  }
-  const url = new URL(configured || "http://localhost:3000");
+  const configured = process.env.NOTRIX_APP_URL ||
+    (process.env.NODE_ENV === "production"
+      ? "https://app-staging.notrixintelligence.com"
+      : "http://localhost:3000");
+  const url = new URL(configured);
   if (url.protocol !== "https:" && !(process.env.NODE_ENV !== "production" && url.hostname === "localhost")) {
     throw new Error("NOTRIX_APP_URL must be an HTTPS origin");
   }
