@@ -1,7 +1,0 @@
-{
-  "installCommand": "npm --prefix vibe-coding-starter ci",
-  "buildCommand": "npm --prefix vibe-coding-starter run build",
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "nextjs",
-  "outputDirectory": "vibe-coding-starter/.next"
-}
