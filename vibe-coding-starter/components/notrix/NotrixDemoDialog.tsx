@@ -21,13 +21,14 @@ export function NotrixDemoTrigger({
   className?: string;
 }) {
   return (
-    <button
-      type="button"
+    <a
+      href="https://calendly.com/yajatmakhijaofficial/30min"
+      target="_blank"
+      rel="noopener noreferrer"
       className={className}
-      onClick={() => window.dispatchEvent(new Event(demoEvent))}
     >
       {children}
-    </button>
+    </a>
   );
 }
 

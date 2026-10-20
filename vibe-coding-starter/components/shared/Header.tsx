@@ -31,7 +31,7 @@ export const Header = ({ className }: { className?: string }) => {
       <LandingHeaderMenuItem href="/notrix/editor">
         {'Editor'}
       </LandingHeaderMenuItem>
-      <LandingHeaderMenuItem type="button" href="/notrix">
+      <LandingHeaderMenuItem href="https://calendly.com/yajatmakhijaofficial/30min">
         Book a demo
       </LandingHeaderMenuItem>
     </LandingHeader>
