@@ -50,40 +50,42 @@ export default async function DocsArticlePage({
 
   return (
     <article className="mx-auto max-w-[720px]">
-      <nav aria-label="Breadcrumb" className="text-[12px] text-[var(--fg-faint)]">
-        <Link href="/docs" className="hover:text-white">
+      <nav aria-label="Breadcrumb" className="text-[12px] text-[var(--faint)]">
+        <Link href="/docs" className="hover:text-[var(--ink)]">
           Docs
         </Link>
         <span className="px-2">/</span>
-        <Link href={`/docs/${section.slug}`} className="hover:text-white">
+        <Link href={`/docs/${section.slug}`} className="hover:text-[var(--ink)]">
           {section.title}
         </Link>
         <span className="px-2">/</span>
-        <span className="text-[var(--fg-muted)]">{article.link.label}</span>
+        <span className="text-[var(--body)]">{article.link.label}</span>
       </nav>
 
-      <h1 className="display mt-5 text-[34px] text-white md:text-[40px]">
+      <h1 className="display mt-5 text-[34px] text-[var(--ink)] md:text-[40px]">
         {article.link.label}
       </h1>
-      <p className="mt-4 text-[15px] leading-relaxed text-[var(--fg-muted)]">
+      <p className="mt-4 text-[15px] leading-relaxed text-[var(--body)]">
         {article.group.heading} · {section.title}
       </p>
 
       <div className="mt-12 rounded-lg border border-dashed border-[var(--line-strong)] px-8 py-14 text-center">
-        <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--fg-faint)]">
-          Being written
-        </p>
-        <p className="mx-auto mt-5 max-w-[420px] text-[14px] leading-relaxed text-[var(--fg-muted)]">
-          This page lands alongside the product. If you need this detail now,
-          ask us directly and we will walk you through it.
+        <p className="eyebrow">Ships with the product</p>
+        <p className="mx-auto mt-5 max-w-[420px] text-[14px] leading-relaxed text-[var(--body)]">
+          API and console reference land with Company Brain access. If you need
+          this detail for a review now, ask us and we will walk through it
+          under NDA.
         </p>
         <div className="mt-7 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[13.5px]">
-          <Link href="/contact" className="link-underline text-white">
+          <Link href="/contact" className="link-underline text-[var(--ink)]">
             Talk to us
+          </Link>
+          <Link href="/console" className="text-[var(--body)] hover:text-[var(--ink)]">
+            Console access
           </Link>
           <a
             href={`mailto:${SITE.email}`}
-            className="text-[var(--fg-muted)] hover:text-white"
+            className="text-[var(--body)] hover:text-[var(--ink)]"
           >
             {SITE.email}
           </a>
@@ -100,8 +102,8 @@ export default async function DocsArticlePage({
               href={`/docs/${section.slug}/${prev.slug}`}
               className="rounded-lg border border-[var(--line)] p-4 transition-colors hover:border-[var(--line-strong)] hover:bg-white/[0.02]"
             >
-              <span className="block text-[11px] text-[var(--fg-faint)]">Previous</span>
-              <span className="mt-1 block text-[14px] text-white">{prev.label}</span>
+              <span className="block text-[11px] text-[var(--faint)]">Previous</span>
+              <span className="mt-1 block text-[14px] text-[var(--ink)]">{prev.label}</span>
             </Link>
           ) : (
             <span />
@@ -111,8 +113,8 @@ export default async function DocsArticlePage({
               href={`/docs/${section.slug}/${next.slug}`}
               className="rounded-lg border border-[var(--line)] p-4 text-right transition-colors hover:border-[var(--line-strong)] hover:bg-white/[0.02]"
             >
-              <span className="block text-[11px] text-[var(--fg-faint)]">Next</span>
-              <span className="mt-1 block text-[14px] text-white">{next.label}</span>
+              <span className="block text-[11px] text-[var(--faint)]">Next</span>
+              <span className="mt-1 block text-[14px] text-[var(--ink)]">{next.label}</span>
             </Link>
           )}
         </nav>

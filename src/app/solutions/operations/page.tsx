@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { PlaceholderPage } from "@/components/layout/PlaceholderPage";
+import { SolutionPage } from "@/components/layout/SolutionPage";
 import { pageMetadata } from "@/lib/metadata";
+import { USE_CASES } from "@/lib/site";
 
-export const metadata: Metadata = pageMetadata(
-  "Operations",
-  "Understand processes, policies, workflows and cross-team dependencies.",
-);
+const solution = USE_CASES.find((item) => item.id === "operations")!;
+
+export const metadata: Metadata = pageMetadata(solution.title, solution.body);
 
 export default function OperationsSolutionPage() {
   return (
-    <PlaceholderPage
-      eyebrow="Solutions"
-      title="Operations"
-      intro="Processes, policies, workflows and the dependencies between teams that never made it into a single document."
+    <SolutionPage
+      title={solution.title}
+      intro={solution.intro}
+      points={solution.points}
     />
   );
 }

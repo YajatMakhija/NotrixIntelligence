@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { PlaceholderPage } from "@/components/layout/PlaceholderPage";
+import { SolutionPage } from "@/components/layout/SolutionPage";
 import { pageMetadata } from "@/lib/metadata";
+import { USE_CASES } from "@/lib/site";
 
-export const metadata: Metadata = pageMetadata(
-  "Support",
-  "Give support teams access to product knowledge, previous cases and internal expertise.",
-);
+const solution = USE_CASES.find((item) => item.id === "support")!;
+
+export const metadata: Metadata = pageMetadata(solution.title, solution.body);
 
 export default function SupportSolutionPage() {
   return (
-    <PlaceholderPage
-      eyebrow="Solutions"
-      title="Support"
-      intro="Product knowledge, previous cases and internal expertise — available to the person on the ticket."
+    <SolutionPage
+      title={solution.title}
+      intro={solution.intro}
+      points={solution.points}
     />
   );
 }
