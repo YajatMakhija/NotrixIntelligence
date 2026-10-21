@@ -167,7 +167,7 @@ function OrbitTrails() {
   return (
     <svg
       viewBox="0 0 100 100"
-      className="absolute inset-0 size-full overflow-visible text-primary-500"
+      className="absolute inset-0 size-full overflow-visible text-secondary-400"
       aria-hidden="true"
     >
       {[-90, 90].flatMap((rotation) =>
@@ -250,9 +250,9 @@ function IntegrationEcosystem({ rect }: { rect?: NotrixRect }) {
       aria-hidden="true"
       style={{
         maskImage:
-          'linear-gradient(to bottom, black calc(100% - 6rem), transparent)',
+          'linear-gradient(to bottom, black calc(100% - 8rem), transparent 100%)',
         WebkitMaskImage:
-          'linear-gradient(to bottom, black calc(100% - 6rem), transparent)',
+          'linear-gradient(to bottom, black calc(100% - 8rem), transparent 100%)',
       }}
     >
       <div
@@ -321,7 +321,7 @@ export function NotrixHero() {
   return (
     <section
       id="product"
-      className={`relative px-5 pb-12 sm:px-6 ${layout ? '' : 'pt-20 sm:pt-24'}`}
+      className={`relative px-5 pb-16 sm:px-6 sm:pb-20 ${layout ? '' : 'pt-20 sm:pt-24'}`}
       style={{ paddingTop: topPadding }}
     >
       <IntegrationEcosystem rect={layout?.orbits} />

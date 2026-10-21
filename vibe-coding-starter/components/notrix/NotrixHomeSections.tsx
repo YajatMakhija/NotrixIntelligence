@@ -1,142 +1,264 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import {
   ArrowRight,
+  Boxes,
+  Check,
   Cloud,
   FileCheck2,
+  FileSearch,
+  FileText,
   KeyRound,
   MessageSquareText,
-  Plug,
-  Search,
+  Network,
   ShieldCheck,
+  Sparkles,
 } from 'lucide-react';
+import {
+  SiConfluence,
+  SiConfluenceHex,
+  SiGithub,
+  SiGithubHex,
+  SiGoogledrive,
+  SiGoogledriveHex,
+  SiJira,
+  SiJiraHex,
+  SiNotion,
+  SiNotionHex,
+} from '@icons-pack/react-simple-icons';
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/shared/ui/accordion';
 import { NotrixDemoTrigger } from '@/components/notrix/NotrixDemoDialog';
-
-const questions = [
-  {
-    question: 'What price did we quote this customer?',
-    answer: 'The approved annual price is $84,000, including priority support.',
-    source: 'Acme pricing proposal · Page 4',
-  },
-  {
-    question: 'Why did the project deadline change?',
-    answer:
-      'The launch moved to Friday after the security review added two days.',
-    source: 'Atlas launch plan · Decision log',
-  },
-  {
-    question: 'Where is the latest onboarding guide?',
-    answer: 'The current guide is in the People workspace, updated yesterday.',
-    source: 'Employee onboarding · Version 8',
-  },
-];
+import { NotrixContextPlayground } from '@/components/notrix/NotrixContextPlayground';
 
 const faqs = [
   [
-    'What sources can I connect today?',
-    'Pilot connections are agreed during onboarding. Slack is the question interface; approved document repositories are connected according to your pilot scope. Google Drive, Notion, and Confluence integrations are planned and should not be assumed available until confirmed.',
+    'How do we get started?',
+    'A pilot starts with one workflow, one department, and a success measure agreed up front. We then confirm the deployment boundary, connect the required sources, and validate answers with a focused user group.',
   ],
   [
-    'Does my team need another app?',
-    'No for everyday questions. Your team asks Notrix from Slack and receives an answer with supporting sources in the same workflow.',
+    'Which sources can we connect?',
+    'Notrix has first-party connectors for Slack, Notion, Google Drive and Docs, GitHub, Jira, Salesforce, Microsoft Teams, SharePoint, Zendesk, Snowflake, SAP, AWS, and Google Cloud. REST APIs, webhooks, and MCP cover custom ingestion.',
   ],
   [
-    'Where is our data stored and processed?',
-    'Notrix is designed for customer-controlled cloud deployment. The exact storage region, processing path, and subprocessors are documented for each pilot.',
+    'Where is our knowledge stored?',
+    'Deployment options include managed cloud, private cloud, and a customer VPC. Storage region, retention, model providers, and data boundaries are documented for the chosen deployment.',
   ],
   [
-    'Who can access the answers?',
-    'Access follows the identity, workspace, and source permissions configured for your deployment. Pilot administrators define who can connect sources and use Notrix.',
+    'Who can access our information?',
+    'Source permissions are captured during ingestion and travel with the content. Retrieval is scoped to the asking user’s access, with role controls and audit logs for retrievals and agent runs.',
   ],
   [
-    'What does setting up a pilot involve?',
-    'We agree on a focused use case, review security requirements, connect approved sources, configure Slack access, and validate answers with a small group before wider rollout.',
+    'Which AI providers are involved?',
+    'The provider and model allow-list depend on the deployment. Notrix requires zero-retention terms from model providers, and customer inputs are not used for training.',
   ],
   [
-    'How is pricing determined?',
-    'Launch pricing is tailored to pilot scope, deployment requirements, connected sources, and expected usage. Book a demo for a written proposal.',
+    'Can we disconnect and delete our data?',
+    'Yes. Connected sources, retention, and deletion are configurable. The exact process and timelines are documented as part of the deployment agreement.',
   ],
+] as const;
+
+const integrations = [
+  {
+    name: 'Slack',
+    purpose: 'Ask and receive cited answers',
+    icon: (
+      <Image
+        src="/static/images/integrations/slack.svg"
+        alt=""
+        width={28}
+        height={28}
+        className="size-7"
+      />
+    ),
+  },
+  {
+    name: 'Google Drive',
+    purpose: 'Retrieve approved files',
+    icon: <SiGoogledrive color={SiGoogledriveHex} className="size-7" />,
+  },
+  {
+    name: 'Notion',
+    purpose: 'Use workspace knowledge',
+    icon: <SiNotion color={SiNotionHex} className="size-7" />,
+  },
+  {
+    name: 'Confluence',
+    purpose: 'Search team documentation',
+    icon: <SiConfluence color={SiConfluenceHex} className="size-7" />,
+  },
+  {
+    name: 'Jira',
+    purpose: 'Understand project context',
+    icon: <SiJira color={SiJiraHex} className="size-7" />,
+  },
+  {
+    name: 'GitHub',
+    purpose: 'Connect issues and code context',
+    icon: <SiGithub color={SiGithubHex} className="size-7" />,
+  },
 ] as const;
 
 export function NotrixHomeSections() {
   return (
     <>
-      <section className="border-t border-neutral-200 px-5 py-20 sm:px-6 sm:py-24">
-        <div className="mx-auto max-w-5xl">
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary-700">
-            Product examples
-          </p>
-          <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-tight sm:text-5xl">
-            What your team can ask
-          </h2>
-          <p className="mt-5 max-w-xl text-lg leading-8 text-neutral-600">
-            Ask a direct question and get a concise answer grounded in the
-            company material your team is allowed to use.
-          </p>
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
-            {questions.map((item, index) => (
-              <article
-                key={item.question}
-                className="rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm"
-              >
-                <span className="flex size-9 items-center justify-center rounded-full bg-neutral-950 text-sm font-semibold text-white">
-                  {index + 1}
-                </span>
-                <h3 className="mt-5 text-lg font-semibold">{item.question}</h3>
-                <p className="mt-4 text-sm leading-6 text-neutral-700">
-                  {item.answer}
+      <NotrixContextPlayground />
+
+      <section className="bg-neutral-50/70 px-5 py-20 sm:px-6 sm:py-24">
+        <div className="mx-auto max-w-6xl">
+          <div className="max-w-2xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-secondary-700">
+              What your team can do
+            </p>
+            <h2 className="mt-4 text-balance text-3xl font-semibold tracking-[-0.03em] text-primary-950 sm:text-5xl">
+              Find the context. Keep work moving.
+            </h2>
+            <p className="mt-5 text-base leading-7 text-neutral-600 sm:text-lg">
+              Turn scattered records into answers people can verify without
+              losing the history behind them.
+            </p>
+          </div>
+
+          <div className="mt-12 grid gap-5 lg:grid-cols-3">
+            <article className="overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(11,13,16,0.04)]">
+              <span className="flex size-10 items-center justify-center rounded-xl bg-secondary-50 text-secondary-800 ring-1 ring-secondary-200">
+                <FileSearch className="size-5" aria-hidden="true" />
+              </span>
+              <h3 className="mt-5 text-xl font-semibold text-primary-950">
+                Find company information
+              </h3>
+              <p className="mt-3 text-sm leading-6 text-neutral-600">
+                Find relevant information across the sources your team connects.
+              </p>
+              <div className="mt-7 rounded-xl bg-neutral-50 p-4 ring-1 ring-neutral-200">
+                <p className="text-xs font-medium text-neutral-500">Question</p>
+                <p className="mt-2 text-sm font-semibold text-primary-950">
+                  Where are Acme’s renewal terms?
                 </p>
-                <p className="mt-5 border-t border-neutral-100 pt-4 text-xs font-medium text-neutral-500">
-                  Source: {item.source}
-                </p>
-              </article>
-            ))}
+                <div className="mt-4 flex items-center gap-2 text-xs font-medium text-secondary-800">
+                  <FileText className="size-4" aria-hidden="true" />
+                  Agreement · Section 8
+                </div>
+              </div>
+            </article>
+
+            <article className="overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(11,13,16,0.04)]">
+              <span className="flex size-10 items-center justify-center rounded-xl bg-secondary-50 text-secondary-800 ring-1 ring-secondary-200">
+                <Network className="size-5" aria-hidden="true" />
+              </span>
+              <h3 className="mt-5 text-xl font-semibold text-primary-950">
+                Understand past decisions
+              </h3>
+              <p className="mt-3 text-sm leading-6 text-neutral-600">
+                Follow the evidence behind a decision and see how it changed.
+              </p>
+              <ol className="relative mt-7 space-y-4 before:absolute before:bottom-2 before:left-[0.4375rem] before:top-2 before:w-px before:bg-secondary-200">
+                {[
+                  'Proposal · $74,000',
+                  'Conditional suggestion · $84,000',
+                  'Approved agreement · $82,000',
+                ].map((item, index) => (
+                  <li
+                    key={item}
+                    className="relative flex items-center gap-3 text-sm text-neutral-700"
+                  >
+                    <span
+                      className={`relative z-10 size-3.5 rounded-full border-2 ${index === 2 ? 'border-secondary-600 bg-secondary-100' : 'border-neutral-300 bg-white'}`}
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ol>
+            </article>
+
+            <article className="overflow-hidden rounded-2xl border border-neutral-200 bg-white p-6 shadow-[0_10px_30px_rgba(11,13,16,0.04)]">
+              <span className="flex size-10 items-center justify-center rounded-xl bg-secondary-50 text-secondary-800 ring-1 ring-secondary-200">
+                <Sparkles className="size-5" aria-hidden="true" />
+              </span>
+              <h3 className="mt-5 text-xl font-semibold text-primary-950">
+                Catch up on projects
+              </h3>
+              <p className="mt-3 text-sm leading-6 text-neutral-600">
+                Recover updates, decisions, and ownership from connected
+                knowledge.
+              </p>
+              <div className="mt-7 divide-y divide-neutral-200 rounded-xl border border-neutral-200 bg-neutral-50 px-4">
+                {[
+                  ['Launch date', 'Friday'],
+                  ['Decision owner', 'Maya'],
+                  ['Open dependency', 'Security review'],
+                ].map(([label, value]) => (
+                  <div
+                    key={label}
+                    className="flex items-center justify-between gap-4 py-3 text-xs"
+                  >
+                    <span className="text-neutral-500">{label}</span>
+                    <span className="font-semibold text-primary-950">
+                      {value}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </article>
           </div>
         </div>
       </section>
 
       <section
         id="how-it-works"
-        className="bg-neutral-50 px-5 py-20 sm:px-6 sm:py-24"
+        className="scroll-mt-24 px-5 py-20 sm:px-6 sm:py-24"
       >
-        <div className="mx-auto max-w-5xl">
-          <div className="text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-primary-700">
+        <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-secondary-700">
               How it works
             </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-5xl">
-              From company sources to a sourced answer
+            <h2 className="mt-4 text-balance text-3xl font-semibold tracking-[-0.03em] text-primary-950 sm:text-5xl">
+              From scattered knowledge to shared understanding.
             </h2>
           </div>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+
+          <div className="relative mt-14 grid gap-8 md:grid-cols-3 md:gap-10">
+            <div
+              className="absolute left-[16.66%] right-[16.66%] top-5 hidden h-px bg-neutral-200 md:block"
+              aria-hidden="true"
+            />
             {[
               [
-                Plug,
-                'Connect approved sources',
-                'Choose the repositories and documents included in your pilot.',
+                Boxes,
+                'Connect selected sources',
+                'Choose the systems and content your team wants Notrix to work with.',
               ],
               [
-                MessageSquareText,
-                'Ask in Slack',
-                'Use the place your team already works instead of opening another app.',
+                KeyRound,
+                'Carry access with the content',
+                'Source permissions are captured at ingestion and remain attached during retrieval.',
               ],
               [
                 FileCheck2,
-                'Verify the answer',
-                'Every response includes supporting sources your team can inspect.',
+                'Ask and check the evidence',
+                'Get a concise answer and inspect the original sources behind it.',
               ],
             ].map(([Icon, title, body], index) => {
-              const StepIcon = Icon as typeof Search;
+              const StepIcon = Icon as typeof Boxes;
               return (
                 <article
                   key={title as string}
-                  className="rounded-2xl bg-white p-7 shadow-sm ring-1 ring-neutral-200"
+                  className="relative text-center md:text-left"
                 >
-                  <StepIcon className="size-6 text-primary-700" />
-                  <p className="mt-5 text-xs font-semibold uppercase tracking-widest text-neutral-400">
-                    Step {index + 1}
-                  </p>
-                  <h3 className="mt-2 text-xl font-semibold">
+                  <span className="relative z-10 mx-auto flex size-10 items-center justify-center rounded-full bg-primary-950 text-sm font-semibold text-white ring-8 ring-white md:mx-0">
+                    {index + 1}
+                  </span>
+                  <StepIcon
+                    className="mx-auto mt-7 size-6 text-secondary-700 md:mx-0"
+                    aria-hidden="true"
+                  />
+                  <h3 className="mt-4 text-xl font-semibold text-primary-950">
                     {title as string}
                   </h3>
                   <p className="mt-3 text-sm leading-6 text-neutral-600">
@@ -146,109 +268,192 @@ export function NotrixHomeSections() {
               );
             })}
           </div>
-          <div className="mt-8 rounded-2xl border border-dashed border-neutral-300 bg-white p-5 text-center text-sm text-neutral-600">
-            Planned integrations include Google Drive, Notion, and Confluence.
-            Availability is confirmed for each pilot.
+        </div>
+      </section>
+
+      <section className="bg-neutral-50/70 px-5 py-20 sm:px-6 sm:py-24">
+        <div className="mx-auto max-w-6xl">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
+            <div className="max-w-2xl">
+              <h2 className="text-balance text-3xl font-semibold tracking-[-0.03em] text-primary-950 sm:text-5xl">
+                Start where your team already works.
+              </h2>
+              <p className="mt-5 text-base leading-7 text-neutral-600 sm:text-lg">
+                First-party connectors bring company context into one
+                permission-aware knowledge layer.
+              </p>
+            </div>
+            <Link
+              href="/product"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-primary-950 underline decoration-secondary-300 underline-offset-4 hover:decoration-secondary-600"
+            >
+              View the product{' '}
+              <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
           </div>
+
+          <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {integrations.map((integration) => (
+              <article
+                key={integration.name}
+                className="flex min-w-0 items-center gap-3 overflow-hidden rounded-2xl border border-neutral-200 bg-white p-4"
+              >
+                <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-neutral-50 ring-1 ring-neutral-200">
+                  {integration.icon}
+                </span>
+                <div className="min-w-0 flex-1">
+                  <h3 className="font-semibold text-primary-950">
+                    {integration.name}
+                  </h3>
+                  <p className="mt-1 truncate text-xs text-neutral-500">
+                    {integration.purpose}
+                  </p>
+                </div>
+                <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-secondary-50 px-2 py-1 text-[10px] font-semibold uppercase tracking-wide text-secondary-800 ring-1 ring-inset ring-secondary-200">
+                  <Check className="size-3" aria-hidden="true" /> Available
+                </span>
+              </article>
+            ))}
+          </div>
+          <p className="mt-5 text-sm text-neutral-500">
+            Also available: Google Docs, Salesforce, Microsoft Teams,
+            SharePoint, Zendesk, Snowflake, SAP, AWS, Google Cloud, plus custom
+            ingestion through REST, webhooks, and MCP.
+          </p>
         </div>
       </section>
 
       <section className="px-5 py-20 sm:px-6 sm:py-24">
-        <div className="mx-auto grid max-w-5xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-primary-700">
-              Your data and access
+            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-secondary-700">
+              Deployment and data control
             </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-5xl">
-              Customer control is part of the architecture
+            <h2 className="mt-4 text-balance text-3xl font-semibold tracking-[-0.03em] text-primary-950 sm:text-5xl">
+              Know where your company knowledge lives.
             </h2>
-            <p className="mt-5 text-lg leading-8 text-neutral-600">
-              Notrix is designed around customer-controlled storage, explicit
-              permissions, and deployment details agreed before a pilot begins.
+            <p className="mt-5 text-base leading-7 text-neutral-600 sm:text-lg">
+              Choose managed cloud, private cloud, or a customer VPC. Notrix
+              documents the storage, processing, model, and access boundaries
+              before deployment.
             </p>
+            <div className="mt-7 space-y-3">
+              {[
+                'Permissions remain attached to content during retrieval.',
+                'Retrievals and agent runs are recorded in audit logs.',
+                'Retention and deletion are configurable for the deployment.',
+              ].map((item) => (
+                <p
+                  key={item}
+                  className="flex items-start gap-3 text-sm leading-6 text-neutral-700"
+                >
+                  <ShieldCheck
+                    className="mt-0.5 size-4 shrink-0 text-secondary-700"
+                    aria-hidden="true"
+                  />
+                  {item}
+                </p>
+              ))}
+            </div>
             <Link
               href="/security"
-              className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-neutral-950"
+              className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary-950 underline decoration-secondary-300 underline-offset-4 hover:decoration-secondary-600"
             >
-              Read about security <ArrowRight className="size-4" />
+              Explore security and deployment{' '}
+              <ArrowRight className="size-4" aria-hidden="true" />
             </Link>
           </div>
-          <div className="grid gap-4">
-            {[
-              [
-                Cloud,
-                'Storage',
-                'Company knowledge remains in the customer-controlled cloud environment defined for the deployment.',
-              ],
-              [
-                KeyRound,
-                'Permissions',
-                'Identity and source access rules determine who can connect knowledge and receive answers.',
-              ],
-              [
-                ShieldCheck,
-                'Control',
-                'Customers approve sources, administrators, retention requirements, and deletion steps.',
-              ],
-            ].map(([Icon, title, body]) => {
-              const ItemIcon = Icon as typeof Search;
-              return (
-                <article
-                  key={title as string}
-                  className="flex gap-4 rounded-2xl border border-neutral-200 p-5"
-                >
-                  <span className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-neutral-100">
-                    <ItemIcon className="size-5" />
-                  </span>
-                  <div>
-                    <h3 className="font-semibold">{title as string}</h3>
-                    <p className="mt-1 text-sm leading-6 text-neutral-600">
-                      {body as string}
-                    </p>
-                  </div>
-                </article>
-              );
-            })}
+
+          <div className="relative overflow-hidden rounded-3xl border border-neutral-200 bg-neutral-50 p-5 shadow-[0_18px_60px_rgba(89,65,186,0.08)] sm:p-7">
+            <div
+              className="absolute -right-16 -top-20 size-64 rounded-full bg-cyan-100/70 blur-3xl"
+              aria-hidden="true"
+            />
+            <div className="relative grid gap-4 sm:grid-cols-2">
+              <article className="rounded-2xl bg-white p-5 ring-1 ring-neutral-200">
+                <span className="flex size-10 items-center justify-center rounded-xl bg-secondary-50 text-secondary-800 ring-1 ring-secondary-200">
+                  <Cloud className="size-5" aria-hidden="true" />
+                </span>
+                <h3 className="mt-5 font-semibold text-primary-950">
+                  Customer environment
+                </h3>
+                <ul className="mt-4 space-y-3 text-sm text-neutral-600">
+                  <li>Knowledge storage</li>
+                  <li>Processing in customer VPC deployments</li>
+                  <li>Regional controls where required</li>
+                </ul>
+              </article>
+              <article className="rounded-2xl bg-white p-5 ring-1 ring-neutral-200">
+                <span className="flex size-10 items-center justify-center rounded-xl bg-primary-950 text-white">
+                  <ShieldCheck className="size-5" aria-hidden="true" />
+                </span>
+                <h3 className="mt-5 font-semibold text-primary-950">
+                  Notrix control plane
+                </h3>
+                <ul className="mt-4 space-y-3 text-sm text-neutral-600">
+                  <li>Account management</li>
+                  <li>Deployment management</li>
+                  <li>Access and audit controls</li>
+                </ul>
+              </article>
+            </div>
+            <div className="relative mt-4 flex items-start gap-3 rounded-2xl bg-primary-950 p-4 text-white">
+              <MessageSquareText
+                className="mt-0.5 size-5 shrink-0 text-secondary-300"
+                aria-hidden="true"
+              />
+              <p className="text-sm leading-6 text-neutral-200">
+                AI processing follows the provider and model allow-list
+                configured for the deployment.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="border-y border-neutral-200 bg-neutral-50 px-5 py-20 sm:px-6 sm:py-24">
+      <section className="bg-neutral-50/70 px-5 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-3xl">
-          <div className="text-center">
-            <p className="text-sm font-semibold uppercase tracking-widest text-primary-700">
-              FAQs
-            </p>
-            <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-5xl">
-              Questions before a pilot
-            </h2>
-          </div>
-          <div className="mt-10 divide-y divide-neutral-200 border-y border-neutral-200">
-            {faqs.map(([question, answer]) => (
-              <details key={question} className="group py-5">
-                <summary className="cursor-pointer list-none pr-8 font-semibold marker:hidden">
-                  {question}
-                </summary>
-                <p className="mt-3 max-w-2xl text-sm leading-6 text-neutral-600">
-                  {answer}
-                </p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="px-5 py-20 text-center sm:px-6 sm:py-24">
-        <div className="mx-auto max-w-3xl">
-          <h2 className="text-3xl font-semibold tracking-tight sm:text-5xl">
-            See Notrix with your team&apos;s workflow.
+          <h2 className="text-balance text-center text-3xl font-semibold tracking-[-0.03em] text-primary-950 sm:text-5xl">
+            A few things you might be wondering.
           </h2>
-          <p className="mx-auto mt-5 max-w-xl text-lg text-neutral-600">
-            Bring one real knowledge problem. We&apos;ll show how a focused
-            pilot would work.
+          <Accordion
+            type="single"
+            collapsible
+            className="mt-10 border-y border-neutral-200"
+          >
+            {faqs.map(([question, answer], index) => (
+              <AccordionItem
+                key={question}
+                value={`faq-${index}`}
+                className="border-neutral-200"
+              >
+                <AccordionTrigger className="min-h-16 text-left text-base font-semibold text-primary-950 hover:no-underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary-500 focus-visible:ring-offset-2">
+                  {question}
+                </AccordionTrigger>
+                <AccordionContent className="max-w-2xl pb-5 text-sm leading-6 text-neutral-600">
+                  {answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden px-5 py-20 text-center sm:px-6 sm:py-28">
+        <div
+          className="absolute left-1/2 top-1/2 size-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-secondary-100/60 blur-3xl"
+          aria-hidden="true"
+        />
+        <div className="relative mx-auto max-w-3xl">
+          <h2 className="text-balance text-3xl font-semibold tracking-[-0.03em] text-primary-950 sm:text-5xl">
+            Bring a question your team asks every week.
+          </h2>
+          <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-neutral-600 sm:text-lg">
+            See how Notrix brings the answer, its evidence, and your access
+            rules together.
           </p>
-          <NotrixDemoTrigger className="mt-8 inline-flex h-11 items-center justify-center gap-2 rounded-full bg-neutral-950 px-6 text-sm font-semibold text-white">
-            Book a demo <ArrowRight className="size-4" />
+          <NotrixDemoTrigger className="mt-8 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-primary-950 px-6 text-sm font-semibold text-white shadow-lg shadow-neutral-300/40 transition-colors hover:bg-primary-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary-500 focus-visible:ring-offset-2">
+            Book a demo <ArrowRight className="size-4" aria-hidden="true" />
           </NotrixDemoTrigger>
         </div>
       </section>

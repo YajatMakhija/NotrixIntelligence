@@ -36,11 +36,11 @@ export const notrixConversationExamples = [
       text: 'What price did we quote Acme for the annual plan?',
     },
     answer: {
-      text: 'The approved annual price is $84,000, including priority support.',
+      text: 'The approved annual price is $82,000, including priority support.',
     },
     source: {
-      title: 'Acme pricing proposal',
-      section: 'Page 4 — Commercial terms',
+      title: 'Approved agreement',
+      section: 'March 10 — Commercial terms',
     },
   },
   {
