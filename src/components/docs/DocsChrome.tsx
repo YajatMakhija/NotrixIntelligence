@@ -20,11 +20,11 @@ export function DocsShell({ children }: { children: React.ReactNode }) {
 
         <div className="min-w-0 flex-1">
           {/* Mobile nav toggle */}
-          <div className="sticky top-[65px] z-20 border-b border-[var(--line)] bg-black/90 px-6 py-3 backdrop-blur-md lg:hidden">
+          <div className="sticky top-[65px] z-20 border-b border-[var(--line)] bg-[var(--canvas)]/90 px-6 py-3 backdrop-blur-md lg:hidden">
             <button
               type="button"
               onClick={() => setMobileOpen((v) => !v)}
-              className="text-[13px] text-[var(--fg-muted)]"
+              className="text-[13px] text-[var(--body)]"
             >
               {mobileOpen ? "Close menu" : "Browse docs"}
             </button>
@@ -58,8 +58,8 @@ function DocsNav({
           className={cn(
             "block rounded-md px-2.5 py-1.5 text-[13px] font-medium transition-colors",
             pathname === "/docs"
-              ? "bg-white/[0.06] text-white"
-              : "text-[var(--fg-muted)] hover:bg-white/[0.03] hover:text-white",
+              ? "bg-[var(--ink)]/[0.06] text-[var(--ink)]"
+              : "text-[var(--body)] hover:bg-[var(--ink)]/[0.03] hover:text-[var(--ink)]",
           )}
         >
           Introduction
@@ -68,7 +68,7 @@ function DocsNav({
 
       {DOCS_SECTIONS.map((section) => (
         <div key={section.slug}>
-          <p className="px-2.5 text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--fg-faint)]">
+          <p className="px-2.5 text-[11px] font-medium uppercase tracking-[0.14em] text-[var(--faint)]">
             {section.label}
           </p>
           <ul className="mt-2 space-y-0.5">
@@ -79,8 +79,8 @@ function DocsNav({
                 className={cn(
                   "block rounded-md px-2.5 py-1.5 text-[13px] transition-colors",
                   pathname === `/docs/${section.slug}`
-                    ? "bg-white/[0.06] text-white"
-                    : "text-[var(--fg-muted)] hover:bg-white/[0.03] hover:text-white",
+                    ? "bg-[var(--ink)]/[0.06] text-[var(--ink)]"
+                    : "text-[var(--body)] hover:bg-[var(--ink)]/[0.03] hover:text-[var(--ink)]",
                 )}
               >
                 Overview
@@ -98,8 +98,8 @@ function DocsNav({
                       className={cn(
                         "block rounded-md px-2.5 py-1.5 text-[13px] transition-colors",
                         active
-                          ? "bg-white/[0.06] text-white"
-                          : "text-[var(--fg-muted)] hover:bg-white/[0.03] hover:text-white",
+                          ? "bg-[var(--ink)]/[0.06] text-[var(--ink)]"
+                          : "text-[var(--body)] hover:bg-[var(--ink)]/[0.03] hover:text-[var(--ink)]",
                       )}
                     >
                       {link.label}

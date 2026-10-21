@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
-import { PRICING } from "@/lib/site";
+import { PRICING, PRICING_NEEDS } from "@/lib/site";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata(
@@ -22,7 +22,7 @@ export default function PricingPage() {
       <section className="border-t border-[var(--line)]">
         <div className="mx-auto max-w-[1180px] px-6 py-20 md:px-10 md:py-24">
           <Reveal>
-            <p className="font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--fg-faint)]">
+            <p className="status text-[var(--faint)]">
               Indicative — final pricing confirmed during scoping
             </p>
           </Reveal>
@@ -31,24 +31,22 @@ export default function PricingPage() {
             {PRICING.map((tier, i) => (
               <Reveal
                 key={tier.name}
-                delay={i * 90}
+                delay={i * 50}
                 className={
                   tier.featured
-                    ? "bg-[var(--card)] ring-1 ring-inset ring-white/10"
-                    : "bg-[var(--bg)]"
+                    ? "bg-[var(--elevated)] ring-1 ring-inset ring-[var(--limestone)]/25"
+                    : "bg-[var(--canvas)]"
                 }
               >
                 <div className="flex h-full flex-col p-8 md:p-10">
                   <div className="flex items-baseline justify-between gap-4">
-                    <h2 className="text-[17px] font-medium tracking-tight text-white">
+                    <h2 className="text-[17px] font-medium tracking-tight text-[var(--ink)]">
                       {tier.name}
                     </h2>
-                    <span className="font-mono text-[11px] uppercase tracking-wider text-[var(--fg-faint)]">
-                      {tier.price}
-                    </span>
+                    <span className="status text-[var(--faint)]">{tier.price}</span>
                   </div>
 
-                  <p className="mt-4 text-[14px] leading-relaxed text-[var(--fg-muted)]">
+                  <p className="mt-4 text-[14px] leading-relaxed text-[var(--body)]">
                     {tier.tagline}
                   </p>
 
@@ -56,7 +54,7 @@ export default function PricingPage() {
                     {tier.features.map((feature) => (
                       <li
                         key={feature}
-                        className="flex gap-3 text-[13.5px] leading-relaxed text-[var(--fg-muted)]"
+                        className="flex gap-3 text-[13.5px] leading-relaxed text-[var(--body)]"
                       >
                         <span
                           aria-hidden
@@ -83,27 +81,58 @@ export default function PricingPage() {
         </div>
       </section>
 
-      <section className="border-t border-[var(--line)]">
+      <section className="band-paper border-y border-[var(--paper-line)] bg-[var(--paper)]">
+        <div className="mx-auto max-w-[1180px] px-6 py-20 md:px-10 md:py-24">
+          <Reveal>
+            <p className="eyebrow">Before a number</p>
+            <h2 className="display mt-5 max-w-[16ch] text-[28px] text-[var(--paper-ink)] md:text-[36px]">
+              What we need from you.
+            </h2>
+            <p className="mt-5 max-w-[520px] text-[15px] leading-relaxed text-[var(--paper-mute)]">
+              A pilot is scoped against a real workflow. These three things
+              decide whether we can start — and what the fixed fee covers.
+            </p>
+          </Reveal>
+          <div className="mt-12 grid gap-10 md:grid-cols-3">
+            {PRICING_NEEDS.map((item, i) => (
+              <Reveal key={item.title} delay={i * 50}>
+                <div className="rule mb-6" />
+                <h3 className="text-[16px] font-medium tracking-tight text-[var(--paper-ink)]">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-[14px] leading-relaxed text-[var(--paper-mute)]">
+                  {item.body}
+                </p>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section>
         <div className="mx-auto max-w-[1180px] px-6 py-24 md:px-10 md:py-32">
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
             <Reveal>
-              <h2 className="display max-w-[14ch] text-[28px] text-white md:text-[36px]">
+              <h2 className="display max-w-[14ch] text-[28px] text-[var(--ink)] md:text-[36px]">
                 Why no numbers on this page?
               </h2>
             </Reveal>
-            <Reveal delay={100}>
-              <p className="max-w-[560px] text-[15px] leading-relaxed text-[var(--fg-muted)]">
+            <Reveal delay={50}>
+              <p className="max-w-[560px] text-[15px] leading-relaxed text-[var(--body)]">
                 Because we would be inventing them. Cost depends on how many
                 systems we connect, how many workflows we automate, and what your
                 compliance requirements demand. There is no self-serve tier
                 either — Company Brain needs access to real company systems to be useful,
                 and that means a security review before anything works.
               </p>
-              <p className="mt-6 max-w-[560px] text-[15px] leading-relaxed text-[var(--fg-muted)]">
+              <p className="mt-6 max-w-[560px] text-[15px] leading-relaxed text-[var(--body)]">
                 A pilot is a fixed fee agreed up front, sized to the workflow
                 being automated, with the success metric defined before we start.
                 If it does not move, we part ways and you keep the documentation.
               </p>
+              <div className="mt-10">
+                <Button href="/contact">Request a demo</Button>
+              </div>
             </Reveal>
           </div>
         </div>

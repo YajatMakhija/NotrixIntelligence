@@ -1,103 +1,189 @@
 @import "tailwindcss";
 
 /**
- * Monochrome enterprise. Contrast, space, and type do the work — no brand hue,
- * no glow. Atmosphere comes from soft radial light and a fine grain, not colour.
+ * Professional-services house. Pearl white, black ink, gold for the ask.
+ * Blue stays for selection inside the product window; green for verified.
  */
 :root {
-  --bg: #050505;
-  --elevated: #0c0c0c;
-  --card: #121212;
-  --fg: #f5f5f5;
-  --fg-muted: #9a9a9a;
-  --fg-faint: #6a6a6a;
-  --line: #1f1f1f;
-  --line-strong: #333333;
-  --surface-glow: rgba(255, 255, 255, 0.035);
+  --canvas: #ffffff;
+  --elevated: #ffffff;
+  --line: #e4e2db;
+  --line-strong: #d4d1c8;
+  --ink: #0f0e0d;
+  --body: #706d66;
+  --faint: #8a877e;
+  --paper: #ffffff;
+  --paper-ink: #0f0e0d;
+  --paper-mute: #706d66;
+  --paper-line: #e4e2db;
+  --limestone: #c4b07a;
+  --blue: #3157e8;
+  --blue-bright: #4f72f3;
+  --blue-soft: #e8edff;
+  --blue-wash: #f3f6ff;
+  --gold: #c4b07a;
+  --navy: #101b38;
+  --ui-ink: #172033;
+  --ui-muted: #66738a;
+  --ui-faint: #98a4b7;
+  --ui-line: #e1e6ef;
+  --ui-soft: #f8f9fc;
+  --cta: #0f0e0d;
+  --cta-ink: #ffffff;
+  --success: #237a57;
+  --caution: #a66b16;
+  --bg: var(--canvas);
+  --card: var(--elevated);
+  --fg: var(--ink);
+  --fg-muted: var(--body);
+  --fg-faint: var(--faint);
+
+  /*
+   * Motion curves. Taken as-is from the animation reference rather than
+   * approximated — the built-in CSS easings are too weak to read as authored.
+   */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 @theme inline {
-  --font-sans: var(--font-geist), system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
-  --color-bg: var(--bg);
+  --font-sans: var(--font-source-sans), system-ui, sans-serif;
+  --font-display: var(--font-source-serif), ui-serif, Georgia, serif;
+  --font-mono: var(--font-ibm-plex), ui-monospace, monospace;
+  --color-canvas: var(--canvas);
   --color-elevated: var(--elevated);
-  --color-card: var(--card);
-  --color-fg: var(--fg);
-  --color-fg-muted: var(--fg-muted);
-  --color-fg-faint: var(--fg-faint);
   --color-line: var(--line);
-  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-body: var(--body);
+  --color-faint: var(--faint);
+  --color-paper: var(--paper);
+  --color-paper-ink: var(--paper-ink);
+  --color-paper-mute: var(--paper-mute);
+  --color-limestone: var(--limestone);
+  --color-blue: var(--blue);
+  --color-blue-soft: var(--blue-soft);
+  --color-navy: var(--navy);
+  --color-success: var(--success);
+  --color-caution: var(--caution);
 }
 
-* {
-  border-color: var(--line);
+/*
+ * Must stay inside @layer base. Unlayered, it outranks every `border-*`
+ * utility and forces the dark line colour onto the paper bands too.
+ */
+@layer base {
+  * {
+    border-color: var(--line);
+  }
 }
 
 html {
   scroll-behavior: smooth;
+  color-scheme: light;
+  background-color: var(--paper);
 }
 
 body {
-  background-color: var(--bg);
-  color: var(--fg);
-  font-family: var(--font-geist), system-ui, sans-serif;
+  background-color: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-source-sans), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  font-feature-settings: "ss01", "cv11";
 }
 
-/* Soft top light + fine grain — keeps pages from reading as flat black voids. */
+/*
+ * z-index -1 keeps this above the body background but behind every child, so
+ * content does not need a stacking rule of its own — an earlier `body > *`
+ * override here beat Tailwind's utilities and broke the fixed header.
+ */
 body::before {
-  content: "";
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  background:
-    radial-gradient(1200px 600px at 50% -10%, var(--surface-glow), transparent 60%),
-    radial-gradient(800px 400px at 100% 30%, rgba(255, 255, 255, 0.018), transparent 50%),
-    radial-gradient(700px 360px at 0% 70%, rgba(255, 255, 255, 0.014), transparent 55%);
+  content: none;
 }
 
-body::after {
-  content: "";
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  opacity: 0.4;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
-  background-size: 180px 180px;
-  mix-blend-mode: overlay;
+/* ---- Browser surfaces --------------------------------------------------- */
+/* The parts we did not draw still belong to the design system. */
+
+html {
+  scrollbar-color: #c3cddd var(--paper);
+  caret-color: var(--blue);
 }
 
-body > * {
-  position: relative;
-  z-index: 1;
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--paper);
+}
+
+::-webkit-scrollbar-thumb {
+  border: 3px solid var(--paper);
+  border-radius: 999px;
+  background: #c3cddd;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a7b4c9;
 }
 
 ::selection {
-  background: var(--fg);
-  color: var(--bg);
+  background: var(--blue);
+  color: #fff;
 }
 
-.display {
-  letter-spacing: -0.045em;
-  line-height: 1.02;
-  font-weight: 500;
+a,
+.underline-offset-fix {
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
 }
 
-.eyebrow {
-  font-family: var(--font-geist-mono), ui-monospace, monospace;
-  font-size: 12px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--fg-faint);
+/* Data that lines up in columns should not jitter between digits. */
+.tabular {
+  font-variant-numeric: tabular-nums;
 }
 
 :focus-visible {
-  outline: 1px solid #ffffff;
+  outline: 2px solid var(--blue);
   outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---- Type -------------------------------------------------------------- */
+
+.display {
+  font-family: var(--font-source-serif), ui-serif, Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.0125em;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.wordmark {
+  font-family: var(--font-source-serif), ui-serif, Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.band-paper .eyebrow {
+  color: var(--blue);
+}
+
+.status {
+  font-family: var(--font-ibm-plex), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
 }
 
 .rule {
@@ -105,36 +191,21 @@ body > * {
   background: var(--line);
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(14px);
-  transition:
-    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+.band-paper .rule {
+  background: var(--paper-line);
 }
 
-.reveal[data-shown="true"] {
-  opacity: 1;
-  transform: none;
-}
+/* ---- Motion system ------------------------------------------------------ */
+/*
+ * The authored moment is the hero workspace demo. Everything else is a short,
+ * near-imperceptible response to the pointer or to first paint — one grammar,
+ * one curve, nothing over 300ms outside the marketing set-pieces.
+ */
 
-.link-underline {
-  background-image: linear-gradient(currentColor, currentColor);
-  background-size: 0% 1px;
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  transition: background-size 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.link-underline:hover {
-  background-size: 100% 1px;
-}
-
-/* Hero brand entrance — opacity + slight rise, once. */
 @keyframes hero-in {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(14px);
   }
   to {
     opacity: 1;
@@ -142,32 +213,354 @@ body > * {
   }
 }
 
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .hero-in {
-  animation: hero-in 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: hero-in 0.48s var(--ease-out) both;
 }
 
 .hero-in-delay-1 {
-  animation-delay: 0.12s;
+  animation-delay: 60ms;
 }
 
 .hero-in-delay-2 {
-  animation-delay: 0.24s;
+  animation-delay: 120ms;
 }
 
 .hero-in-delay-3 {
-  animation-delay: 0.36s;
+  animation-delay: 180ms;
 }
 
+/* Visible by default. Only below-the-fold nodes set data-shown=false. */
+.reveal {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.32s var(--ease-out),
+    transform 0.32s var(--ease-out);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal[data-shown="false"] {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+.link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.25s var(--ease-out);
+}
+
+.product-frame {
+  transform: scale(0.99);
+  transition: transform 0.7s var(--ease-out);
+}
+
+.product-frame[data-in="true"] {
+  transform: none;
+}
+
+/* Continuous source strip. Width is set by duplicating the track once. */
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 48s linear infinite;
+}
+
+.marquee-mask {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 9rem,
+    #000 calc(100% - 9rem),
+    transparent
+  );
+}
+
+/* Dot travelling along a flow connector. */
+@keyframes flow-pulse {
+  0% {
+    transform: translateX(-0.25rem);
+    opacity: 0;
+  }
+  18% {
+    opacity: 1;
+  }
+  82% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(var(--flow-span, 3rem));
+    opacity: 0;
+  }
+}
+
+.flow-dot {
+  animation: flow-pulse 2.6s var(--ease-in-out) infinite;
+  animation-delay: var(--flow-delay, 0ms);
+}
+
+/* Connector hairline that draws itself in once its step is on screen. */
+.flow-line {
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.42s var(--ease-out);
+  transition-delay: var(--flow-delay, 0ms);
+}
+
+.flow-line[data-shown="true"] {
+  transform: scaleX(1);
+}
+
+@keyframes caret {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  46%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.caret {
+  animation: caret 1.1s steps(1) infinite;
+}
+
+/* Skeleton shimmer while the demo resolves a source. */
+@keyframes shimmer {
+  from {
+    background-position: -140% 0;
+  }
+  to {
+    background-position: 240% 0;
+  }
+}
+
+.shimmer {
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(49, 87, 232, 0.11) 45%,
+    transparent 90%
+  );
+  background-size: 220% 100%;
+  animation: shimmer 1.5s linear infinite;
+}
+
+@keyframes demo-shimmer {
+  from {
+    background-position: 180% 0;
+  }
+  to {
+    background-position: -100% 0;
+  }
+}
+
+.demo-shimmer {
+  background-image: linear-gradient(
+    90deg,
+    var(--ui-line) 0%,
+    #f4f6fb 42%,
+    var(--blue-soft) 52%,
+    #f4f6fb 62%,
+    var(--ui-line) 100%
+  );
+  background-size: 220% 100%;
+  animation: demo-shimmer 1.8s linear infinite;
+}
+
+/* Slow ambient drift for the closing brand mark. */
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, -0.5rem, 0);
+  }
+  50% {
+    transform: translate3d(0, 0.5rem, 0);
+  }
+}
+
+.drift {
+  animation: drift 11s ease-in-out infinite;
+}
+
+/* Pointer-tracked wash. Decoration, so marketing surfaces only. */
+.spotlight::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: var(--spot-opacity, 0);
+  background: radial-gradient(
+    420px 320px at var(--mx, 50%) var(--my, 50%),
+    rgba(79, 114, 243, 0.12),
+    transparent 70%
+  );
+  transition: opacity 0.4s ease;
+}
+
+/* Scroll-linked drift, driven by --parallax from Parallax.tsx. */
+.parallax {
+  transform: translate3d(0, var(--parallax, 0px), 0);
+  will-change: transform;
+}
+
+.workspace-shell {
+  animation: hero-in 0.56s 80ms var(--ease-out) both;
+}
+
+/* ---- Pointer responses -------------------------------------------------- */
+/*
+ * Gated: a touch tap fires a false hover and leaves the effect stuck on.
+ * Kept under 300ms — these are seen dozens of times per session.
+ */
+
+.lift {
+  transition:
+    transform 0.2s var(--ease-out),
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.press {
+  transition: transform 0.14s var(--ease-out);
+}
+
+.press:active {
+  transform: scale(0.97);
+}
+
+.wipe {
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.25s var(--ease-out);
+}
+
+.nudge {
+  transition: transform 0.2s var(--ease-out);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .lift:hover {
+    transform: translateY(-2px);
+  }
+
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .link-underline:hover {
+    background-size: 100% 1px;
+  }
+
+  .group:hover .wipe {
+    transform: scaleX(1);
+  }
+
+  .group:hover .nudge {
+    transform: translateX(3px);
+  }
+}
+
+/* ---- Forms -------------------------------------------------------------- */
+
+.field {
+  width: 100%;
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  padding: 0.75rem 0;
+  font-size: 15px;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.field::placeholder {
+  color: var(--faint);
+}
+
+.field:focus {
+  border-color: var(--limestone);
+}
+
+/*
+ * Reduced motion means fewer and gentler, not zero: comprehension-carrying
+ * fades stay, movement and looping ambient motion go.
+ */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
-  .reveal,
-  .hero-in {
-    opacity: 1;
+  .hero-in,
+  .workspace-shell {
+    animation: fade-in 0.3s ease both;
+    animation-delay: 0ms;
+  }
+
+  .reveal {
+    transform: none;
+    transition: opacity 0.3s ease;
+  }
+
+  .product-frame,
+  .parallax,
+  .wipe,
+  .nudge,
+  .press {
     transform: none;
     transition: none;
+  }
+
+  .lift {
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .lift:hover,
+  .group:hover .wipe,
+  .group:hover .nudge,
+  .press:active {
+    transform: none;
+  }
+
+  .flow-line {
+    transform: none;
+    transition: none;
+  }
+
+  .marquee-track,
+  .flow-dot,
+  .caret,
+  .shimmer,
+  .demo-shimmer,
+  .drift {
     animation: none;
+  }
+
+  .spotlight::before {
+    display: none;
   }
 }

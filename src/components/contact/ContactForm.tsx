@@ -1,50 +1,42 @@
 "use client";
 
-import { useState } from "react";
+import { useActionState } from "react";
+import { submitContact, type ContactState } from "@/app/contact/actions";
 import { SubmitButton } from "@/components/ui/Button";
+import { LIMITS } from "@/lib/forms";
 import { SITE } from "@/lib/site";
 
-const FIELD =
-  "w-full border-b border-[var(--line)] bg-transparent py-3 text-[15px] text-white outline-none transition-colors placeholder:text-[var(--fg-faint)] focus:border-white";
-
-/**
- * No backend exists, so this composes a mail draft rather than pretending to
- * submit. Better an obvious mailto than a form that silently drops enquiries.
- */
 export function ContactForm() {
-  const [sent, setSent] = useState(false);
-
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const body = [
-      `Name: ${data.get("name")}`,
-      `Company: ${data.get("company")}`,
-      `Email: ${data.get("email")}`,
-      "",
-      String(data.get("message") ?? ""),
-    ].join("\n");
-
-    window.location.href = `mailto:${SITE.email}?subject=${encodeURIComponent(
-      `Enquiry from ${data.get("company") || data.get("name")}`,
-    )}&body=${encodeURIComponent(body)}`;
-    setSent(true);
-  };
+  const [state, action, pending] = useActionState(submitContact, null as ContactState);
 
   return (
-    <form onSubmit={onSubmit} className="max-w-[520px]">
+    <form action={action} className="max-w-[520px]">
       <div className="space-y-8">
         <div>
           <label htmlFor="name" className="eyebrow">
             Name
           </label>
-          <input id="name" name="name" required className={`${FIELD} mt-3`} />
+          <input
+            id="name"
+            name="name"
+            autoComplete="name"
+            required
+            maxLength={LIMITS.name}
+            className="field mt-3"
+          />
         </div>
         <div>
           <label htmlFor="company" className="eyebrow">
             Company
           </label>
-          <input id="company" name="company" required className={`${FIELD} mt-3`} />
+          <input
+            id="company"
+            name="company"
+            autoComplete="organization"
+            required
+            maxLength={LIMITS.company}
+            className="field mt-3"
+          />
         </div>
         <div>
           <label htmlFor="email" className="eyebrow">
@@ -54,33 +46,57 @@ export function ContactForm() {
             id="email"
             name="email"
             type="email"
+            inputMode="email"
+            autoComplete="email"
             required
-            className={`${FIELD} mt-3`}
+            maxLength={LIMITS.email}
+            className="field mt-3"
+          />
+        </div>
+        <div className="hidden" aria-hidden="true">
+          <label htmlFor="company_url">Company website</label>
+          <input
+            id="company_url"
+            name="company_url"
+            type="text"
+            tabIndex={-1}
+            autoComplete="off"
           />
         </div>
         <div>
           <label htmlFor="message" className="eyebrow">
-            What are you trying to automate?
+            What would you like help with? (optional)
           </label>
           <textarea
             id="message"
             name="message"
             rows={4}
-            required
-            className={`${FIELD} mt-3 resize-none`}
+            maxLength={LIMITS.message}
+            className="field mt-3 resize-none"
           />
         </div>
       </div>
 
       <div className="mt-10 flex flex-wrap items-center gap-5">
-        <SubmitButton>Send enquiry</SubmitButton>
-        {sent && (
-          <p className="text-[13.5px] text-[var(--fg-muted)]">
-            Opening your mail client — if nothing happens, write to{" "}
-            <a href={`mailto:${SITE.email}`} className="link-underline text-white">
-              {SITE.email}
-            </a>
-            .
+        <SubmitButton disabled={pending}>
+          {pending ? "Checking…" : "Send enquiry"}
+        </SubmitButton>
+        {state && (
+          <p className="max-w-[360px] text-[13.5px] leading-relaxed text-[var(--body)]" role="status">
+            {state.message}{" "}
+            {state.mailHref && (
+              <a href={state.mailHref} className="link-underline text-[var(--ink)]">
+                Open email
+              </a>
+            )}
+            {state.code === "rate_limit" && (
+              <>
+                {" "}
+                <a href={`mailto:${SITE.email}`} className="link-underline text-[var(--ink)]">
+                  {SITE.email}
+                </a>
+              </>
+            )}
           </p>
         )}
       </div>
