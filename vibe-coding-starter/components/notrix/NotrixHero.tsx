@@ -1,5 +1,6 @@
 'use client';
 
+import { useId } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
@@ -163,36 +164,59 @@ function OrbitLogo({
   );
 }
 
-function OrbitTrails() {
+const TRAIL_SPAN = 48; // degrees of arc behind each logo
+
+function orbitPoint(angle: number) {
+  const radians = (angle * Math.PI) / 180;
+  // Rounded so server and browser trig agree (avoids a hydration mismatch).
+  const round = (value: number) => Math.round(value * 1000) / 1000;
+  return {
+    x: round(50 + 50 * Math.cos(radians)),
+    y: round(50 + 50 * Math.sin(radians)),
+  };
+}
+
+// One gradient arc per logo, fading out behind it. Clockwise orbits trail on the
+// counter-clockwise side; reversed orbits trail on the clockwise side.
+function OrbitTrails({ reverse }: { reverse: boolean }) {
+  const id = useId();
   return (
     <svg
       viewBox="0 0 100 100"
-      className="absolute inset-0 size-full overflow-visible text-secondary-400"
+      className="absolute inset-0 size-full overflow-visible"
       aria-hidden="true"
     >
-      {[-90, 90].flatMap((rotation) =>
-        [
-          { length: 9, opacity: 0.12 },
-          { length: 6, opacity: 0.22 },
-          { length: 3, opacity: 0.5 },
-        ].map(({ length, opacity }) => (
-          <circle
-            key={`${rotation}-${length}`}
-            cx="50"
-            cy="50"
-            r="49"
-            pathLength="100"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="0.28"
-            strokeLinecap="round"
-            strokeDasharray={`${length} ${100 - length}`}
-            strokeDashoffset={length}
-            opacity={opacity}
-            transform={`rotate(${rotation} 50 50)`}
-          />
-        )),
-      )}
+      {[-90, 90].map((headAngle) => {
+        const head = orbitPoint(headAngle);
+        const tail = orbitPoint(headAngle + (reverse ? TRAIL_SPAN : -TRAIL_SPAN));
+        const gradientId = `${id}-trail-${headAngle}`;
+        return (
+          <g key={headAngle}>
+            <defs>
+              <linearGradient
+                id={gradientId}
+                gradientUnits="userSpaceOnUse"
+                x1={tail.x}
+                y1={tail.y}
+                x2={head.x}
+                y2={head.y}
+              >
+                <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0" />
+                <stop offset="45%" stopColor="#8b5cf6" stopOpacity="0.45" />
+                <stop offset="100%" stopColor="#3157e8" stopOpacity="0.95" />
+              </linearGradient>
+            </defs>
+            <path
+              d={`M ${tail.x} ${tail.y} A 50 50 0 0 ${reverse ? 0 : 1} ${head.x} ${head.y}`}
+              fill="none"
+              stroke={`url(#${gradientId})`}
+              strokeWidth="2"
+              strokeLinecap="round"
+              vectorEffect="non-scaling-stroke"
+            />
+          </g>
+        );
+      })}
     </svg>
   );
 }
@@ -218,7 +242,7 @@ function OrbitPair({ pair }: { pair: (typeof orbitPairs)[number] }) {
         <div
           className={`absolute inset-0 motion-reduce:animate-none ${pair.orbitAnimation} ${pair.reverse ? '[animation-direction:reverse]' : ''}`}
         >
-          <OrbitTrails />
+          <OrbitTrails reverse={pair.reverse} />
           <OrbitLogo
             integration={pair.first}
             position="top"
@@ -246,7 +270,8 @@ function OrbitPair({ pair }: { pair: (typeof orbitPairs)[number] }) {
 function IntegrationEcosystem({ rect }: { rect?: NotrixRect }) {
   return (
     <div
-      className="pointer-events-none absolute inset-0 hidden overflow-hidden md:block"
+      // Full window width so the outer orbits aren't cut at the content edges.
+      className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-screen -translate-x-1/2 overflow-hidden md:block"
       aria-hidden="true"
       style={{
         maskImage:
