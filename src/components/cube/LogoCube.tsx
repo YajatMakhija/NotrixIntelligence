@@ -38,7 +38,7 @@ const EDGES: [number, number][] = [
 ];
 
 const TILT = 0.28;
-const SPEED = -0.12;
+const SPEED = -0.055;
 const CUBE_SCALE = 0.7;
 const MARK_INSET = 0.18;
 const CHIP_TEXTURE = 420;
@@ -340,17 +340,22 @@ export function LogoCube({
 
       narrowScreen = w < 760;
       const source = applyLayout(narrowScreen);
-      let maxX = 0;
-      let maxY = 0;
-      for (const s of source) {
-        maxX = Math.max(maxX, Math.abs(s.x));
-        maxY = Math.max(maxY, Math.abs(s.y));
+      if (tiles.length === 0) {
+        unitX = w / 3.2;
+        unitY = h / 3.2;
+        unit = Math.min(unitX, unitY);
+      } else {
+        let maxX = 0;
+        let maxY = 0;
+        for (const s of source) {
+          maxX = Math.max(maxX, Math.abs(s.x));
+          maxY = Math.max(maxY, Math.abs(s.y));
+        }
+        const pad = 0.38;
+        unitX = w / (2 * (maxX + pad));
+        unitY = h / (2 * (maxY + pad));
+        unit = Math.min(unitX, unitY);
       }
-      // Fit the field to the viewport with room for tile size.
-      const pad = 0.38;
-      unitX = w / (2 * (maxX + pad));
-      unitY = h / (2 * (maxY + pad));
-      unit = Math.min(unitX, unitY);
       if (!quiet) seedStars();
 
       backdropGrad = ctx.createRadialGradient(
@@ -450,9 +455,9 @@ export function LogoCube({
         h / 2,
         Math.max(w, h) * 0.55,
       );
-      fog.addColorStop(0, "rgba(5,5,5,0)");
-      fog.addColorStop(0.55, "rgba(5,5,5,0.08)");
-      fog.addColorStop(1, "rgba(5,5,5,0.22)");
+      fog.addColorStop(0, "rgba(12,12,11,0)");
+      fog.addColorStop(0.55, "rgba(12,12,11,0.08)");
+      fog.addColorStop(1, "rgba(12,12,11,0.22)");
       ctx.fillStyle = fog;
       ctx.fillRect(0, 0, w, h);
     };
@@ -562,12 +567,13 @@ export function LogoCube({
         ctx.closePath();
 
         // Dark faces with a quiet specular lift on the lit side.
-        const lo = 8 + lambert * 14;
-        const hi = 18 + lambert * 38;
+        const lo = 10 + lambert * 14;
+        const hi = 22 + lambert * 32;
         const grad = ctx.createLinearGradient(p0[0], p0[1], pv[0], pv[1]);
-        grad.addColorStop(0, `rgb(${hi | 0},${hi | 0},${hi | 0})`);
-        grad.addColorStop(0.55, `rgb(${((lo + hi) / 2) | 0},${((lo + hi) / 2) | 0},${((lo + hi) / 2) | 0})`);
-        grad.addColorStop(1, `rgb(${lo | 0},${lo | 0},${lo | 0})`);
+        const warm = (n: number) => `rgb(${(n + 3) | 0},${n | 0},${(n - 4) | 0})`;
+        grad.addColorStop(0, warm(hi));
+        grad.addColorStop(0.55, warm((lo + hi) / 2));
+        grad.addColorStop(1, warm(lo));
         ctx.fillStyle = grad;
         ctx.fill();
 
@@ -686,15 +692,19 @@ export function LogoCube({
       const cy = h / 2;
       const nod = Math.sin(t * 0.35) * 0.07;
 
-      drawBackdrop();
-      if (!quiet) drawStars();
+      // Quiet mode composites onto the page instead of painting its own
+      // stage — the full-canvas fills below read as a visible rectangle.
+      if (!quiet) {
+        drawBackdrop();
+        drawStars();
+      }
       updateAndDrawTiles(dt, "far", cx, cy, appear);
-      drawDepthFog();
+      if (!quiet) drawDepthFog();
       drawStage(cx, cy, appear);
       drawCubeAura(cx, cy);
       drawCube(nod, cx, cy, appear);
       updateAndDrawTiles(dt, "near", cx, cy, appear);
-      drawVignette();
+      if (!quiet) drawVignette();
     };
 
     const frame = (now: number) => {
