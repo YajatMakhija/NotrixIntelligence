@@ -10,7 +10,6 @@ const links = [
   ['Security', '/security'],
   ['Privacy', '/privacy'],
   ['Terms', '/terms'],
-  ['Contact', 'mailto:hello@notrix.ai'],
 ] as const;
 
 export function NotrixFooter() {
