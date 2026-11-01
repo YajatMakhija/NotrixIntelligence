@@ -441,6 +441,7 @@ input:-webkit-autofill:focus {
 :root,
 .dark .notrix-site .notrix-light {
     --white: 255 255 255;
+    --wash-blue: 224 231 255;
     --n-50: 250 250 250;
     --n-100: 245 245 245;
     --n-200: 229 229 229;
@@ -477,7 +478,8 @@ input:-webkit-autofill:focus {
 }
 .dark .notrix-site {
     --white: 13 12 20;
-    --n-50: 10 10 10;
+    --wash-blue: 23 30 66;
+    --n-50: 15 14 23; /* tinted like --white so neutral-50 sections join the page without a seam */
     --n-100: 23 23 23;
     --n-200: 38 38 38;
     --n-300: 64 64 64;

@@ -23,7 +23,8 @@ export function NotrixRibbon({ className }: { className: string }) {
       aria-hidden="true"
       viewBox="0 0 1517 646"
       preserveAspectRatio="xMidYMax slice"
-      className={className}
+      // Fade the bottom edge so the ribbon melts into the next section instead of being cut off.
+      className={`[mask-image:linear-gradient(to_bottom,black_78%,transparent)] ${className}`}
     >
       <defs>
         <path
@@ -88,17 +89,18 @@ export function NotrixRibbon({ className }: { className: string }) {
 }
 
 // Translucent grey frame around a frosted inner panel.
-export const notrixGlassOuterClass = 'rounded-[9px] bg-neutral-500/[0.18] backdrop-blur-md';
+export const notrixGlassOuterClass = 'rounded-[9px] bg-neutral-500/[0.18] backdrop-blur-md dark:bg-neutral-500/[0.08]';
 export const notrixGlassInnerClass =
-  'rounded-[12px] border border-white/80 bg-gradient-to-b from-white/75 via-white/30 to-white/5 shadow-[inset_0_1px_0_rgba(255,255,255,0.75)] backdrop-blur-lg';
+  'rounded-[12px] border border-white/80 bg-gradient-to-b from-white/75 via-white/30 to-white/5 shadow-[inset_0_1px_0_rgb(var(--white)/0.75)] backdrop-blur-lg';
 
-// Soft blue-purple wash so glass panels have colour behind them.
+// Soft blue-purple wash so glass panels have colour behind them. Each glow fades out before the
+// section's top and bottom edges, so stacked sections never meet in a visible line.
 export const notrixWashClass =
-  'bg-[radial-gradient(60%_50%_at_100%_0%,theme(colors.secondary.100),transparent),radial-gradient(50%_45%_at_0%_100%,#e0e7ff,transparent)]';
+  'bg-[radial-gradient(55%_40%_at_95%_40%,theme(colors.secondary.100),transparent),radial-gradient(45%_35%_at_5%_60%,rgb(var(--wash-blue)),transparent)]';
 
 // Small frosted card for grids sitting on a wash.
 export const notrixGlassCardClass =
-  'rounded-2xl border border-white/80 bg-white/60 shadow-[0_8px_24px_-12px_rgba(37,28,73,0.18),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-md';
+  'rounded-2xl border border-white/80 bg-white/60 shadow-[0_8px_24px_-12px_rgba(37,28,73,0.18),inset_0_1px_0_rgb(var(--white)/0.8)] backdrop-blur-md';
 
 export function NotrixGlassFrame({
   children,

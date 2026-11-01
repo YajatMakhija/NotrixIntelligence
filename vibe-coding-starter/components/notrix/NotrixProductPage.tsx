@@ -424,7 +424,7 @@ export function NotrixProductPage() {
           <NotrixRibbon className="pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-[380px] w-full sm:h-[460px] lg:inset-0 lg:h-full" />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute bottom-0 left-0 h-64 w-2/3 bg-[radial-gradient(ellipse_at_bottom_left,theme(colors.secondary.100),transparent_70%)]"
+            className="pointer-events-none absolute bottom-0 left-0 h-64 w-2/3 bg-[radial-gradient(ellipse_at_bottom_left,theme(colors.secondary.100),transparent_70%)] [mask-image:linear-gradient(to_bottom,black_30%,transparent)]"
           />
 
           <div className="relative z-10 mx-auto grid max-w-[1344px] gap-10 px-5 pb-12 pt-12 sm:gap-12 sm:px-6 sm:pt-14 md:gap-14 md:px-8 md:pt-16 lg:min-h-[620px] lg:grid-cols-2 lg:items-start lg:gap-10 lg:px-10 lg:pb-0 lg:pt-[88px] xl:min-h-[646px] xl:grid-cols-[minmax(0,600px)_608px] xl:justify-between xl:gap-16 xl:px-12 xl:pt-[120px]">
