@@ -424,3 +424,95 @@ input:-webkit-autofill:focus {
   background-color: var(--primary-darker);
   color: white;
 }
+
+/* Blue-purple band travelling along the home page "How it works" line. */
+@keyframes notrix-line-flow {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(300%);
+  }
+}
+
+/* Notrix colour scales read from these variables (tailwind.config.js). Dark mode reverses each scale
+   inside .notrix-site, so every neutral/primary/secondary/white utility flips without dark: variants.
+   .notrix-light restores the light values for things that sit on fixed dark gradients. */
+:root,
+.dark .notrix-site .notrix-light {
+    --white: 255 255 255;
+    --n-50: 250 250 250;
+    --n-100: 245 245 245;
+    --n-200: 229 229 229;
+    --n-300: 212 212 212;
+    --n-400: 163 163 163;
+    --n-500: 115 115 115;
+    --n-600: 82 82 82;
+    --n-700: 64 64 64;
+    --n-800: 38 38 38;
+    --n-900: 23 23 23;
+    --n-950: 10 10 10;
+    --p-50: 245 246 247;
+    --p-100: 232 234 237;
+    --p-200: 211 215 220;
+    --p-300: 173 180 190;
+    --p-400: 126 136 149;
+    --p-500: 96 107 121;
+    --p-600: 70 81 95;
+    --p-700: 50 59 71;
+    --p-800: 36 43 52;
+    --p-900: 23 27 32;
+    --p-950: 11 13 16;
+    --s-50: 245 244 255;
+    --s-100: 236 234 255;
+    --s-200: 220 216 255;
+    --s-300: 194 187 255;
+    --s-400: 161 150 255;
+    --s-500: 130 112 245;
+    --s-600: 109 84 221;
+    --s-700: 89 65 186;
+    --s-800: 73 54 149;
+    --s-900: 61 48 120;
+    --s-950: 37 28 73;
+}
+.dark .notrix-site {
+    --white: 13 12 20;
+    --n-50: 10 10 10;
+    --n-100: 23 23 23;
+    --n-200: 38 38 38;
+    --n-300: 64 64 64;
+    --n-400: 82 82 82;
+    --n-500: 115 115 115;
+    --n-600: 163 163 163;
+    --n-700: 212 212 212;
+    --n-800: 229 229 229;
+    --n-900: 245 245 245;
+    --n-950: 250 250 250;
+    --p-50: 11 13 16;
+    --p-100: 23 27 32;
+    --p-200: 36 43 52;
+    --p-300: 50 59 71;
+    --p-400: 70 81 95;
+    --p-500: 96 107 121;
+    --p-600: 126 136 149;
+    --p-700: 173 180 190;
+    --p-800: 211 215 220;
+    --p-900: 232 234 237;
+    --p-950: 245 246 247;
+    --s-50: 37 28 73;
+    --s-100: 61 48 120;
+    --s-200: 73 54 149;
+    --s-300: 89 65 186;
+    --s-400: 109 84 221;
+    --s-500: 130 112 245;
+    --s-600: 161 150 255;
+    --s-700: 194 187 255;
+    --s-800: 220 216 255;
+    --s-900: 236 234 255;
+    --s-950: 245 244 255;
+    color-scheme: dark;
+}
+.dark .notrix-site .notrix-light {
+    --white: 255 255 255;
+    color-scheme: light;
+}

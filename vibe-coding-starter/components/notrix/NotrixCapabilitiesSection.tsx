@@ -22,6 +22,7 @@ import {
   TabsTrigger,
 } from '@/components/shared/ui/tabs';
 import { capabilities, companyRecords } from '@/data/notrix/capabilities';
+import { notrixWashClass } from '@/components/notrix/NotrixTheme';
 
 type RecordId = (typeof companyRecords)[number]['id'];
 type CapabilityId = (typeof capabilities)[number]['id'];
@@ -300,7 +301,7 @@ export function NotrixCapabilitiesSection() {
               <TabsTrigger
                 key={capability.id}
                 value={capability.id}
-                className="group flex min-h-16 items-center justify-start gap-3 whitespace-normal rounded-2xl border border-neutral-200 bg-white px-3 py-3 text-left text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-50 data-[state=active]:border-secondary-200 data-[state=active]:bg-secondary-50 data-[state=active]:text-secondary-800 data-[state=active]:shadow-none focus-visible:ring-secondary-600 sm:px-5 sm:text-base"
+                className="group flex min-h-16 items-center justify-start gap-3 whitespace-normal rounded-2xl border border-neutral-200 bg-white/70 px-3 backdrop-blur py-3 text-left text-sm font-medium text-neutral-600 transition-colors hover:bg-neutral-50 data-[state=active]:border-secondary-200 data-[state=active]:bg-secondary-50 data-[state=active]:text-secondary-800 data-[state=active]:shadow-none focus-visible:ring-secondary-600 sm:px-5 sm:text-base"
               >
                 <span className="hidden text-xs tabular-nums text-neutral-400 group-data-[state=active]:text-secondary-700 sm:block">
                   0{index + 1}
@@ -318,7 +319,7 @@ export function NotrixCapabilitiesSection() {
             <TabsContent
               key={capability.id}
               value={capability.id}
-              className="mt-7 rounded-3xl bg-neutral-50 p-4 focus-visible:ring-secondary-600 sm:p-7 lg:mt-6 lg:p-8"
+              className={`mt-7 rounded-3xl p-4 ring-1 ring-secondary-100 focus-visible:ring-secondary-600 sm:p-7 lg:mt-6 lg:p-8 ${notrixWashClass}`}
             >
               <div className="grid items-start gap-7 lg:grid-cols-5 lg:gap-10">
                 <div className="py-2 lg:col-span-2 lg:py-5">

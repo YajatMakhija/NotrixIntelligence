@@ -2,6 +2,11 @@
 const { fontFamily } = require('tailwindcss/defaultTheme');
 const { colors: customColors } = require('./data/config/colors');
 
+// Colour scales read CSS variables so Notrix dark mode can reverse them in one place (css/globals.css).
+const steps = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
+const varScale = (name) =>
+  Object.fromEntries(steps.map((step) => [step, `rgb(var(--${name}-${step}) / <alpha-value>)`]));
+
 /** @type {import("tailwindcss").Config } */
 module.exports = {
   content: [
@@ -28,32 +33,10 @@ module.exports = {
         cursive: ['cursive'],
       },
       colors: {
-        primary: {
-          50: customColors.primary[50],
-          100: customColors.primary[100],
-          200: customColors.primary[200],
-          300: customColors.primary[300],
-          400: customColors.primary[400],
-          500: customColors.primary[500],
-          600: customColors.primary[600],
-          700: customColors.primary[700],
-          800: customColors.primary[800],
-          900: customColors.primary[900],
-          950: customColors.primary[950],
-        },
-        secondary: {
-          50: customColors.secondary[50],
-          100: customColors.secondary[100],
-          200: customColors.secondary[200],
-          300: customColors.secondary[300],
-          400: customColors.secondary[400],
-          500: customColors.secondary[500],
-          600: customColors.secondary[600],
-          700: customColors.secondary[700],
-          800: customColors.secondary[800],
-          900: customColors.secondary[900],
-          950: customColors.secondary[950],
-        },
+        primary: varScale('p'),
+        secondary: varScale('s'),
+        neutral: varScale('n'),
+        white: 'rgb(var(--white) / <alpha-value>)',
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: customColors.primary[600],

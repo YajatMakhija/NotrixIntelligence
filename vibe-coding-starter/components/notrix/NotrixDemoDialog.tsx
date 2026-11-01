@@ -10,6 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/shared/ui/dialog';
+import { notrixRequestAccessUrl } from '@/data/notrix/landing';
 
 const demoEvent = 'notrix:open-demo';
 
@@ -20,13 +21,9 @@ export function NotrixDemoTrigger({
   children: ReactNode;
   className?: string;
 }) {
+  // Request access first (company details are saved); the app then offers the Calendly booking.
   return (
-    <a
-      href="https://calendly.com/yajatmakhijaofficial/30min"
-      target="_blank"
-      rel="noopener noreferrer"
-      className={className}
-    >
+    <a href={notrixRequestAccessUrl} className={className}>
       {children}
     </a>
   );

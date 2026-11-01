@@ -2,11 +2,32 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { useTheme } from 'next-themes';
+import { ArrowUpRight, Moon, Sun } from 'lucide-react';
 
 import { NotrixDemoTrigger } from '@/components/notrix/NotrixDemoDialog';
 import { useNotrixPublishedLayout } from '@/components/notrix/useNotrixPublishedLayout';
 import { notrixAppLoginUrl, notrixNavItems } from '@/data/notrix/landing';
+
+export function NotrixThemeToggle() {
+  const { resolvedTheme, setTheme } = useTheme();
+  // The theme is only known in the browser; render a placeholder until then to avoid a hydration mismatch.
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const dark = mounted && resolvedTheme === 'dark';
+
+  return (
+    <button
+      type="button"
+      onClick={() => setTheme(dark ? 'light' : 'dark')}
+      aria-label={dark ? 'Switch to light theme' : 'Switch to dark theme'}
+      className="flex size-9 items-center justify-center rounded-full text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600"
+    >
+      {mounted && (dark ? <Sun className="size-4" aria-hidden="true" /> : <Moon className="size-4" aria-hidden="true" />)}
+    </button>
+  );
+}
 
 export function NotrixHeader() {
   const { document, viewport } = useNotrixPublishedLayout();
@@ -42,7 +63,7 @@ export function NotrixHeader() {
             width={1254}
             height={1254}
             priority
-            className="absolute -top-2 left-1/2 size-16 max-w-none -translate-x-1/2 object-contain"
+            className="absolute -top-2 left-1/2 size-16 max-w-none -translate-x-1/2 object-contain dark:invert"
           />
         </span>
         <span className="hidden text-sm font-semibold tracking-tight text-neutral-950 sm:block">
@@ -66,6 +87,7 @@ export function NotrixHeader() {
       </nav>
 
       <div className="flex items-center gap-2">
+        <NotrixThemeToggle />
         <a
           href={notrixAppLoginUrl}
           className="hidden h-9 items-center justify-center rounded-full px-4 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 sm:inline-flex"

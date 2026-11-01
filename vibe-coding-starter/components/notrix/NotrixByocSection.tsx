@@ -14,6 +14,8 @@ import {
 } from 'lucide-react';
 import { SiNotion } from '@icons-pack/react-simple-icons';
 
+import { notrixGlassInnerClass, notrixWashClass } from '@/components/notrix/NotrixTheme';
+
 const securityFeatures = [
   {
     icon: Database,
@@ -45,7 +47,7 @@ function NotrixMark() {
         alt=""
         width={1254}
         height={1254}
-        className="absolute -top-2 left-1/2 size-20 max-w-none -translate-x-1/2 object-contain"
+        className="absolute -top-2 left-1/2 size-20 max-w-none -translate-x-1/2 object-contain dark:invert"
       />
     </span>
   );
@@ -84,7 +86,7 @@ export function NotrixByocSection() {
     <section
       id="byoc"
       aria-labelledby="byoc-title"
-      className="scroll-mt-24 bg-white px-5 py-14 text-primary-950 sm:px-8 lg:py-20"
+      className={`scroll-mt-24 px-5 py-14 text-primary-950 sm:px-8 lg:py-20 ${notrixWashClass}`}
     >
       <div className="mx-auto max-w-7xl">
         <header className="mx-auto max-w-3xl text-center">
@@ -103,7 +105,7 @@ export function NotrixByocSection() {
           </p>
         </header>
 
-        <div className="mt-10 rounded-xl border border-neutral-200 bg-white p-5 sm:p-7">
+        <div className={`mt-10 p-5 sm:p-7 ${notrixGlassInnerClass}`}>
           <div className="flex flex-wrap items-center justify-between gap-3">
             <h3 className="text-lg font-medium sm:text-xl">
               How your deployment works

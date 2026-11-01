@@ -6,11 +6,11 @@ import { NotrixHomeSections } from '@/components/notrix/NotrixHomeSections';
 
 export function NotrixLandingPage() {
   return (
-    <div className="w-full overflow-x-clip bg-white text-neutral-950">
+    <div className="notrix-site w-full overflow-x-clip bg-white text-neutral-950">
       <div className="mx-auto w-full max-w-screen-2xl px-3 pt-3 sm:px-5 sm:pt-6">
         <NotrixHeader />
-        <NotrixHero />
       </div>
+      <NotrixHero />
       <NotrixHomeSections />
       <NotrixFooter />
       <NotrixDemoDialog />

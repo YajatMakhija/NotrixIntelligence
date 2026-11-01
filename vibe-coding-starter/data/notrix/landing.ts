@@ -1,9 +1,15 @@
-export const notrixAppLoginUrl =
-  'https://app-staging.notrixintelligence.com/login';
+// The customer app (login, signup, dashboard). Staging until app.notrix.si is live.
+export const notrixAppUrl = (
+  process.env.NEXT_PUBLIC_NOTRIX_APP_URL ||
+  'https://app-staging.notrixintelligence.com'
+).replace(/\/+$/, '');
+
+export const notrixAppLoginUrl = `${notrixAppUrl}/login`;
+export const notrixRequestAccessUrl = `${notrixAppUrl}/request-access`;
 
 export const notrixNavItems = [
   { label: 'Product', href: '/product' },
-  { label: 'How it works', href: '/#how-it-works' },
+  { label: 'How it works', href: '/how-it-works' },
   { label: 'Docs', href: '/docs' },
   { label: 'Security', href: '/security' },
 ] as const;

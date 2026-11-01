@@ -3,6 +3,11 @@ import Link from 'next/link';
 import { NotrixDemoDialog } from '@/components/notrix/NotrixDemoDialog';
 import { NotrixFooter } from '@/components/notrix/NotrixFooter';
 import { NotrixHeader } from '@/components/notrix/NotrixHeader';
+import {
+  NotrixGlassFrame,
+  NotrixRibbon,
+  notrixEyebrowClass,
+} from '@/components/notrix/NotrixTheme';
 
 type InformationSection = {
   title: string;
@@ -24,25 +29,33 @@ export function NotrixInformationPage({
   updated?: string;
 }) {
   return (
-    <div className="w-full bg-white text-neutral-950">
+    <div className="notrix-site w-full overflow-x-clip bg-white text-neutral-950">
       <div className="mx-auto w-full max-w-screen-2xl px-3 pt-3 sm:px-5 sm:pt-6">
         <NotrixHeader />
       </div>
-      <main className="px-5 py-16 sm:px-6 sm:py-24">
-        <div className="mx-auto max-w-3xl">
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary-700">
-            {eyebrow}
-          </p>
-          <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-6xl">
-            {title}
-          </h1>
-          <p className="mt-6 text-lg leading-8 text-neutral-600">
-            {introduction}
-          </p>
-          <p className="mt-4 text-sm text-neutral-400">
-            Last updated {updated}
-          </p>
-          <div className="mt-14 divide-y divide-neutral-200 border-y border-neutral-200">
+      <section className="relative overflow-hidden">
+        <NotrixRibbon className="pointer-events-none absolute inset-x-0 bottom-0 h-[260px] w-full sm:h-[320px] lg:h-full" />
+        <div className="relative z-10 mx-auto max-w-[1344px] px-5 pb-36 pt-14 sm:px-6 sm:pb-44 sm:pt-20 md:px-8 lg:px-10 xl:px-12">
+          <div className="max-w-xl">
+            <p className={notrixEyebrowClass}>{eyebrow}</p>
+            <h1 className="mt-6 text-balance text-4xl font-semibold leading-[1.1] tracking-[-0.03em] sm:text-5xl">
+              {title}
+            </h1>
+            <p className="mt-6 text-lg leading-8 text-neutral-600">
+              {introduction}
+            </p>
+            <p className="mt-4 text-sm text-neutral-500">
+              Last updated {updated}
+            </p>
+          </div>
+        </div>
+      </section>
+      <main className="relative z-10 -mt-28 px-5 pb-16 sm:-mt-32 sm:px-6 sm:pb-24">
+        <NotrixGlassFrame
+          className="mx-auto max-w-4xl"
+          innerClassName="bg-white/80 px-5 py-4 sm:px-10 sm:py-6"
+        >
+          <div className="divide-y divide-neutral-200">
             {sections.map((section) => (
               <section key={section.title} className="py-8">
                 <h2 className="text-xl font-semibold">{section.title}</h2>
@@ -63,7 +76,7 @@ export function NotrixInformationPage({
               </section>
             ))}
           </div>
-          <div className="mt-10 rounded-2xl bg-neutral-50 p-6 text-sm text-neutral-600 ring-1 ring-neutral-200">
+          <div className="mb-4 mt-4 rounded-2xl bg-neutral-50 p-6 text-sm text-neutral-600 ring-1 ring-neutral-200">
             Questions about this page?{' '}
             <Link
               href="mailto:hello@notrix.ai"
@@ -73,7 +86,7 @@ export function NotrixInformationPage({
             </Link>
             .
           </div>
-        </div>
+        </NotrixGlassFrame>
       </main>
       <NotrixFooter />
       <NotrixDemoDialog />

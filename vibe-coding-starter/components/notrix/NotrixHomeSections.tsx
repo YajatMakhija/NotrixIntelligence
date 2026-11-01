@@ -34,6 +34,12 @@ import {
   AccordionTrigger,
 } from '@/components/shared/ui/accordion';
 import { NotrixDemoTrigger } from '@/components/notrix/NotrixDemoDialog';
+import {
+  NotrixGlassFrame,
+  NotrixRibbon,
+  notrixGlassCardClass,
+  notrixWashClass,
+} from '@/components/notrix/NotrixTheme';
 import { NotrixByocSection } from '@/components/notrix/NotrixByocSection';
 import { NotrixCapabilitiesSection } from '@/components/notrix/NotrixCapabilitiesSection';
 
@@ -120,7 +126,7 @@ const integrations = [
   {
     name: 'Notion',
     purpose: 'Use workspace knowledge',
-    icon: <SiNotion color={SiNotionHex} className="size-7" />,
+    icon: <SiNotion color={SiNotionHex} className="size-7 dark:invert" />,
   },
   {
     name: 'Confluence',
@@ -135,7 +141,7 @@ const integrations = [
   {
     name: 'GitHub',
     purpose: 'Connect issues and code context',
-    icon: <SiGithub color={SiGithubHex} className="size-7" />,
+    icon: <SiGithub color={SiGithubHex} className="size-7 dark:invert" />,
   },
 ] as const;
 
@@ -162,9 +168,12 @@ export function NotrixHomeSections() {
 
           <div className="relative mt-14 grid gap-8 md:grid-cols-3 md:gap-10">
             <div
-              className="absolute left-[16.66%] right-[16.66%] top-5 hidden h-px bg-neutral-200 md:block"
+              className="absolute left-[16.66%] right-[16.66%] top-[19px] hidden h-0.5 overflow-hidden rounded-full bg-neutral-200 md:block"
               aria-hidden="true"
-            />
+            >
+              {/* A blue-purple band that travels along the line from step 1 to step 3. */}
+              <span className="absolute inset-y-0 left-0 w-1/3 animate-[notrix-line-flow_3.5s_ease-in-out_infinite] bg-[linear-gradient(90deg,transparent,#3157e8,#8b5cf6,transparent)] motion-reduce:hidden" />
+            </div>
             {[
               [
                 Boxes,
@@ -188,7 +197,7 @@ export function NotrixHomeSections() {
                   key={title as string}
                   className="relative text-center md:text-left"
                 >
-                  <span className="relative z-10 mx-auto flex size-10 items-center justify-center rounded-full bg-primary-950 text-sm font-semibold text-white ring-8 ring-white md:mx-0">
+                  <span className="relative z-10 mx-auto flex size-10 items-center justify-center rounded-full notrix-light bg-[linear-gradient(135deg,#3157e8,#8b5cf6)] text-sm font-semibold text-white ring-8 ring-white md:mx-0">
                     {index + 1}
                   </span>
                   <StepIcon
@@ -208,7 +217,7 @@ export function NotrixHomeSections() {
         </div>
       </section>
 
-      <section className="bg-neutral-50/70 px-5 py-20 sm:px-6 sm:py-24">
+      <section className={`px-5 py-20 sm:px-6 sm:py-24 ${notrixWashClass}`}>
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-2xl">
@@ -233,7 +242,7 @@ export function NotrixHomeSections() {
             {integrations.map((integration) => (
               <article
                 key={integration.name}
-                className="flex min-w-0 items-center gap-3 overflow-hidden rounded-2xl border border-neutral-200 bg-white p-4"
+                className={`flex min-w-0 items-center gap-3 overflow-hidden p-4 ${notrixGlassCardClass}`}
               >
                 <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-neutral-50 ring-1 ring-neutral-200">
                   {integration.icon}
@@ -281,7 +290,7 @@ export function NotrixHomeSections() {
           </div>
 
           <div className="mt-12 grid gap-4 lg:grid-cols-[1.35fr_1fr]">
-            <article className="rounded-3xl border border-secondary-200 bg-secondary-50/40 p-5 sm:p-7">
+            <article className={`rounded-3xl p-5 ring-1 ring-secondary-100 sm:p-7 ${notrixWashClass}`}>
               <div className="flex items-center gap-3">
                 <span className="flex size-10 items-center justify-center rounded-xl bg-white text-secondary-800 ring-1 ring-secondary-200">
                   <Cloud className="size-5" aria-hidden="true" />
@@ -301,7 +310,7 @@ export function NotrixHomeSections() {
                   return (
                     <div
                       key={title as string}
-                      className="rounded-2xl bg-white p-4 ring-1 ring-neutral-200"
+                      className={`p-4 ${notrixGlassCardClass}`}
                     >
                       <div className="flex items-center gap-2">
                         <ResourceIcon
@@ -322,9 +331,9 @@ export function NotrixHomeSections() {
             </article>
 
             <div className="flex flex-col gap-4">
-              <article className="rounded-3xl border border-neutral-200 bg-white p-5 sm:p-7">
+              <article className={`rounded-3xl p-5 sm:p-7 ${notrixGlassCardClass}`}>
                 <div className="flex items-center gap-3">
-                  <span className="flex size-10 items-center justify-center rounded-xl bg-primary-950 text-white">
+                  <span className="flex size-10 items-center justify-center rounded-xl notrix-light bg-[linear-gradient(135deg,#3157e8,#8b5cf6)] text-white">
                     <ShieldCheck className="size-5" aria-hidden="true" />
                   </span>
                   <h3 className="font-semibold text-primary-950">
@@ -348,7 +357,7 @@ export function NotrixHomeSections() {
                 </ul>
               </article>
 
-              <article className="flex-1 rounded-3xl bg-primary-950 p-5 text-white sm:p-7">
+              <article className="flex-1 rounded-3xl notrix-light bg-[linear-gradient(135deg,#251C49,#3D3078_55%,#3157e8)] p-5 text-white sm:p-7">
                 <h3 className="font-semibold">What Notrix can see</h3>
                 <ul className="mt-4 space-y-3 text-sm leading-6 text-neutral-300">
                   <li>
@@ -382,16 +391,13 @@ export function NotrixHomeSections() {
 
 
 
-      <section className="bg-neutral-50/70 px-5 py-20 sm:px-6 sm:py-24">
+      <section className={`px-5 py-20 sm:px-6 sm:py-24 ${notrixWashClass}`}>
         <div className="mx-auto max-w-3xl">
           <h2 className="text-balance text-center text-3xl font-semibold tracking-[-0.03em] text-primary-950 sm:text-5xl">
             A few things you might be wondering.
           </h2>
-          <Accordion
-            type="single"
-            collapsible
-            className="mt-10 border-y border-neutral-200"
-          >
+          <NotrixGlassFrame className="mt-10" innerClassName="bg-white/70 px-5 sm:px-8">
+          <Accordion type="single" collapsible>
             {faqs.map(([question, answer], index) => (
               <AccordionItem
                 key={question}
@@ -407,15 +413,13 @@ export function NotrixHomeSections() {
               </AccordionItem>
             ))}
           </Accordion>
+          </NotrixGlassFrame>
         </div>
       </section>
 
       <section className="relative overflow-hidden px-5 py-20 text-center sm:px-6 sm:py-28">
-        <div
-          className="absolute left-1/2 top-1/2 size-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-secondary-100/60 blur-3xl"
-          aria-hidden="true"
-        />
-        <div className="relative mx-auto max-w-3xl">
+        <NotrixRibbon className="pointer-events-none absolute inset-0 size-full" />
+        <NotrixGlassFrame className="relative mx-auto max-w-3xl" innerClassName="px-6 py-12 sm:px-12 sm:py-16">
           <h2 className="text-balance text-3xl font-semibold tracking-[-0.03em] text-primary-950 sm:text-5xl">
             Bring a question your team asks every week.
           </h2>
@@ -426,7 +430,7 @@ export function NotrixHomeSections() {
           <NotrixDemoTrigger className="mt-8 inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-primary-950 px-6 text-sm font-semibold text-white shadow-lg shadow-neutral-300/40 transition-colors hover:bg-primary-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary-500 focus-visible:ring-offset-2">
             Book a demo <ArrowRight className="size-4" aria-hidden="true" />
           </NotrixDemoTrigger>
-        </div>
+        </NotrixGlassFrame>
       </section>
     </>
   );
