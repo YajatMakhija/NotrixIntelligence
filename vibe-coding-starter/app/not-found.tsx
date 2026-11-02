@@ -1,34 +1,33 @@
-import Link from '@/components/shared/Link';
-import Footer from '@/components/shared/Footer';
-import Header from '@/components/shared/Header';
+import Link from 'next/link';
+
+import { NotrixDemoDialog } from '@/components/notrix/NotrixDemoDialog';
+import { NotrixFooter } from '@/components/notrix/NotrixFooter';
+import { NotrixHeader } from '@/components/notrix/NotrixHeader';
+import { NotrixRibbon, notrixCtaClass, notrixEyebrowClass } from '@/components/notrix/NotrixTheme';
 
 export default function NotFound() {
   return (
-    <>
-      <Header />
-      <div className="min-h-[500px] flex flex-col items-start justify-start md:mt-24 md:flex-row md:items-center md:justify-center md:space-x-6">
-        <div className="space-x-2 pb-8 pt-6 md:space-y-5">
-          <h1 className="text-6xl font-semibold leading-9 tracking-tight text-gray-900 dark:text-gray-100 md:border-r-2 md:px-6 md:text-8xl md:leading-14">
-            404
-          </h1>
-        </div>
-        <div className="max-w-md">
-          <p className="mb-4 text-xl font-bold leading-normal md:text-2xl">
-            Sorry, we couldn't find this page.
-          </p>
-          <p className="mb-8">
-            Please head back to the homepage or contact us if you think this is
-            an error.
-          </p>
-          <Link
-            href="/"
-            className="focus:shadow-outline-primary inline rounded-lg border border-transparent bg-primary-600 px-4 py-2 text-sm font-medium leading-5 text-white shadow transition-colors duration-150 hover:bg-primary-700 focus:outline-none dark:hover:bg-primary-500"
-          >
-            Back to homepage
-          </Link>
-        </div>
+    <div className="notrix-site w-full overflow-x-clip bg-white text-neutral-950">
+      <div className="mx-auto w-full max-w-screen-2xl px-3 pt-3 sm:px-5 sm:pt-6">
+        <NotrixHeader />
       </div>
-      <Footer />
-    </>
+      <section className="relative min-h-[560px] overflow-hidden">
+        <NotrixRibbon className="pointer-events-none absolute inset-x-0 bottom-0 h-[300px] w-full sm:h-[380px] lg:h-full" />
+        <div className="relative z-10 mx-auto max-w-[1344px] px-5 pb-40 pt-16 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+          <p className={notrixEyebrowClass}>404</p>
+          <h1 className="mt-6 max-w-xl text-balance text-4xl font-semibold leading-[1.1] tracking-[-0.03em] sm:text-5xl">
+            We couldn&apos;t find this page.
+          </h1>
+          <p className="mt-6 max-w-md text-lg leading-8 text-neutral-600">
+            It may have moved. Head back to the homepage, or browse the docs.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link href="/" className={notrixCtaClass}>Back to homepage</Link>
+          </div>
+        </div>
+      </section>
+      <NotrixFooter />
+      <NotrixDemoDialog />
+    </div>
   );
 }
