@@ -5,7 +5,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 // Keep in sync with data/notrix/landing.ts.
 const appUrl = (
   process.env.NEXT_PUBLIC_NOTRIX_APP_URL ||
-  'https://app-staging.notrixintelligence.com'
+  'https://app.notrix.si'
 ).replace(/\/+$/, '');
 
 // You might need to insert additional domains in script-src if you are using external services

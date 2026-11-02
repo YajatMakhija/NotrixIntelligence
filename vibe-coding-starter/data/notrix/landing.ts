@@ -1,7 +1,7 @@
-// The customer app (login, signup, dashboard). Staging until app.notrix.si is live.
+// The customer app (login, signup, dashboard).
 export const notrixAppUrl = (
   process.env.NEXT_PUBLIC_NOTRIX_APP_URL ||
-  'https://app-staging.notrixintelligence.com'
+  'https://app.notrix.si'
 ).replace(/\/+$/, '');
 
 export const notrixAppLoginUrl = `${notrixAppUrl}/login`;
