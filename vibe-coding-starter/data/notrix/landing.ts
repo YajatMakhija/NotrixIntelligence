@@ -10,6 +10,7 @@ export const notrixRequestAccessUrl = `${notrixAppUrl}/request-access`;
 export const notrixNavItems = [
   { label: 'Product', href: '/product' },
   { label: 'How it works', href: '/how-it-works' },
+  { label: 'Pricing', href: '/pricing' },
   { label: 'Docs', href: '/docs' },
   { label: 'Security', href: '/security' },
 ] as const;

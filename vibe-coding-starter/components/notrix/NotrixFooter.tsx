@@ -6,6 +6,7 @@ import { notrixAppLoginUrl } from '@/data/notrix/landing';
 
 const links = [
   ['Product', '/product'],
+  ['Pricing', '/pricing'],
   ['Docs', '/docs'],
   ['Security', '/security'],
   ['Privacy', '/privacy'],
