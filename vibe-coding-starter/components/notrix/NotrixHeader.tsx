@@ -136,34 +136,33 @@ export function NotrixHeader() {
         </button>
       </div>
         </header>
-        {menuOpen && (
-          <nav
-            id="notrix-mobile-menu"
-            aria-label="Mobile navigation"
-            className="mx-auto mt-2 grid max-w-5xl gap-1 rounded-2xl border border-neutral-200/80 bg-white/95 p-3 shadow-xl shadow-neutral-300/25 backdrop-blur-md md:hidden"
-          >
-            {[...notrixNavItems, { label: 'Sign in', href: notrixAppLoginUrl }, { label: 'Create an account', href: notrixSignupUrl }].map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                onClick={() => setMenuOpen(false)}
-                className="rounded-xl px-3 py-3 text-base font-medium text-neutral-800 transition-colors hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        )}
+        {/* Always rendered so it can slide and fade both ways; inert while closed keeps it out of tab order and screen readers. */}
+        <nav
+          id="notrix-mobile-menu"
+          aria-label="Mobile navigation"
+          inert={!menuOpen}
+          className={`mx-auto mt-2 grid max-w-5xl origin-top gap-1 rounded-2xl border border-neutral-200/80 bg-white/95 p-3 shadow-xl shadow-neutral-300/25 backdrop-blur-md transition-[opacity,transform] duration-200 ease-out motion-reduce:transition-none md:hidden ${menuOpen ? 'translate-y-0 scale-100 opacity-100' : 'pointer-events-none -translate-y-2 scale-[0.98] opacity-0'}`}
+        >
+          {[...notrixNavItems, { label: 'Sign in', href: notrixAppLoginUrl }, { label: 'Create an account', href: notrixSignupUrl }].map((item) => (
+            <Link
+              key={item.label}
+              href={item.href}
+              onClick={() => setMenuOpen(false)}
+              className="whitespace-nowrap rounded-xl px-3 py-3 text-base font-medium text-neutral-800 transition-colors hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
       </div>
-      {menuOpen && (
-        <button
-          type="button"
-          aria-label="Close menu"
-          tabIndex={-1}
-          onClick={() => setMenuOpen(false)}
-          className="fixed inset-0 z-40 bg-black/20 backdrop-blur-[2px] md:hidden"
-        />
-      )}
+      <button
+        type="button"
+        aria-label="Close menu"
+        tabIndex={-1}
+        aria-hidden={!menuOpen}
+        onClick={() => setMenuOpen(false)}
+        className={`fixed inset-0 z-40 bg-black/20 backdrop-blur-[2px] transition-opacity duration-200 ease-out motion-reduce:transition-none md:hidden ${menuOpen ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
+      />
       <div className="h-14" aria-hidden="true" />
     </>
   );
