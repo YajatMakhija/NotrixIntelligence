@@ -17,7 +17,7 @@ import {
   X,
 } from 'lucide-react';
 
-import { NotrixThemeToggle } from '@/components/notrix/NotrixHeader';
+import { NotrixThemeToggle, useDrawer } from '@/components/notrix/NotrixHeader';
 import {
   notrixDocGroups,
   notrixDocHref,
@@ -191,6 +191,7 @@ export function NotrixDocsPage({ slug }: { slug: string }) {
   );
   const activeSection = useActiveSection(sectionIds);
   const [menuOpen, setMenuOpen] = useState(false);
+  useDrawer(menuOpen, setMenuOpen);
 
   return (
     <div className="notrix-site relative min-h-screen w-full overflow-x-clip bg-white text-neutral-950">
@@ -239,7 +240,7 @@ export function NotrixDocsPage({ slug }: { slug: string }) {
           </div>
           <div className="ml-auto flex items-center gap-2 md:ml-0">
             <a
-              href="mailto:hello@notrix.ai"
+              href="mailto:yajat@notrix.si"
               className={`hidden h-9 items-center gap-2 rounded-xl border border-neutral-200 bg-white/70 px-3 text-sm font-medium text-neutral-700 hover:bg-neutral-100 sm:inline-flex ${focusRing}`}
             >
               <Headset className="size-4" aria-hidden="true" />

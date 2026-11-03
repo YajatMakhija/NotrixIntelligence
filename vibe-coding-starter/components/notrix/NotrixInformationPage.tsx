@@ -79,7 +79,7 @@ export function NotrixInformationPage({
           <div className="mb-4 mt-4 rounded-2xl bg-neutral-50 p-6 text-sm text-neutral-600 ring-1 ring-neutral-200">
             Questions about this page?{' '}
             <Link
-              href="mailto:hello@notrix.ai"
+              href="mailto:yajat@notrix.si"
               className="font-semibold text-neutral-950 underline underline-offset-4"
             >
               Contact Notrix

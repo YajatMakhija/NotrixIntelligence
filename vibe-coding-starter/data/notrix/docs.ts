@@ -62,9 +62,9 @@ export const notrixDocGroups: NotrixDocGroup[] = [
           'A pilot starts with one team, one set of questions and a success measure agreed up front. Setup takes a few steps, most of them done once by an administrator.',
         sections: [
           {
-            title: 'Request access',
+            title: 'Create your account',
             paragraphs: [
-              'Request access and we set up a short call. Your workspace is created during pilot onboarding, where the workspace owner confirms the company identity, administrators and approved users.',
+              'Sign up at app.notrix.si with your work email and company details, then enter the six-digit code we email you. Your workspace is created straight away and you become its owner. Prefer a guided start? Book a short call from the website.',
             ],
           },
           {

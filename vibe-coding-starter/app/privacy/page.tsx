@@ -42,7 +42,7 @@ const sections = [
   {
     title: 'Your choices and contact',
     paragraphs: [
-      'You may request access, correction, or deletion of personal information, subject to applicable law and contractual obligations. Contact privacy@notrix.ai. We may need to verify your identity before completing a request.',
+      'You may request access, correction, or deletion of personal information, subject to applicable law and contractual obligations. Contact yajat@notrix.si. We may need to verify your identity before completing a request.',
     ],
   },
 ];

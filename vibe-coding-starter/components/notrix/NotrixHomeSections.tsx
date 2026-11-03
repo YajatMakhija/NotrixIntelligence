@@ -46,7 +46,7 @@ import { NotrixCapabilitiesSection } from '@/components/notrix/NotrixCapabilitie
 const faqs = [
   [
     'How do we get started?',
-    'Request access and we set up a short call. A pilot starts with one team, one set of questions, and a success measure agreed up front. After the call we send an invite, and your administrator installs Notrix in your AWS account from the dashboard.',
+    'Create an account in a few minutes, no invite needed. Your administrator installs Notrix in your AWS account from the dashboard, then connects Slack. Want a guided start? Book a short call and we agree one team, one set of questions and a success measure up front.',
   ],
   [
     'Which sources can we connect?',
@@ -167,8 +167,10 @@ export function NotrixHomeSections() {
           </div>
 
           <div className="relative mt-14 grid gap-8 md:grid-cols-3 md:gap-10">
+            {/* Circles sit at the left of each column on desktop, so the line runs from
+                circle 1's centre (20px in) to circle 3's centre (one column minus 20px from the right). */}
             <div
-              className="absolute left-[16.66%] right-[16.66%] top-[19px] hidden h-0.5 overflow-hidden rounded-full bg-neutral-200 md:block"
+              className="absolute left-5 right-[calc((100%_-_5rem)/3_-_20px)] top-[19px] hidden h-0.5 overflow-hidden rounded-full bg-neutral-200 md:block"
               aria-hidden="true"
             >
               {/* A blue-purple band that travels along the line from step 1 to step 3. */}

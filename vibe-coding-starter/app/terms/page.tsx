@@ -55,7 +55,7 @@ const sections = [
   {
     title: 'Contact',
     paragraphs: [
-      'Questions about these terms can be sent to legal@notrix.ai. We may update these terms for future use of the website or service and will post the revised date on this page.',
+      'Questions about these terms can be sent to yajat@notrix.si. We may update these terms for future use of the website or service and will post the revised date on this page.',
     ],
   },
 ];

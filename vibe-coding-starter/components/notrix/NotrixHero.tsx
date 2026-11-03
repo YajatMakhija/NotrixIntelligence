@@ -38,7 +38,7 @@ export function NotrixHero() {
               Book a demo
               <ArrowRight className="size-4" aria-hidden="true" />
             </NotrixDemoTrigger>
-            <Link href="#how-it-works" className={notrixSecondaryCtaClass}>
+            <Link href="/how-it-works" className={notrixSecondaryCtaClass}>
               See how it works
             </Link>
           </div>

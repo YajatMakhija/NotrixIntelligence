@@ -22,6 +22,15 @@ export function NotrixFooter() {
           <p className="mt-1 text-sm text-neutral-500">
             Company knowledge, connected in Slack.
           </p>
+          <p className="mt-3 text-sm text-neutral-600">
+            Contact us:{' '}
+            <a
+              href="mailto:yajat@notrix.si"
+              className="font-medium text-neutral-950 underline decoration-neutral-300 underline-offset-4 hover:decoration-neutral-950"
+            >
+              yajat@notrix.si
+            </a>
+          </p>
         </div>
         <nav className="flex flex-wrap gap-x-6 gap-y-3" aria-label="Footer">
           {links.map(([label, href]) => (

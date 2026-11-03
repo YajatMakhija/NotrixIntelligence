@@ -2,13 +2,37 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { useEffect, useState, type Dispatch, type SetStateAction } from 'react';
 import { useTheme } from 'next-themes';
-import { ArrowUpRight, Moon, Sun } from 'lucide-react';
+import { ArrowUpRight, Menu, Moon, Sun, X } from 'lucide-react';
 
 import { NotrixDemoTrigger } from '@/components/notrix/NotrixDemoDialog';
 import { useNotrixPublishedLayout } from '@/components/notrix/useNotrixPublishedLayout';
-import { notrixAppLoginUrl, notrixNavItems } from '@/data/notrix/landing';
+import { notrixAppLoginUrl, notrixNavItems, notrixSignupUrl } from '@/data/notrix/landing';
+
+// Shared behaviour for slide-in menus: Escape closes, a route change closes,
+// the page behind doesn't scroll, and widening to desktop (where the menu is hidden) closes it.
+export function useDrawer(open: boolean, setOpen: Dispatch<SetStateAction<boolean>>, desktopQuery = '(min-width: 1024px)') {
+  const pathname = usePathname();
+  useEffect(() => setOpen(false), [pathname, setOpen]);
+  useEffect(() => {
+    if (!open) return;
+    const close = () => setOpen(false);
+    const onKey = (event: KeyboardEvent) => { if (event.key === 'Escape') close(); };
+    const desktop = window.matchMedia(desktopQuery);
+    const onDesktop = () => { if (desktop.matches) close(); };
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKey);
+    desktop.addEventListener('change', onDesktop);
+    return () => {
+      document.body.style.overflow = overflow;
+      window.removeEventListener('keydown', onKey);
+      desktop.removeEventListener('change', onDesktop);
+    };
+  }, [open, setOpen, desktopQuery]);
+}
 
 export function NotrixThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();
@@ -32,6 +56,8 @@ export function NotrixThemeToggle() {
 export function NotrixHeader() {
   const { document, viewport } = useNotrixPublishedLayout();
   const navigation = document?.layouts[viewport].navigation;
+  const [menuOpen, setMenuOpen] = useState(false);
+  useDrawer(menuOpen, setMenuOpen, '(min-width: 768px)');
 
   return (
     <>
@@ -98,9 +124,46 @@ export function NotrixHeader() {
           Book a demo
           <ArrowUpRight className="size-4" aria-hidden="true" />
         </NotrixDemoTrigger>
+        <button
+          type="button"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={menuOpen}
+          aria-controls="notrix-mobile-menu"
+          className="flex size-9 items-center justify-center rounded-full text-neutral-700 transition-colors hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 md:hidden"
+        >
+          {menuOpen ? <X className="size-5" aria-hidden="true" /> : <Menu className="size-5" aria-hidden="true" />}
+        </button>
       </div>
         </header>
+        {menuOpen && (
+          <nav
+            id="notrix-mobile-menu"
+            aria-label="Mobile navigation"
+            className="mx-auto mt-2 grid max-w-5xl gap-1 rounded-2xl border border-neutral-200/80 bg-white/95 p-3 shadow-xl shadow-neutral-300/25 backdrop-blur-md md:hidden"
+          >
+            {[...notrixNavItems, { label: 'Sign in', href: notrixAppLoginUrl }, { label: 'Create an account', href: notrixSignupUrl }].map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                onClick={() => setMenuOpen(false)}
+                className="rounded-xl px-3 py-3 text-base font-medium text-neutral-800 transition-colors hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        )}
       </div>
+      {menuOpen && (
+        <button
+          type="button"
+          aria-label="Close menu"
+          tabIndex={-1}
+          onClick={() => setMenuOpen(false)}
+          className="fixed inset-0 z-40 bg-black/20 backdrop-blur-[2px] md:hidden"
+        />
+      )}
       <div className="h-14" aria-hidden="true" />
     </>
   );

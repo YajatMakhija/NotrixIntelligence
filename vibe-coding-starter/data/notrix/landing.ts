@@ -5,7 +5,10 @@ export const notrixAppUrl = (
 ).replace(/\/+$/, '');
 
 export const notrixAppLoginUrl = `${notrixAppUrl}/login`;
-export const notrixRequestAccessUrl = `${notrixAppUrl}/request-access`;
+export const notrixSignupUrl = `${notrixAppUrl}/signup`;
+export const notrixCalendlyUrl =
+  process.env.NEXT_PUBLIC_NOTRIX_CALENDLY_URL ||
+  'https://calendly.com/yajatmakhijaofficial/30min';
 
 export const notrixNavItems = [
   { label: 'Product', href: '/product' },

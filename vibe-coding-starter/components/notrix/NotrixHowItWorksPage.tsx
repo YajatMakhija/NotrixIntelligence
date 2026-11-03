@@ -241,7 +241,7 @@ export function NotrixHowItWorksPage() {
               </ul>
               <h4 className="mt-8 text-sm font-semibold">Setting it up</h4>
               <ol className="mt-3 space-y-2 text-sm text-neutral-200">
-                {['Request access and agree a pilot', 'Install the stack from your dashboard', 'Connect Slack and choose sources'].map((item, index) => (
+                {['Create your account', 'Install the stack from your dashboard', 'Connect Slack and choose sources'].map((item, index) => (
                   <li key={item} className="flex gap-3">
                     <span className="font-semibold text-white">{index + 1}.</span>
                     {item}
