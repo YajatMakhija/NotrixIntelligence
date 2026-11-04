@@ -53,7 +53,7 @@ function NotrixMark() {
   );
 }
 
-function DataConnector() {
+function DataConnector({ delay = 0 }: { delay?: number }) {
   return (
     <span
       className="flex h-7 items-center justify-center md:h-auto md:w-8 md:shrink-0"
@@ -67,6 +67,7 @@ function DataConnector() {
         <path d="M2 4h28" stroke="currentColor" />
         <circle cx="2" cy="4" r="2" fill="currentColor" />
         <circle cx="30" cy="4" r="2" fill="currentColor" />
+        <circle cx="2" cy="4" r="2.5" className="fill-secondary-600 opacity-0 motion-safe:animate-[notrix-dot-x_1.8s_ease-in-out_infinite]" style={{ animationDelay: `${delay}s` }} />
       </svg>
       <svg
         className="h-full w-2 text-neutral-300 md:hidden"
@@ -76,6 +77,7 @@ function DataConnector() {
         <path d="M4 2v24" stroke="currentColor" />
         <circle cx="4" cy="2" r="2" fill="currentColor" />
         <circle cx="4" cy="26" r="2" fill="currentColor" />
+        <circle cx="4" cy="2" r="2.5" className="fill-secondary-600 opacity-0 motion-safe:animate-[notrix-dot-y_1.8s_ease-in-out_infinite]" style={{ animationDelay: `${delay}s` }} />
       </svg>
     </span>
   );
@@ -97,7 +99,7 @@ export function NotrixByocSection() {
             id="byoc-title"
             className="mt-5 text-balance text-3xl font-medium leading-tight tracking-tight lg:text-4xl"
           >
-            Company knowledge. On your terms.
+            Shared memory. On your terms.
           </h2>
           <p className="mt-5 text-pretty text-base leading-relaxed text-neutral-500 sm:text-lg">
             Bring Notrix to your AWS account. Keep documents, memories and
@@ -138,6 +140,10 @@ export function NotrixByocSection() {
                     aria-hidden="true"
                   />
                   Configuration &amp; health
+                  <span className="relative ml-auto flex size-2" aria-hidden="true">
+                    <span className="absolute inset-0 rounded-full bg-emerald-500 opacity-60 motion-safe:animate-ping" />
+                    <span className="relative size-2 rounded-full bg-emerald-500" />
+                  </span>
                 </li>
               </ul>
             </div>
@@ -153,7 +159,7 @@ export function NotrixByocSection() {
                 aria-hidden="true"
               >
                 <circle cx="3" cy="8" r="2.5" fill="currentColor" />
-                <path d="M3 8h79" stroke="currentColor" strokeDasharray="4 5" />
+                <path d="M3 8h79" stroke="currentColor" strokeDasharray="4 5" className="motion-safe:animate-[notrix-dash_1.2s_linear_infinite]" />
                 <path
                   d="m76 2 6 6-6 6"
                   stroke="currentColor"
@@ -166,7 +172,7 @@ export function NotrixByocSection() {
                 fill="none"
                 aria-hidden="true"
               >
-                <path d="M8 1v28" stroke="currentColor" strokeDasharray="4 4" />
+                <path d="M8 1v28" stroke="currentColor" strokeDasharray="4 4" className="motion-safe:animate-[notrix-dash_1.2s_linear_infinite]" />
                 <path
                   d="m2 23 6 6 6-6"
                   stroke="currentColor"
@@ -208,14 +214,14 @@ export function NotrixByocSection() {
                   </p>
                 </div>
                 <DataConnector />
-                <div className="flex min-w-0 flex-1 flex-col items-center justify-center rounded-lg border border-neutral-200 bg-white px-3 py-5 text-center">
+                <div className="flex min-w-0 flex-1 flex-col items-center justify-center rounded-lg border border-secondary-200 bg-white px-3 py-5 text-center motion-safe:animate-[notrix-glow_3.6s_ease-in-out_infinite]">
                   <NotrixMark />
                   <h5 className="mt-3 text-base font-medium">Company memory</h5>
                   <p className="mt-1 text-sm leading-relaxed text-neutral-500">
                     Documents · Memories · Indexes
                   </p>
                 </div>
-                <DataConnector />
+                <DataConnector delay={0.9} />
                 <div className="flex min-w-0 flex-1 flex-col items-center justify-center rounded-lg border border-neutral-200 bg-white px-3 py-5 text-center">
                   <div
                     className="flex h-11 items-center gap-4"
@@ -235,9 +241,11 @@ export function NotrixByocSection() {
 
               <div className="mt-5 flex items-center gap-3 text-neutral-500">
                 <span
-                  className="h-px flex-1 bg-neutral-200"
+                  className="relative h-px flex-1 overflow-hidden bg-neutral-200"
                   aria-hidden="true"
-                />
+                >
+                  <span className="absolute inset-y-0 left-0 w-1/4 bg-[linear-gradient(90deg,transparent,#5941BA,transparent)] opacity-0 motion-safe:animate-[notrix-sweep_3s_ease-in-out_infinite] motion-safe:opacity-100" />
+                </span>
                 <p className="flex items-center gap-2 text-center text-xs leading-relaxed">
                   <LockKeyhole className="size-4 shrink-0" aria-hidden="true" />
                   Knowledge stored in your account

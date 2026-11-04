@@ -3,9 +3,9 @@ import type { Metadata } from 'next';
 import { NotrixLandingPage } from '@/components/notrix/NotrixLandingPage';
 
 export const metadata: Metadata = {
-  title: 'Notrix | Company knowledge, connected in Slack',
+  title: 'Notrix | Shared memory infrastructure for AI agents and humans',
   description:
-    'Ask questions in Slack and get sourced answers from company knowledge stored in your own cloud.',
+    'One memory for your team and your AI agents, built from your company’s documents and conversations, with a source behind every fact. Runs in your own AWS account.',
 };
 
 export default function HomePage() {

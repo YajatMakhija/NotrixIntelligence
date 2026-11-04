@@ -29,7 +29,7 @@ export const notrixDocGroups: NotrixDocGroup[] = [
         slug: 'introduction',
         title: 'Introduction',
         intro:
-          'Notrix is a company brain for Slack. Your team asks questions in plain language and gets answers with the sources behind them, from knowledge stored in your own AWS account.',
+          'Notrix is shared memory infrastructure for AI agents and humans. It turns your company’s documents and conversations into one memory, stored in your own AWS account. Your team asks in plain language and gets answers with the sources behind them.',
         sections: [
           {
             title: 'What Notrix does',
@@ -70,7 +70,7 @@ export const notrixDocGroups: NotrixDocGroup[] = [
           {
             title: 'Install in your AWS account',
             paragraphs: [
-              'After the call we send an invite. Your administrator installs Notrix in your AWS account from the dashboard, using a CloudFormation stack, in the region you choose.',
+              'After the call we send an invite. Your administrator installs Notrix in your AWS account from the dashboard, in the region you choose.',
             ],
           },
           {
@@ -114,7 +114,7 @@ export const notrixDocGroups: NotrixDocGroup[] = [
           {
             title: 'Answer and receipt',
             paragraphs: [
-              'The answer is written by Amazon Bedrock from the permitted passages only, with numbered citations. A receipt records which evidence and model produced it, so the answer can be traced later even if a source changes.',
+              'The answer is written by your chosen AI model from the permitted passages only, with numbered citations. A receipt records which evidence and model produced it, so the answer can be traced later even if a source changes.',
             ],
           },
         ],
@@ -128,12 +128,12 @@ export const notrixDocGroups: NotrixDocGroup[] = [
           {
             title: 'What runs in your account',
             bullets: [
-              'Encrypted S3 storage, using a KMS key in your account.',
-              'A private PostgreSQL database for the search index and memory.',
-              'Amazon Bedrock for embeddings and answers.',
-              'The application and workers on ECS Fargate, behind API Gateway with a web application firewall.',
-              'An SQS job queue with a dead-letter queue, so failed work is retried.',
-              'The Slack bot token, in Secrets Manager.',
+              'Encrypted file storage, using a key in your account.',
+              'A private search index and memory, with no public access.',
+              'AI calls made with your own Anthropic or OpenAI API key.',
+              'The application and background workers, behind a web application firewall.',
+              'Background work that is retried automatically if it fails.',
+              'Connection tokens such as the Slack bot token, kept in your account.',
             ],
           },
           {
@@ -146,7 +146,7 @@ export const notrixDocGroups: NotrixDocGroup[] = [
             title: 'What Notrix can see',
             bullets: [
               'The status of the one stack you installed, through a read-only role you create and can remove at any time.',
-              'Every request into your installation carries a grant signed with AWS KMS that expires after 60 seconds.',
+              'Every request into your installation carries a signed grant that expires after 60 seconds.',
               'Slack events pass briefly through Notrix on their way to your account. They are not stored there.',
             ],
           },
@@ -161,7 +161,7 @@ export const notrixDocGroups: NotrixDocGroup[] = [
           {
             title: 'Proposed memories',
             paragraphs: [
-              'Amazon Bedrock proposes decisions, commitments and observations from your sources. Each proposal must quote the exact text it came from.',
+              'Notrix proposes decisions, commitments and observations from your sources. Each proposal must quote the exact text it came from.',
             ],
           },
           {

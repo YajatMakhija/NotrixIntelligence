@@ -28,7 +28,7 @@ import {
   notrixWashClass,
 } from '@/components/notrix/NotrixTheme';
 
-// Every claim here maps to the companybrain phase-2 workflows (docs/2026-10-31-phase-2-system-guide/WORKFLOWS.md).
+// Every claim here maps to the companybrain phase-2 workflows, described at outcome level (no internal services: IP).
 // The example company and figures are illustrative, matching the Acme records used on the home page.
 
 const exampleQuestion = 'What price did we agree with Acme for the annual plan?';
@@ -41,7 +41,7 @@ const steps = [
   },
   {
     title: 'Index inside your AWS account',
-    body: 'Files go to an encrypted S3 bucket. Text is split into passages, embedded with Amazon Bedrock and stored in a private PostgreSQL database, with each source’s permissions attached.',
+    body: 'Notrix reads each file and builds a private, encrypted search index in your account. Each source’s permissions travel with it.',
     example: ['Original proposal · $74,000', 'Pricing discussion · $84,000', 'Approved agreement · $82,000'],
   },
   {
@@ -50,8 +50,8 @@ const steps = [
     example: [`“${exampleQuestion}”`],
   },
   {
-    title: 'Search three ways at once',
-    body: 'Meaning-based search, exact text search and approved memories are blended into one ranked list, so a single weak signal does not decide the answer.',
+    title: 'Find the best evidence',
+    body: 'Notrix looks across documents, conversations and approved memory at once, and ranks what best supports an answer.',
     example: ['8 passages kept', 'Approved agreement ranked first', '1 approved memory matched'],
   },
   {
@@ -67,7 +67,7 @@ const steps = [
 ] as const;
 
 const learnPoints = [
-  [Sparkles, 'Notrix proposes', 'Bedrock suggests decisions and commitments it finds in your sources, each tied to the exact quote it came from.'],
+  [Sparkles, 'Notrix proposes', 'Notrix suggests decisions and commitments it finds in your sources, each tied to the exact quote it came from.'],
   [BookCheck, 'An owner approves', 'Nothing proposed is used in answers until an accountable person approves it, edits it or rejects it.'],
   [PenLine, 'You can teach it directly', 'Add a short owner note, such as a decision from a call. It is indexed and cited like any other source.'],
   [History, 'Every change is kept', 'Edits create a new revision with a reason. The full history stays visible, so you can see what changed and who changed it.'],
@@ -208,7 +208,7 @@ export function NotrixHowItWorksPage() {
           <SectionHeading
             eyebrow="Bring your own cloud"
             title="Every step above runs in your AWS account."
-            body="Notrix installs a private knowledge application into your AWS account with CloudFormation. Your documents, search index, memory and AI calls stay there."
+            body="Notrix installs a private knowledge application into your AWS account from your dashboard. Your documents, search index and memory stay there."
           />
           <div className="mt-12 grid gap-4 lg:grid-cols-[1.4fr_1fr]">
             <article className={`rounded-3xl p-6 ring-1 ring-secondary-100 sm:p-8 ${notrixWashClass}`}>
@@ -218,11 +218,11 @@ export function NotrixHowItWorksPage() {
               </div>
               <ul className="mt-5 grid gap-3 text-sm text-neutral-700 sm:grid-cols-2">
                 {[
-                  'Encrypted S3 storage with your own KMS key',
-                  'Private PostgreSQL search index and memory',
-                  'Amazon Bedrock for embeddings and answers',
-                  'Workers on ECS Fargate with a durable SQS queue',
-                  'Slack bot token in your Secrets Manager',
+                  'Encrypted file storage, with a key you own',
+                  'Private search index and memory',
+                  'AI calls with your own Anthropic or OpenAI key',
+                  'Background work that retries on failure',
+                  'Connection tokens kept in your account',
                   'Answer receipts and audit records',
                 ].map((item) => (
                   <li key={item} className={`flex items-start gap-2 p-3 ${notrixGlassCardClass}`}>
@@ -237,11 +237,11 @@ export function NotrixHowItWorksPage() {
               <ul className="mt-5 space-y-3 text-sm leading-6 text-neutral-200">
                 <li>Sign-in and your workspace record.</li>
                 <li>Setup steps and the status of the one stack you installed, through a read-only role you can remove.</li>
-                <li>Short-lived access grants, signed with AWS KMS and expiring after 60 seconds.</li>
+                <li>Short-lived, signed access grants that expire after 60 seconds.</li>
               </ul>
               <h4 className="mt-8 text-sm font-semibold">Setting it up</h4>
               <ol className="mt-3 space-y-2 text-sm text-neutral-200">
-                {['Create your account', 'Install the stack from your dashboard', 'Connect Slack and choose sources'].map((item, index) => (
+                {['Get your invite and create your account', 'Install Notrix from your dashboard', 'Connect Slack and choose sources'].map((item, index) => (
                   <li key={item} className="flex gap-3">
                     <span className="font-semibold text-white">{index + 1}.</span>
                     {item}

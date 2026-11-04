@@ -20,7 +20,7 @@ export function NotrixFooter() {
         <div>
           <p className="text-lg font-semibold text-neutral-950">Notrix</p>
           <p className="mt-1 text-sm text-neutral-500">
-            Company knowledge, connected in Slack.
+            Shared memory infrastructure for AI agents and humans.
           </p>
           <p className="mt-3 text-sm text-neutral-600">
             Contact us:{' '}

@@ -1,7 +1,7 @@
 const metadata = {
-  title: 'Notrix Intelligence | Your company brain',
+  title: 'Notrix Intelligence | Shared memory infrastructure for AI agents and humans',
   description:
-    'Turn scattered company knowledge into clear, connected answers while keeping your data in your own cloud.',
+    'One memory for your team and your AI agents, built from your company’s documents and conversations, with a source behind every fact. Runs in your own AWS account.',
   domain: 'notrix.si',
   logoTitle: '',
   businessName: 'Notrix Intelligence',

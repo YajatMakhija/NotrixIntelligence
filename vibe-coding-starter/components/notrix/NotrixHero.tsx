@@ -24,14 +24,15 @@ export function NotrixHero() {
 
       <div className="relative z-10 mx-auto grid max-w-[1344px] gap-12 px-5 pb-16 pt-12 sm:px-6 sm:pt-14 md:px-8 md:pt-16 lg:min-h-[640px] lg:grid-cols-2 lg:items-center lg:gap-10 lg:px-10 lg:pb-20 lg:pt-16 xl:grid-cols-[minmax(0,600px)_minmax(0,600px)] xl:justify-between xl:px-12">
         <div className="max-w-[600px]">
-          <p className={notrixEyebrowClass}>Company brain for Slack</p>
+          <p className={notrixEyebrowClass}>Shared memory infrastructure</p>
           <h1 className="mt-6 text-balance text-4xl font-semibold leading-[1.1] tracking-[-0.03em] text-neutral-950 sm:text-5xl">
-            Your company&apos;s knowledge, connected.
-            <span className="block">Your data stays with you.</span>
+            One memory for your AI agents and your team.
+            <span className="block text-neutral-500">Running in your own cloud.</span>
           </h1>
           <p className="mt-6 max-w-xl text-pretty text-base leading-6 text-neutral-600 sm:text-lg sm:leading-7">
-            Ask questions in Slack. Get answers with sources from your company&apos;s
-            knowledge, stored in your own cloud.
+            Notrix turns your documents and conversations into shared memory
+            that people and AI agents both work from. Every fact keeps its
+            source and its owner, and all of it stays in your AWS account.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <NotrixDemoTrigger className={notrixCtaClass}>

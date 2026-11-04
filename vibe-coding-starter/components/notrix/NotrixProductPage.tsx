@@ -78,7 +78,7 @@ const productPoints = [
   {
     icon: CloudCog,
     title: 'Runs in your AWS account',
-    body: 'Files, search data and the AI model on Amazon Bedrock run inside your own AWS account. Your knowledge is not used to train shared models.',
+    body: 'Files and search data stay in your own AWS account. AI calls use your own model key, and your knowledge is not used to train shared models.',
   },
   {
     icon: ShieldCheck,
@@ -106,7 +106,7 @@ const steps = [
   },
   {
     title: 'Answer',
-    body: 'A short answer is written with Amazon Bedrock in your account, and every source it used is cited.',
+    body: 'A short answer is written by the AI model you choose, and every source it used is cited.',
     visual: 'Answer ready · 2 sources cited',
   },
   {
@@ -429,7 +429,7 @@ export function NotrixProductPage() {
 
           <div className="relative z-10 mx-auto grid max-w-[1344px] gap-10 px-5 pb-12 pt-12 sm:gap-12 sm:px-6 sm:pt-14 md:gap-14 md:px-8 md:pt-16 lg:min-h-[620px] lg:grid-cols-2 lg:items-start lg:gap-10 lg:px-10 lg:pb-0 lg:pt-[88px] xl:min-h-[646px] xl:grid-cols-[minmax(0,600px)_608px] xl:justify-between xl:gap-16 xl:px-12 xl:pt-[120px]">
             <div className="max-w-[600px]">
-              <p className={notrixEyebrowClass}>Notrix Company Brain</p>
+              <p className={notrixEyebrowClass}>The product</p>
               <h1 className="mt-6 text-[38px] font-semibold leading-[1.08] tracking-[-0.03em] text-neutral-950 sm:text-[44px] md:text-5xl xl:text-[52px] xl:leading-[1.06]">
                 <span className="block [@media(min-width:1440px)]:whitespace-nowrap">
                   Your company’s knowledge.
@@ -487,7 +487,7 @@ export function NotrixProductPage() {
               </div>
               <div className="mt-24 grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-16">
                 <div>
-                  <p className={notrixEyebrowClass}>About Company Brain</p>
+                  <p className={notrixEyebrowClass}>About Notrix</p>
                   <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-[-0.03em] text-neutral-950 sm:text-4xl">
                     Your company’s memory, one question away.
                   </h2>
@@ -495,7 +495,7 @@ export function NotrixProductPage() {
                     <p>
                       Every company keeps its knowledge in many places:
                       documents in Drive and Notion, decisions in Slack threads,
-                      context in tickets and repositories. Company Brain
+                      context in tickets and repositories. Notrix
                       connects the sources you approve and turns them into one
                       place to ask. Your team asks in Slack, in plain language,
                       and gets a short answer with the exact sources behind it.
@@ -522,14 +522,14 @@ export function NotrixProductPage() {
                       Bring your own cloud
                     </h3>
                     <p className="mt-3 text-sm leading-7 text-neutral-600">
-                      Company Brain installs inside your own AWS account with
-                      CloudFormation. Your files, search index, memory and AI
-                      calls on Amazon Bedrock stay in infrastructure you own,
-                      encrypted with your own key. Notrix keeps only sign-in and
-                      setup records, sees your installation only through a
-                      read-only role you can remove, and every request it makes
-                      expires after 60 seconds. If you leave, you delete the
-                      stack and your knowledge goes with it.
+                      Notrix installs inside your own AWS account. Your files,
+                      search index and memory stay in infrastructure you own,
+                      encrypted with your own key, and AI calls use your own
+                      model key. Notrix keeps only sign-in and setup records,
+                      sees your installation only through a read-only role you
+                      can remove, and every request it makes expires after 60
+                      seconds. If you leave, you delete the installation and
+                      your knowledge goes with it.
                     </p>
                   </div>
                 </div>

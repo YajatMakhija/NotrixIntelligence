@@ -518,3 +518,44 @@ input:-webkit-autofill:focus {
     --white: 255 255 255;
     color-scheme: light;
 }
+
+/* Home "Notrix dreams" section. */
+@keyframes notrix-dream-flow {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(300%); }
+}
+@keyframes notrix-dream-drift {
+  0%, 100% { transform: translateX(0); opacity: 1; }
+  50% { transform: translateX(6px); opacity: 0.75; }
+}
+@keyframes notrix-dream-cycle {
+  0% { opacity: 0; transform: translateY(4px); }
+  4%, 21% { opacity: 1; transform: translateY(0); }
+  25%, 100% { opacity: 0; transform: translateY(-4px); }
+}
+/* Find information demo: typing caret and search sweep. */
+@keyframes notrix-caret {
+  50% { opacity: 0; }
+}
+@keyframes notrix-sweep {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(250%); }
+}
+/* "How your deployment works" diagram. */
+@keyframes notrix-dash {
+  to { stroke-dashoffset: -18; }
+}
+@keyframes notrix-dot-x {
+  0% { transform: translateX(0); opacity: 0; }
+  15%, 85% { opacity: 1; }
+  100% { transform: translateX(28px); opacity: 0; }
+}
+@keyframes notrix-dot-y {
+  0% { transform: translateY(0); opacity: 0; }
+  15%, 85% { opacity: 1; }
+  100% { transform: translateY(24px); opacity: 0; }
+}
+@keyframes notrix-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgb(89 65 186 / 0); }
+  50% { box-shadow: 0 0 0 6px rgb(89 65 186 / 0.1); }
+}
