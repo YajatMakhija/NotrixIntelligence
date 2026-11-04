@@ -1,10 +1,10 @@
 'use client';
 
-import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 
 import { NotrixConversationStack } from '@/components/notrix/NotrixConversationStack';
 import { NotrixDemoTrigger } from '@/components/notrix/NotrixDemoDialog';
+import { notrixSignupUrl } from '@/data/notrix/landing';
 import {
   NotrixGlassFrame,
   NotrixRibbon,
@@ -39,13 +39,13 @@ export function NotrixHero() {
             source and its owner, and all of it stays in your AWS account.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <NotrixDemoTrigger className={notrixCtaClass}>
-              Book a demo
+            <a href={notrixSignupUrl} className={notrixCtaClass}>
+              Get started
               <ArrowRight className="size-4" aria-hidden="true" />
+            </a>
+            <NotrixDemoTrigger className={notrixSecondaryCtaClass}>
+              Book a demo
             </NotrixDemoTrigger>
-            <Link href="/how-it-works" className={notrixSecondaryCtaClass}>
-              See how it works
-            </Link>
           </div>
         </div>
 

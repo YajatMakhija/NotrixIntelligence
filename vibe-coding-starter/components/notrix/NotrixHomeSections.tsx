@@ -47,7 +47,7 @@ import { NotrixMemorySection } from '@/components/notrix/NotrixMemorySection';
 const faqs = [
   [
     'How do we get started?',
-    'Notrix is invite-only for now. Book a short call or request access and we send you an invite link. Your administrator then installs Notrix in your AWS account from the dashboard and connects Slack. We agree one team, one set of questions and a success measure up front.',
+    'Create an account at app.notrix.si with Google or your work email. Your administrator then installs Notrix in your AWS account from the dashboard and connects Slack. Want a guided start? Book a short call and we agree one team, one set of questions and a success measure up front.',
   ],
   [
     'Which sources can we connect?',

@@ -120,10 +120,16 @@ export function NotrixHeader() {
         >
           Sign in
         </a>
-        <NotrixDemoTrigger className="inline-flex h-9 items-center justify-center gap-1 rounded-full bg-neutral-950 px-4 text-sm font-medium text-white shadow-sm transition-colors hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2">
+        <NotrixDemoTrigger className="hidden h-9 items-center justify-center rounded-full px-4 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 lg:inline-flex">
           Book a demo
-          <ArrowUpRight className="size-4" aria-hidden="true" />
         </NotrixDemoTrigger>
+        <a
+          href={notrixSignupUrl}
+          className="inline-flex h-9 items-center justify-center gap-1 rounded-full bg-neutral-950 px-4 text-sm font-medium text-white shadow-sm transition-colors hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 focus-visible:ring-offset-2"
+        >
+          Get started
+          <ArrowUpRight className="size-4" aria-hidden="true" />
+        </a>
         <button
           type="button"
           onClick={() => setMenuOpen((open) => !open)}

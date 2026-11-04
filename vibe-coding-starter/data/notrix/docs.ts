@@ -64,13 +64,13 @@ export const notrixDocGroups: NotrixDocGroup[] = [
           {
             title: 'Create your account',
             paragraphs: [
-              'Sign up at app.notrix.si with your work email and company details, then enter the six-digit code we email you. Your workspace is created straight away and you become its owner. Prefer a guided start? Book a short call from the website.',
+              'Sign up at app.notrix.si with Continue with Google, or with your work email and a six-digit code we email you. Add your company details and your workspace is created straight away, with you as its owner. Prefer a guided start? Book a short call from the website.',
             ],
           },
           {
             title: 'Install in your AWS account',
             paragraphs: [
-              'After the call we send an invite. Your administrator installs Notrix in your AWS account from the dashboard, in the region you choose.',
+              'Your administrator installs Notrix in your AWS account from the dashboard, in the region you choose.',
             ],
           },
           {

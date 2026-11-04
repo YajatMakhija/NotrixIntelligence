@@ -35,7 +35,7 @@ const faqs = [
   ['Is the price per person?', 'No. Notrix is $200 a month for your workspace, billed monthly.'],
   ['What else do we pay for?', 'Two things, paid directly and never through Notrix: your AWS storage and hosting, billed by AWS in your own account, and AI usage on your own Anthropic or OpenAI API key, billed by that provider. Notrix adds no markup to either.'],
   ['Why is it set up this way?', 'So your knowledge never leaves infrastructure you own. Your files live in your AWS account, and the AI provider bills you under your own agreement.'],
-  ['How do we start?', 'Book a demo and tell us about your company. We send an invite link, you create your workspace and install Notrix in your AWS account from the dashboard.'],
+  ['How do we start?', 'Create an account with Google or your work email, name your workspace and install Notrix in your AWS account from the dashboard. Prefer a walkthrough first? Book a demo.'],
   ['Can we cancel?', 'Yes. And because everything runs in your AWS account, you can delete the whole installation yourself.'],
 ] as const;
 
