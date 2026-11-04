@@ -88,28 +88,32 @@ export function NotrixByocSection() {
     <section
       id="byoc"
       aria-labelledby="byoc-title"
-      className={`scroll-mt-24 px-5 py-14 text-primary-950 sm:px-8 lg:py-20 ${notrixWashClass}`}
+      className={`scroll-mt-24 px-5 pb-16 pt-10 text-primary-950 sm:px-6 sm:pb-20 sm:pt-12 lg:pb-24 lg:pt-14 ${notrixWashClass}`}
     >
-      <div className="mx-auto max-w-7xl">
-        <header className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-medium uppercase tracking-widest text-secondary-700">
-            Your cloud. Your control.
-          </p>
-          <h2
-            id="byoc-title"
-            className="mt-5 text-balance text-3xl font-medium leading-tight tracking-tight lg:text-4xl"
-          >
-            Shared memory. On your terms.
-          </h2>
-          <p className="mt-5 text-pretty text-base leading-relaxed text-neutral-500 sm:text-lg">
-            Bring Notrix to your AWS account. Keep documents, memories and
-            search indexes within infrastructure you control.
+      <div className="mx-auto max-w-6xl">
+        {/* Same header pattern as the other home sections: left-aligned, heading beside its description. */}
+        <header className="grid gap-5 lg:grid-cols-2 lg:items-end lg:gap-16">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.12em] text-secondary-700">
+              Your cloud. Your control.
+            </p>
+            <h2
+              id="byoc-title"
+              className="mt-4 text-balance text-3xl font-semibold tracking-[-0.03em] text-primary-950 sm:text-5xl"
+            >
+              Shared memory. On your terms.
+            </h2>
+          </div>
+          <p className="max-w-xl text-pretty text-base leading-7 text-neutral-600 sm:text-lg">
+            Notrix installs in your own AWS account. Documents, memories and
+            search indexes stay in infrastructure you control. Notrix only
+            manages setup and health.
           </p>
         </header>
 
-        <div className={`mt-10 p-5 sm:p-7 ${notrixGlassInnerClass}`}>
+        <div className={`mt-10 p-5 sm:p-7 lg:mt-12 ${notrixGlassInnerClass}`}>
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <h3 className="text-lg font-medium sm:text-xl">
+            <h3 className="text-sm font-medium text-neutral-500">
               How your deployment works
             </h3>
             <span className="rounded-full border border-neutral-200 px-3 py-1 text-xs font-medium uppercase text-neutral-600">
