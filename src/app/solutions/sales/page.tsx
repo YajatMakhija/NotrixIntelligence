@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { PlaceholderPage } from "@/components/layout/PlaceholderPage";
+import { SolutionPage } from "@/components/layout/SolutionPage";
 import { pageMetadata } from "@/lib/metadata";
+import { USE_CASES } from "@/lib/site";
 
-export const metadata: Metadata = pageMetadata(
-  "Sales",
-  "Surface customer history, deal context, conversations and relevant internal knowledge.",
-);
+const solution = USE_CASES.find((item) => item.id === "sales")!;
+
+export const metadata: Metadata = pageMetadata(solution.title, solution.body);
 
 export default function SalesSolutionPage() {
   return (
-    <PlaceholderPage
-      eyebrow="Solutions"
-      title="Sales"
-      intro="Customer history, deal context, conversations and the internal knowledge that usually lives with one person."
+    <SolutionPage
+      title={solution.title}
+      intro={solution.intro}
+      points={solution.points}
     />
   );
 }

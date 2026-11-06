@@ -1,35 +1,22 @@
-import { Reveal } from "@/components/ui/Reveal";
-
 export function PageHeader({
-  eyebrow,
   title,
   intro,
 }: {
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   intro?: string;
+  tone?: "dark" | "paper";
 }) {
   return (
-    <section className="relative overflow-hidden">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(900px_420px_at_20%_-10%,rgba(255,255,255,0.05),transparent_60%)]"
-      />
-      <div className="relative mx-auto max-w-[1180px] px-6 pb-20 pt-36 md:px-10 md:pb-28 md:pt-44">
-        <Reveal>
-          <p className="eyebrow">{eyebrow}</p>
-        </Reveal>
-        <Reveal delay={80}>
-          <h1 className="display mt-7 max-w-[16ch] text-[40px] text-white sm:text-[48px] lg:text-[56px]">
-            {title}
-          </h1>
-        </Reveal>
+    <section className="bg-[var(--paper)] pt-[72px] text-[var(--ink)]">
+      <div className="mx-auto max-w-[1520px] px-7 pb-20 pt-[72px] md:px-9 md:pb-28">
+        <h1 className="display max-w-[16ch] text-[48px] md:text-[64px] lg:text-[80px]">
+          {title}
+        </h1>
         {intro && (
-          <Reveal delay={160}>
-            <p className="mt-7 max-w-[520px] text-[15px] leading-relaxed text-[var(--fg-muted)] md:text-[16px]">
-              {intro}
-            </p>
-          </Reveal>
+          <p className="mt-8 max-w-[36rem] text-[17px] leading-relaxed text-[var(--body)]">
+            {intro}
+          </p>
         )}
       </div>
     </section>

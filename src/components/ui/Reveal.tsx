@@ -4,8 +4,8 @@ import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
 /**
- * IntersectionObserver rather than a motion library — this site needs one
- * understated entrance, not an animation runtime.
+ * Visible by default so a failed script never blanks the page. Below-the-fold
+ * elements may ease in once; everything already on screen stays put.
  */
 export function Reveal({
   children,
@@ -19,11 +19,17 @@ export function Reveal({
   as?: "div" | "section" | "li" | "article";
 }) {
   const ref = useRef<HTMLElement>(null);
-  const [shown, setShown] = useState(false);
+  const [shown, setShown] = useState(true);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.92) return;
+
+    setShown(false);
     const io = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;

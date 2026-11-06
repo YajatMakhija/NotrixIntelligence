@@ -81,6 +81,28 @@ export const CUSTOM_CONNECTORS = [
   { title: "MCP", body: "Expose Company Brain to tools that speak the Model Context Protocol." },
 ];
 
+/** Three ways to use the same governed index — Ask, Search, Agents. */
+export const PRODUCT_SURFACES = [
+  {
+    id: "ask",
+    title: "Ask",
+    href: "/product/company-brain",
+    body: "Ask a question in plain language. Company Brain retrieves only what the asking user can see, and cites every source.",
+  },
+  {
+    id: "search",
+    title: "Search",
+    href: "/product/how-it-works",
+    body: "One search across wikis, drives, tickets and threads. Results stay filtered by the source system's permissions.",
+  },
+  {
+    id: "agents",
+    title: "Agents",
+    href: "/product/company-brain",
+    body: "Agents run against the same index, act across connected systems, and stop where a person must approve.",
+  },
+];
+
 export const CAPABILITIES = [
   {
     index: "01",
@@ -137,30 +159,140 @@ export const USE_CASES = [
     title: "Engineering",
     href: "/solutions/engineering",
     body: "Understand systems, decisions and technical knowledge.",
+    intro:
+      "Architecture, incidents and the decisions around them live in repositories, tickets and threads — not in a wiki someone meant to update. Company Brain retrieves them together, with the permissions of the person asking.",
+    points: [
+      {
+        title: "Decisions with the discussion",
+        body: "Pull the RFC, the PR comments and the Slack thread that settled the trade-off — cited back to source.",
+      },
+      {
+        title: "Incidents without folklore",
+        body: "Prior outages, runbooks that were actually used, and the post-incident notes that never left the channel.",
+      },
+      {
+        title: "Code in company context",
+        body: "Ask across GitHub and Jira without asking engineers to maintain a second documentation stack.",
+      },
+    ],
   },
   {
     id: "sales",
     title: "Sales",
     href: "/solutions/sales",
     body: "Surface customer and deal context.",
+    intro:
+      "The useful context for a deal is rarely only in the CRM. Company Brain brings the opportunity, the threads around it, and the internal notes that usually live with one person.",
+    points: [
+      {
+        title: "Before the call",
+        body: "Account history, open issues and the last internal discussion — permission-filtered to the asking user.",
+      },
+      {
+        title: "Deal context, not a second CRM",
+        body: "Salesforce remains the system of record. Company Brain reads it and the conversations that never got logged.",
+      },
+      {
+        title: "Handoffs that keep their history",
+        body: "When a deal moves teams, the context moves with the record instead of sitting in someone's archive.",
+      },
+    ],
   },
   {
     id: "support",
     title: "Support",
     href: "/solutions/support",
     body: "Find answers across product and internal knowledge.",
+    intro:
+      "The answer to a ticket is often in product docs, a prior case, and an engineering thread. Company Brain retrieves all three for the person on the queue — and will not surface another customer's case.",
+    points: [
+      {
+        title: "Prior cases with product truth",
+        body: "Search tickets, docs and internal notes in one question, cited so an agent can verify before they reply.",
+      },
+      {
+        title: "Permissions stay with the source",
+        body: "If an agent could not open it in Zendesk or the wiki, they will not see it here.",
+      },
+      {
+        title: "Escalations with a trail",
+        body: "When a case needs engineering, the retrieval and the actions taken are recorded.",
+      },
+    ],
   },
   {
     id: "operations",
     title: "Operations",
     href: "/solutions/operations",
     body: "Understand processes and workflows.",
+    intro:
+      "Process lives in policy docs, tickets and the way people actually work. Company Brain answers from that mix so operations is not guessing from last quarter's slide.",
+    points: [
+      {
+        title: "Process as it is run",
+        body: "Policies, SOPs and the exceptions captured in threads — retrieved together.",
+      },
+      {
+        title: "Cross-team dependencies",
+        body: "Who owns a step, which system it writes to, and what broke last time it ran.",
+      },
+      {
+        title: "Workflows with checkpoints",
+        body: "Agents can run a process you define and stop where a person must approve.",
+      },
+    ],
   },
   {
     id: "leadership",
     title: "Leadership",
     href: "/solutions/leadership",
     body: "Ask questions across the organization.",
+    intro:
+      "Leadership questions cut across functions. Company Brain answers from company context with citations — not from a dashboard of figures we do not have.",
+    points: [
+      {
+        title: "One question, several systems",
+        body: "Ask across docs, CRM, tickets and engineering sources without waiting on a pack.",
+      },
+      {
+        title: "Cited, not summarised into air",
+        body: "Every answer points back to the document, record or thread it used.",
+      },
+      {
+        title: "Inside the boundary",
+        body: "The same permission and residency controls that apply to every other team.",
+      },
+    ],
+  },
+];
+
+export const FLOW = [
+  {
+    title: "Sources",
+    body: "Documents, conversations, records and tickets in the systems you already run.",
+  },
+  {
+    title: "Company Brain",
+    body: "One index with source permissions carried through. Retrieval, reasoning, governed action.",
+  },
+  {
+    title: "Answer / agent",
+    body: "A cited answer in the workflow, or an agent that stops at the checkpoints you set.",
+  },
+];
+
+export const PRICING_NEEDS = [
+  {
+    title: "SSO",
+    body: "The identity provider you will use in production, and who owns access reviews.",
+  },
+  {
+    title: "Sources",
+    body: "The systems a first workflow has to read — and which of them are systems of record.",
+  },
+  {
+    title: "Success metric",
+    body: "One number you will judge the pilot by, agreed before we connect anything.",
   },
 ];
 

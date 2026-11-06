@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { PlaceholderPage } from "@/components/layout/PlaceholderPage";
+import { SolutionPage } from "@/components/layout/SolutionPage";
 import { pageMetadata } from "@/lib/metadata";
+import { USE_CASES } from "@/lib/site";
 
-export const metadata: Metadata = pageMetadata(
-  "Leadership",
-  "Ask questions across the organization and get answers grounded in company context.",
-);
+const solution = USE_CASES.find((item) => item.id === "leadership")!;
+
+export const metadata: Metadata = pageMetadata(solution.title, solution.body);
 
 export default function LeadershipSolutionPage() {
   return (
-    <PlaceholderPage
-      eyebrow="Solutions"
-      title="Leadership"
-      intro="Questions across the organization, answered from company context rather than a slide that aged out last quarter."
+    <SolutionPage
+      title={solution.title}
+      intro={solution.intro}
+      points={solution.points}
     />
   );
 }
