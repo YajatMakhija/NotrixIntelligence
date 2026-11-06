@@ -33,20 +33,20 @@ export function NotrixRibbon({ className }: { className: string }) {
         />
         <path id={back} d="M420 800 C590 660 720 570 900 530 C1120 480 1300 385 1660 290" />
         <linearGradient id={`${id}-body`} gradientUnits="userSpaceOnUse" x1="200" y1="700" x2="1550" y2="120">
-          <stop offset="0" stopColor="#C2BBFF" />
-          <stop offset="0.3" stopColor="#8b5cf6" />
-          <stop offset="0.65" stopColor="#6D54DD" />
+          <stop offset="0" stopColor="#93C5FD" />
+          <stop offset="0.3" stopColor="#3b82f6" />
+          <stop offset="0.65" stopColor="#2563EB" />
           <stop offset="1" stopColor="#3157e8" />
         </linearGradient>
         <linearGradient id={`${id}-recess`} gradientUnits="userSpaceOnUse" x1="250" y1="760" x2="1600" y2="300">
-          <stop offset="0" stopColor="#5941BA" />
-          <stop offset="0.5" stopColor="#251C49" />
+          <stop offset="0" stopColor="#1D4ED8" />
+          <stop offset="0.5" stopColor="#172554" />
           <stop offset="1" stopColor="#1e3a8a" />
         </linearGradient>
         <linearGradient id={`${id}-shine`} gradientUnits="userSpaceOnUse" x1="200" y1="700" x2="1550" y2="120">
-          <stop offset="0" stopColor="#ECEAFF" />
-          <stop offset="0.5" stopColor="#A196FF" />
-          <stop offset="1" stopColor="#DCD8FF" />
+          <stop offset="0" stopColor="#DBEAFE" />
+          <stop offset="0.5" stopColor="#60A5FA" />
+          <stop offset="1" stopColor="#BFDBFE" />
         </linearGradient>
         <filter id={`${id}-soft`} x="-10%" y="-30%" width="120%" height="160%">
           <feGaussianBlur stdDeviation="22" />
@@ -65,16 +65,16 @@ export function NotrixRibbon({ className }: { className: string }) {
       </defs>
 
       <g fill="none" strokeLinecap="round">
-        <use href={`#${curve}`} stroke="#3D3078" strokeOpacity="0.28" strokeWidth="170" filter={`url(#${id}-soft)`} transform="translate(0 34)" />
+        <use href={`#${curve}`} stroke="#1E3A8A" strokeOpacity="0.28" strokeWidth="170" filter={`url(#${id}-soft)`} transform="translate(0 34)" />
         <use href={`#${back}`} stroke={`url(#${id}-recess)`} strokeWidth="110" />
-        <use href={`#${back}`} stroke="#ECEAFF" strokeOpacity="0.45" strokeWidth="1.5" transform="translate(0 -52)" />
+        <use href={`#${back}`} stroke="#DBEAFE" strokeOpacity="0.45" strokeWidth="1.5" transform="translate(0 -52)" />
         <use href={`#${curve}`} stroke={`url(#${id}-recess)`} strokeWidth="172" transform="translate(0 8)" />
         <use href={`#${curve}`} stroke={`url(#${id}-body)`} strokeWidth="150" />
         <use href={`#${curve}`} stroke={`url(#${id}-shine)`} strokeOpacity="0.7" strokeWidth="56" transform="translate(0 -30)" />
-        <use href={`#${curve}`} stroke="#ECEAFF" strokeOpacity="0.8" strokeWidth="2" transform="translate(0 -72)" />
+        <use href={`#${curve}`} stroke="#DBEAFE" strokeOpacity="0.8" strokeWidth="2" transform="translate(0 -72)" />
         <use href={`#${curve}`} stroke="#BBB9B7" strokeOpacity="0.85" strokeWidth="1.5" transform="translate(0 -76)" />
-        <use href={`#${curve}`} stroke="#ECEAFF" strokeOpacity="0.45" strokeWidth="1.5" transform="translate(0 -6)" />
-        <use href={`#${curve}`} stroke="#ECEAFF" strokeOpacity="0.35" strokeWidth="1.5" transform="translate(0 30)" />
+        <use href={`#${curve}`} stroke="#DBEAFE" strokeOpacity="0.45" strokeWidth="1.5" transform="translate(0 -6)" />
+        <use href={`#${curve}`} stroke="#DBEAFE" strokeOpacity="0.35" strokeWidth="1.5" transform="translate(0 30)" />
         <use href={`#${curve}`} stroke="#BBB9B7" strokeOpacity="0.6" strokeWidth="1.5" transform="translate(0 70)" />
       </g>
       <rect
@@ -100,7 +100,7 @@ export const notrixWashClass =
 
 // Small frosted card for grids sitting on a wash.
 export const notrixGlassCardClass =
-  'rounded-2xl border border-white/80 bg-white/60 shadow-[0_8px_24px_-12px_rgba(37,28,73,0.18),inset_0_1px_0_rgb(var(--white)/0.8)] backdrop-blur-md';
+  'rounded-2xl border border-white/80 bg-white/60 shadow-[0_8px_24px_-12px_rgba(23,37,84,0.18),inset_0_1px_0_rgb(var(--white)/0.8)] backdrop-blur-md';
 
 export function NotrixGlassFrame({
   children,

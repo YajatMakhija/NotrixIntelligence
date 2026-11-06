@@ -18,7 +18,7 @@ export const LandingDiagonalCtaBg = ({
       case 'secondary':
         return 'bg-gradient-to-b from-secondary-100/20 dark:from-secondary-900/10';
       default:
-        return 'bg-gradient-to-b from-indigo-100/20 dark:from-indigo-900/10';
+        return 'bg-gradient-to-b from-blue-100/20 dark:from-blue-900/10';
     }
   };
 
@@ -40,10 +40,10 @@ export const LandingDiagonalCtaBg = ({
         };
       default:
         return {
-          main: 'bg-indigo-500 dark:bg-indigo-400',
-          accent: 'bg-indigo-100 dark:bg-indigo-900/20',
-          ring: 'ring-indigo-50 dark:ring-indigo-900/30',
-          shadow: 'shadow-indigo-600/10 dark:shadow-indigo-400/10',
+          main: 'bg-blue-500 dark:bg-blue-400',
+          accent: 'bg-blue-100 dark:bg-blue-900/20',
+          ring: 'ring-blue-50 dark:ring-blue-900/30',
+          shadow: 'shadow-blue-600/10 dark:shadow-blue-400/10',
         };
     }
   };

@@ -121,7 +121,7 @@ function FindView({ onOpen }: { onOpen: (id: RecordId) => void }) {
             aria-hidden="true"
             className="absolute inset-x-0 bottom-0 h-0.5 overflow-hidden"
           >
-            <span className="absolute inset-y-0 left-0 w-2/5 animate-[notrix-sweep_0.9s_ease-in-out_infinite] bg-[linear-gradient(90deg,transparent,#5941BA,transparent)]" />
+            <span className="absolute inset-y-0 left-0 w-2/5 animate-[notrix-sweep_0.9s_ease-in-out_infinite] bg-[linear-gradient(90deg,transparent,#1D4ED8,transparent)]" />
           </span>
         )}
       </div>

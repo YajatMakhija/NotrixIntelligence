@@ -252,7 +252,7 @@ function HowNotrixWorks() {
                     {open && (
                       <div
                         key={`${active}-${auto}`}
-                        className={`h-full bg-gradient-to-r from-[#3157e8] to-[#8b5cf6] ${auto ? 'notrix-step-bar' : 'w-full'}`}
+                        className={`h-full bg-gradient-to-r from-[#3157e8] to-[#3b82f6] ${auto ? 'notrix-step-bar' : 'w-full'}`}
                       />
                     )}
                   </div>
@@ -324,7 +324,7 @@ function ProductIllustration() {
           </div>
           <div className="space-y-[0.4em] px-[0.6em] py-[0.5em] text-[0.5625em] leading-tight text-neutral-500">
             <p className="text-neutral-400">Mar 04 · Pricing page copy</p>
-            <p className="-mx-[0.4em] rounded-[0.3em] px-[0.4em] py-[0.2em] text-neutral-800 ring-1 ring-[#6D54DD]">
+            <p className="-mx-[0.4em] rounded-[0.3em] px-[0.4em] py-[0.2em] text-neutral-800 ring-1 ring-[#2563EB]">
               Mar 12 · Simplify account setup
             </p>
             <p className="text-neutral-400">Mar 19 · Trial length</p>

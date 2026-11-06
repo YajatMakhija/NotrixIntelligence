@@ -36,7 +36,7 @@ function FlowArrow() {
   return (
     <div className="flex items-center justify-center py-1 lg:py-0" aria-hidden="true">
       <div className="relative h-8 w-0.5 overflow-hidden rounded-full bg-neutral-200 lg:h-0.5 lg:w-12">
-        <span className="absolute inset-x-0 top-0 h-1/3 animate-[notrix-dream-flow_1.8s_ease-in-out_infinite] bg-[linear-gradient(180deg,transparent,#8b5cf6,transparent)] motion-reduce:hidden lg:inset-y-0 lg:left-0 lg:h-auto lg:w-1/3 lg:animate-[notrix-line-flow_1.8s_ease-in-out_infinite] lg:bg-[linear-gradient(90deg,transparent,#8b5cf6,transparent)]" />
+        <span className="absolute inset-x-0 top-0 h-1/3 animate-[notrix-dream-flow_1.8s_ease-in-out_infinite] bg-[linear-gradient(180deg,transparent,#3b82f6,transparent)] motion-reduce:hidden lg:inset-y-0 lg:left-0 lg:h-auto lg:w-1/3 lg:animate-[notrix-line-flow_1.8s_ease-in-out_infinite] lg:bg-[linear-gradient(90deg,transparent,#3b82f6,transparent)]" />
       </div>
     </div>
   );
@@ -111,7 +111,7 @@ export function NotrixMemorySection() {
             <FlowArrow />
 
             {/* 2. Dreaming */}
-            <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-2xl notrix-light bg-[linear-gradient(135deg,#251C49,#3D3078_55%,#3157e8)] px-5 py-10 text-center text-white">
+            <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-2xl notrix-light bg-[linear-gradient(135deg,#172554,#1E3A8A_55%,#3157e8)] px-5 py-10 text-center text-white">
               <p className="absolute left-5 top-4 text-[11px] font-semibold tabular-nums text-white/60">02</p>
               <span className="relative flex size-16 items-center justify-center" aria-hidden="true">
                 <span className="absolute inset-0 rounded-full bg-white/10 motion-safe:animate-ping" />

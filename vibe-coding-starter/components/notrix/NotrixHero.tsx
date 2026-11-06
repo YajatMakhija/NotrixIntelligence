@@ -24,7 +24,7 @@ export function NotrixHero() {
       <div className="relative z-10 mx-auto grid max-w-[1344px] gap-12 px-5 pb-16 pt-12 sm:px-6 sm:pt-14 md:px-8 md:pt-16 lg:min-h-[640px] lg:grid-cols-2 lg:items-center lg:gap-10 lg:px-10 lg:pb-20 lg:pt-16 xl:grid-cols-[minmax(0,600px)_minmax(0,600px)] xl:justify-between xl:px-12">
         <div className="max-w-[600px]">
           <p className="inline-flex items-center gap-2 rounded-full border border-neutral-200 bg-white/80 py-1 pl-1.5 pr-3.5 text-sm font-medium text-neutral-700 shadow-sm shadow-neutral-200/50 backdrop-blur">
-            <span className="rounded-full notrix-light bg-[linear-gradient(135deg,#3157e8,#8b5cf6)] px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-white">
+            <span className="rounded-full notrix-light bg-[linear-gradient(135deg,#3157e8,#3b82f6)] px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-white">
               New
             </span>
             Shared memory infrastructure<span className="hidden sm:inline">&nbsp;for AI agents and humans</span>

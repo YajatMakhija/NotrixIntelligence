@@ -177,7 +177,7 @@ export function NotrixHomeSections() {
               aria-hidden="true"
             >
               {/* A blue-purple band that travels along the line from step 1 to step 3. */}
-              <span className="absolute inset-y-0 left-0 w-1/3 animate-[notrix-line-flow_3.5s_ease-in-out_infinite] bg-[linear-gradient(90deg,transparent,#3157e8,#8b5cf6,transparent)] motion-reduce:hidden" />
+              <span className="absolute inset-y-0 left-0 w-1/3 animate-[notrix-line-flow_3.5s_ease-in-out_infinite] bg-[linear-gradient(90deg,transparent,#3157e8,#3b82f6,transparent)] motion-reduce:hidden" />
             </div>
             {[
               [
@@ -202,7 +202,7 @@ export function NotrixHomeSections() {
                   key={title as string}
                   className="relative text-center md:text-left"
                 >
-                  <span className="relative z-10 mx-auto flex size-10 items-center justify-center rounded-full notrix-light bg-[linear-gradient(135deg,#3157e8,#8b5cf6)] text-sm font-semibold text-white ring-8 ring-white md:mx-0">
+                  <span className="relative z-10 mx-auto flex size-10 items-center justify-center rounded-full notrix-light bg-[linear-gradient(135deg,#3157e8,#3b82f6)] text-sm font-semibold text-white ring-8 ring-white md:mx-0">
                     {index + 1}
                   </span>
                   <StepIcon
@@ -337,7 +337,7 @@ export function NotrixHomeSections() {
             <div className="flex flex-col gap-4">
               <article className={`rounded-3xl p-5 sm:p-7 ${notrixGlassCardClass}`}>
                 <div className="flex items-center gap-3">
-                  <span className="flex size-10 items-center justify-center rounded-xl notrix-light bg-[linear-gradient(135deg,#3157e8,#8b5cf6)] text-white">
+                  <span className="flex size-10 items-center justify-center rounded-xl notrix-light bg-[linear-gradient(135deg,#3157e8,#3b82f6)] text-white">
                     <ShieldCheck className="size-5" aria-hidden="true" />
                   </span>
                   <h3 className="font-semibold text-primary-950">
@@ -361,7 +361,7 @@ export function NotrixHomeSections() {
                 </ul>
               </article>
 
-              <article className="flex-1 rounded-3xl notrix-light bg-[linear-gradient(135deg,#251C49,#3D3078_55%,#3157e8)] p-5 text-white sm:p-7">
+              <article className="flex-1 rounded-3xl notrix-light bg-[linear-gradient(135deg,#172554,#1E3A8A_55%,#3157e8)] p-5 text-white sm:p-7">
                 <h3 className="font-semibold">What Notrix can see</h3>
                 <ul className="mt-4 space-y-3 text-sm leading-6 text-neutral-300">
                   <li>

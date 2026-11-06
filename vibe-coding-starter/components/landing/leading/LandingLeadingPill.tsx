@@ -230,7 +230,7 @@ export const LandingLeadingPill = ({
     const gradients = {
       pinkRainbow: ['#ff619d', '#ff8bb7', '#e161ff'],
       purpleRainbow: ['#9c27b0', '#3f51b5', '#2196f3'],
-      yellowRainbow: ['#eab308', '#ff5722', '#8b5cf6'],
+      yellowRainbow: ['#eab308', '#ff5722', '#3b82f6'],
       greenRainbow: ['#4caf50', '#00bcd4', '#9c27b0'],
     };
 

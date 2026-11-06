@@ -184,7 +184,7 @@ export function NotrixHowItWorksPage() {
           <ol className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {steps.map((step, index) => (
               <li key={step.title} className={`flex flex-col p-6 ${notrixGlassCardClass}`}>
-                <span className="flex size-9 items-center justify-center rounded-full notrix-light bg-[linear-gradient(135deg,#3157e8,#8b5cf6)] text-sm font-semibold text-white">
+                <span className="flex size-9 items-center justify-center rounded-full notrix-light bg-[linear-gradient(135deg,#3157e8,#3b82f6)] text-sm font-semibold text-white">
                   {index + 1}
                 </span>
                 <h3 className="mt-5 text-lg font-semibold text-primary-950">{step.title}</h3>
@@ -232,7 +232,7 @@ export function NotrixHowItWorksPage() {
                 ))}
               </ul>
             </article>
-            <article className="rounded-3xl notrix-light bg-[linear-gradient(135deg,#251C49,#3D3078_55%,#3157e8)] p-6 text-white sm:p-8">
+            <article className="rounded-3xl notrix-light bg-[linear-gradient(135deg,#172554,#1E3A8A_55%,#3157e8)] p-6 text-white sm:p-8">
               <h3 className="font-semibold">At Notrix</h3>
               <ul className="mt-5 space-y-3 text-sm leading-6 text-neutral-200">
                 <li>Sign-in and your workspace record.</li>

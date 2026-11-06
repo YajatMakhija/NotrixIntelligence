@@ -392,7 +392,7 @@ export function NotrixContextPlayground() {
           <div className="relative grid gap-6 lg:grid-cols-2">
             <div
               ref={contextPanelRef}
-              className="flex min-w-0 flex-col overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-[0_24px_70px_rgba(89,65,186,0.08)] lg:h-[42rem]"
+              className="flex min-w-0 flex-col overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-[0_24px_70px_rgba(29,78,216,0.08)] lg:h-[42rem]"
             >
               <header className="flex items-start justify-between gap-4 border-b border-neutral-200 px-5 py-5 sm:px-6">
                 <div>
@@ -554,7 +554,7 @@ export function NotrixContextPlayground() {
 
             <div
               ref={answerPanelRef}
-              className="flex min-w-0 flex-col overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-[0_24px_70px_rgba(89,65,186,0.08)] lg:h-[42rem]"
+              className="flex min-w-0 flex-col overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-[0_24px_70px_rgba(29,78,216,0.08)] lg:h-[42rem]"
             >
               <header className="flex items-start justify-between gap-4 border-b border-neutral-200 px-5 py-5 sm:px-6">
                 <div>
@@ -616,7 +616,7 @@ export function NotrixContextPlayground() {
                     <div className="ml-auto max-w-lg rounded-2xl rounded-br-md bg-primary-950 px-4 py-3 text-sm font-medium leading-6 text-white">
                       {latestAnswer.question}
                     </div>
-                    <article className="mt-4 rounded-2xl rounded-tl-md border border-secondary-200 bg-white p-5 shadow-[0_14px_36px_rgba(89,65,186,0.10)]">
+                    <article className="mt-4 rounded-2xl rounded-tl-md border border-secondary-200 bg-white p-5 shadow-[0_14px_36px_rgba(29,78,216,0.10)]">
                       <div className="flex flex-wrap items-center justify-between gap-3">
                         <p
                           className={`inline-flex items-center gap-2 text-xs font-semibold ${latestAnswer.answer.state === 'conflict' ? 'text-amber-700' : latestAnswer.answer.state === 'missing' ? 'text-neutral-600' : 'text-secondary-800'}`}

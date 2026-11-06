@@ -248,7 +248,7 @@ export function NotrixByocSection() {
                   className="relative h-px flex-1 overflow-hidden bg-neutral-200"
                   aria-hidden="true"
                 >
-                  <span className="absolute inset-y-0 left-0 w-1/4 bg-[linear-gradient(90deg,transparent,#5941BA,transparent)] opacity-0 motion-safe:animate-[notrix-sweep_3s_ease-in-out_infinite] motion-safe:opacity-100" />
+                  <span className="absolute inset-y-0 left-0 w-1/4 bg-[linear-gradient(90deg,transparent,#1D4ED8,transparent)] opacity-0 motion-safe:animate-[notrix-sweep_3s_ease-in-out_infinite] motion-safe:opacity-100" />
                 </span>
                 <p className="flex items-center gap-2 text-center text-xs leading-relaxed">
                   <LockKeyhole className="size-4 shrink-0" aria-hidden="true" />
