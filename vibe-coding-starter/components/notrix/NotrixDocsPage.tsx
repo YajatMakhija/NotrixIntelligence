@@ -17,7 +17,7 @@ import {
   X,
 } from 'lucide-react';
 
-import { NotrixThemeToggle, useDrawer } from '@/components/notrix/NotrixHeader';
+import { useDrawer } from '@/components/notrix/NotrixHeader';
 import {
   notrixDocGroups,
   notrixDocHref,
@@ -246,7 +246,6 @@ export function NotrixDocsPage({ slug }: { slug: string }) {
               <Headset className="size-4" aria-hidden="true" />
               Contact support
             </a>
-            <NotrixThemeToggle />
           </div>
         </header>
 

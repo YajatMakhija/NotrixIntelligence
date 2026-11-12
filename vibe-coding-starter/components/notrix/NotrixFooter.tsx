@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 
 import { NotrixDemoTrigger } from '@/components/notrix/NotrixDemoDialog';
+import { NotrixThemePicker } from '@/components/notrix/NotrixThemePicker';
 import { notrixAppLoginUrl } from '@/data/notrix/landing';
 
 const links = [
@@ -53,9 +54,12 @@ export function NotrixFooter() {
           Book a demo <ArrowUpRight className="size-4" />
         </NotrixDemoTrigger>
       </div>
-      <p className="mx-auto mt-8 max-w-5xl text-xs text-neutral-400">
-        © {new Date().getFullYear()} Notrix Intelligence.
-      </p>
+      <div className="mx-auto mt-8 flex max-w-5xl items-center justify-between gap-4">
+        <p className="text-xs text-neutral-400">
+          © {new Date().getFullYear()} Notrix Intelligence.
+        </p>
+        <NotrixThemePicker />
+      </div>
     </footer>
   );
 }

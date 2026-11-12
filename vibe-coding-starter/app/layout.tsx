@@ -112,6 +112,14 @@ export default function RootLayout({
           content="#000"
         />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+        {/* Before first paint: the theme chosen on notrix.si or in the Notrix app (shared cookie) becomes
+            next-themes' saved theme, so the page opens in it and never flashes the other one. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{var m=document.cookie.match(/(?:^|; )notrix-theme=(light|dark)(?:;|$)/);localStorage.setItem('theme',m?m[1]:'system')}catch(e){}",
+          }}
+        />
       </head>
 
       <body className="flex flex-col bg-white text-black antialiased dark:bg-gray-950 dark:text-white min-h-screen">

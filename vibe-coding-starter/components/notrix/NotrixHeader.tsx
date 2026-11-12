@@ -4,8 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState, type Dispatch, type SetStateAction } from 'react';
-import { useTheme } from 'next-themes';
-import { ArrowUpRight, Menu, Moon, Sun, X } from 'lucide-react';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
 
 import { NotrixDemoTrigger } from '@/components/notrix/NotrixDemoDialog';
 import { useNotrixPublishedLayout } from '@/components/notrix/useNotrixPublishedLayout';
@@ -32,25 +31,6 @@ export function useDrawer(open: boolean, setOpen: Dispatch<SetStateAction<boolea
       desktop.removeEventListener('change', onDesktop);
     };
   }, [open, setOpen, desktopQuery]);
-}
-
-export function NotrixThemeToggle() {
-  const { resolvedTheme, setTheme } = useTheme();
-  // The theme is only known in the browser; render a placeholder until then to avoid a hydration mismatch.
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-  const dark = mounted && resolvedTheme === 'dark';
-
-  return (
-    <button
-      type="button"
-      onClick={() => setTheme(dark ? 'light' : 'dark')}
-      aria-label={dark ? 'Switch to light theme' : 'Switch to dark theme'}
-      className="flex size-9 items-center justify-center rounded-full text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600"
-    >
-      {mounted && (dark ? <Sun className="size-4" aria-hidden="true" /> : <Moon className="size-4" aria-hidden="true" />)}
-    </button>
-  );
 }
 
 export function NotrixHeader() {
@@ -113,7 +93,6 @@ export function NotrixHeader() {
       </nav>
 
       <div className="flex items-center gap-2">
-        <NotrixThemeToggle />
         <a
           href={notrixAppLoginUrl}
           className="hidden h-9 items-center justify-center rounded-full px-4 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 sm:inline-flex"
