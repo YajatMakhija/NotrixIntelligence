@@ -337,5 +337,6 @@ export const notrixDocSectionId = (title: string) =>
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
 
+// Paths on docs.notrix.si (middleware.ts maps them to app/docs).
 export const notrixDocHref = (page: NotrixDocPage) =>
-  page.slug === notrixDocPages[0].slug ? '/docs' : `/docs/${page.slug}`;
+  page.slug === notrixDocPages[0].slug ? '/' : `/${page.slug}`;

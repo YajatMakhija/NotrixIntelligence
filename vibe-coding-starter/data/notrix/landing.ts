@@ -14,7 +14,7 @@ export const notrixNavItems = [
   { label: 'Product', href: '/product' },
   { label: 'How it works', href: '/how-it-works' },
   { label: 'Pricing', href: '/pricing' },
-  { label: 'Docs', href: '/docs' },
+  { label: 'Docs', href: 'https://docs.notrix.si' },
   { label: 'Security', href: '/security' },
 ] as const;
 

@@ -18,8 +18,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function DocumentationArticlePage({ params }: Props) {
   const { slug } = await params;
-  // The first page lives at /docs itself.
-  if (slug === notrixDocPages[0].slug) redirect('/docs');
+  // The first page is the docs home (docs.notrix.si/).
+  if (slug === notrixDocPages[0].slug) redirect('/');
   if (!notrixDocPages.some((page) => page.slug === slug)) notFound();
   return <NotrixDocsPage slug={slug} />;
 }

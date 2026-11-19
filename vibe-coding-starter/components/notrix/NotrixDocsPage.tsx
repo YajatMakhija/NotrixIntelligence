@@ -213,7 +213,7 @@ export function NotrixDocsPage({ slug }: { slug: string }) {
             <Menu className="size-5" aria-hidden="true" />
           </button>
           <Link
-            href="/"
+            href="https://www.notrix.si"
             aria-label="Notrix home"
             className={`flex shrink-0 items-center gap-2 rounded-lg ${focusRing}`}
           >
