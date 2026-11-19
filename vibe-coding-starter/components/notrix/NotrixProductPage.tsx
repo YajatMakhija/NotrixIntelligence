@@ -360,7 +360,7 @@ function ProductIllustration() {
                 alt=""
                 width={1254}
                 height={1254}
-                className="absolute -top-[0.35em] left-1/2 size-[3.6em] max-w-none -translate-x-1/2 object-contain"
+                className="absolute -top-[0.35em] left-1/2 size-[3.6em] max-w-none -translate-x-1/2 object-contain dark:invert"
               />
             </span>
             <div className="flex-1 rounded-[1.625em] bg-neutral-100 px-[1em] py-[0.75em]">

@@ -47,7 +47,7 @@ function NotrixMark() {
         alt=""
         width={1254}
         height={1254}
-        className="absolute -top-2 left-1/2 size-20 max-w-none -translate-x-1/2 object-contain"
+        className="absolute -top-2 left-1/2 size-20 max-w-none -translate-x-1/2 object-contain dark:invert"
       />
     </span>
   );

@@ -139,7 +139,7 @@ export function NotrixConversationStack({
                     alt=""
                     width={64}
                     height={64}
-                    className="absolute -top-1 left-1/2 size-11 max-w-none -translate-x-1/2 object-contain"
+                    className="absolute -top-1 left-1/2 size-11 max-w-none -translate-x-1/2 object-contain dark:invert"
                   />
                 </span>
                 <div className="min-w-0 flex-1">

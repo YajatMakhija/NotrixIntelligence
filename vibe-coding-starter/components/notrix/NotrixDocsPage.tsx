@@ -227,10 +227,9 @@ export function NotrixDocsPage({ slug }: { slug: string }) {
                 width={1254}
                 height={1254}
                 priority
-                className="absolute -top-2 left-1/2 size-16 max-w-none -translate-x-1/2 object-contain"
+                className="absolute -top-2 left-1/2 size-16 max-w-none -translate-x-1/2 object-contain dark:invert"
               />
             </span>
-            <span className="text-lg font-semibold tracking-tight">Notrix</span>
             <span className="rounded-md bg-secondary-50 px-1.5 py-0.5 text-[11px] font-semibold text-secondary-700 ring-1 ring-inset ring-secondary-200">
               Docs
             </span>
