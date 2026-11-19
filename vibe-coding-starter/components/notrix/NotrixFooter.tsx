@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 
@@ -19,7 +20,18 @@ export function NotrixFooter() {
     <footer className="border-t border-neutral-200 bg-white px-5 py-10 sm:px-6">
       <div className="mx-auto flex max-w-5xl flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <p className="text-lg font-semibold text-neutral-950">Notrix</p>
+          <p className="flex items-center gap-2 text-lg font-semibold text-neutral-950">
+            <span className="relative size-9 overflow-hidden rounded-lg bg-white ring-1 ring-neutral-200" aria-hidden="true">
+              <Image
+                src="/static/images/notrix-logo.png"
+                alt=""
+                width={1254}
+                height={1254}
+                className="absolute -top-2 left-1/2 size-16 max-w-none -translate-x-1/2 object-contain"
+              />
+            </span>
+            Notrix
+          </p>
           <p className="mt-1 text-sm text-neutral-500">
             Shared memory infrastructure for AI agents and humans.
           </p>

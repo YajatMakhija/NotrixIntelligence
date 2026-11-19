@@ -69,7 +69,7 @@ export function NotrixHeader() {
             width={1254}
             height={1254}
             priority
-            className="absolute -top-2 left-1/2 size-16 max-w-none -translate-x-1/2 object-contain dark:invert"
+            className="absolute -top-2 left-1/2 size-16 max-w-none -translate-x-1/2 object-contain"
           />
         </span>
         <span className="hidden text-sm font-semibold tracking-tight text-neutral-950 sm:block">
