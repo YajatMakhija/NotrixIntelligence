@@ -8,8 +8,10 @@ import {
   ArrowRight,
   Compass,
   Headset,
+  Info,
   Menu,
   MessageSquareText,
+  Plug,
   Rocket,
   Search,
   Settings2,
@@ -31,6 +33,7 @@ const groupIcons: Record<NotrixDocGroup['icon'], typeof Rocket> = {
   start: Rocket,
   concepts: Compass,
   using: MessageSquareText,
+  connectors: Plug,
   security: ShieldCheck,
   admin: Settings2,
 };
@@ -50,7 +53,9 @@ function DocsSearch({ onNavigate }: { onNavigate?: () => void }) {
               page.title,
               section.title,
               ...(section.paragraphs ?? []),
+              ...(section.steps ?? []),
               ...(section.bullets ?? []),
+              section.note ?? '',
             ]
               .join(' ')
               .toLowerCase()
@@ -280,6 +285,21 @@ export function NotrixDocsPage({ slug }: { slug: string }) {
                     {section.paragraphs?.map((paragraph) => (
                       <p key={paragraph}>{paragraph}</p>
                     ))}
+                    {section.steps && (
+                      <ol className="space-y-3">
+                        {section.steps.map((step, stepIndex) => (
+                          <li key={step} className="flex gap-3">
+                            <span
+                              className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full bg-secondary-50 text-xs font-semibold text-secondary-700 ring-1 ring-inset ring-secondary-200"
+                              aria-hidden="true"
+                            >
+                              {stepIndex + 1}
+                            </span>
+                            {step}
+                          </li>
+                        ))}
+                      </ol>
+                    )}
                     {section.bullets && (
                       <ul className="space-y-2">
                         {section.bullets.map((bullet) => (
@@ -292,6 +312,15 @@ export function NotrixDocsPage({ slug }: { slug: string }) {
                           </li>
                         ))}
                       </ul>
+                    )}
+                    {section.note && (
+                      <p className="flex gap-3 rounded-xl border border-secondary-200 bg-secondary-50/60 p-4 text-neutral-700">
+                        <Info
+                          className="mt-1 size-4 shrink-0 text-secondary-600"
+                          aria-hidden="true"
+                        />
+                        <span>{section.note}</span>
+                      </p>
                     )}
                   </div>
                 </section>
