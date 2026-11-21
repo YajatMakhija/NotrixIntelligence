@@ -991,7 +991,7 @@ export const notrixDocGroups: NotrixDocGroup[] = [
           {
             title: '3. Close the workspace',
             paragraphs: [
-              'Type the workspace name to close it. Notrix stops passing Slack messages to your installation, forgets how to reach your AWS account, and nobody can sign in to the workspace again. Notrix keeps your invoices and its audit log as billing and legal records.',
+              'In Settings → Your data, type close this workspace and select Close this workspace. Notrix stops passing Slack messages to your installation, forgets how to reach your AWS account, and nobody can sign in to the workspace again. Notrix keeps your invoices and its audit log as billing and legal records.',
               'Uninstall the Notrix app from Slack too, under Slack’s app settings.',
             ],
           },
