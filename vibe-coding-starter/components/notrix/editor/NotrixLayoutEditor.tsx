@@ -572,7 +572,7 @@ export function NotrixLayoutEditor() {
             <Download className="size-4" /> Export
           </button>
           <Link
-            href="/notrix"
+            href="/"
             target="_blank"
             className="inline-flex size-9 items-center justify-center rounded-xl border border-neutral-200 bg-white text-neutral-600 hover:bg-neutral-50"
             aria-label="Open Notrix page"

@@ -102,11 +102,27 @@ module.exports = () => {
     // Short URLs on the marketing site; the real auth pages live on the app.
     // 307 (not permanent) until the final app domain is in place. Query strings pass through.
     async redirects() {
-      return ['login', 'signup'].map((page) => ({
+      const authPages = ['login', 'signup'].map((page) => ({
         source: `/${page}`,
         destination: `${appUrl}/${page}`,
         permanent: false,
       }));
+      // Old template pages and the duplicate home page: one permanent address each, so crawlers stop
+      // seeing two copies of the landing page or dead pages.
+      const retired = ['notrix', 'features', 'press', 'careers', 'help', 'status'].map((page) => ({
+        source: `/${page}`,
+        destination: '/',
+        permanent: true,
+      }));
+      return [
+        ...authPages,
+        ...retired,
+        { source: '/faq', destination: 'https://docs.notrix.si/faq', permanent: true },
+      ];
+    },
+    // docs.notrix.si/<slug>.md: the docs page as Markdown for AI assistants.
+    async rewrites() {
+      return [{ source: '/:slug.md', destination: '/docs-md/:slug' }];
     },
     webpack: (config, options) => {
       config.module.rules.push({

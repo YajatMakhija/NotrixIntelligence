@@ -3,6 +3,7 @@ import { notFound, redirect } from 'next/navigation';
 
 import { NotrixDocsPage } from '@/components/notrix/NotrixDocsPage';
 import { notrixDocPages } from '@/data/notrix/docs';
+import { notrixDocMarkdownUrl } from '@/data/notrix/docs-markdown';
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -13,7 +14,12 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const page = notrixDocPages.find((candidate) => candidate.slug === slug);
-  return page ? { title: `${page.title} · Docs`, description: page.intro } : {};
+  if (!page) return {};
+  return {
+    title: `${page.title} · Docs`,
+    description: page.intro,
+    alternates: { types: { 'text/markdown': notrixDocMarkdownUrl(page) } },
+  };
 }
 
 export default async function DocumentationArticlePage({ params }: Props) {

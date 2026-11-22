@@ -49,9 +49,6 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: './',
-    types: {
-      'application/rss+xml': `${siteConfig.siteUrl}/feed.xml`,
-    },
   },
   robots: {
     index: true,
@@ -111,7 +108,6 @@ export default function RootLayout({
           media="(prefers-color-scheme: dark)"
           content="#000"
         />
-        <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
         {/* Before first paint: the theme chosen on notrix.si or in the Notrix app (shared cookie) becomes
             next-themes' saved theme, so the page opens in it and never flashes the other one. */}
         <script
