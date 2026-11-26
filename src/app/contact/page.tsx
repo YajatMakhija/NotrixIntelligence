@@ -6,15 +6,15 @@ import { SITE } from "@/lib/site";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata: Metadata = pageMetadata(
-  "Request access",
-  "Request access to Company Brain. Tell us the workflow and the systems it touches.",
+  "Request a demo",
+  "Request a demo of Company Brain. Tell us the workflow and the systems it touches.",
 );
 
 export default function ContactPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Request access"
+        eyebrow="Request a demo"
         title="Tell us the workflow. We'll tell you the number."
         intro="One call to understand what you are trying to automate and which systems it touches. You get a scoped proposal with a fixed fee."
       />
@@ -26,20 +26,20 @@ export default function ContactPage() {
               <ContactForm />
             </Reveal>
 
-            <Reveal delay={100}>
+            <Reveal delay={50}>
               <div className="space-y-12 lg:sticky lg:top-28 lg:self-start">
                 <div>
                   <p className="eyebrow">Direct</p>
                   <a
                     href={`mailto:${SITE.email}`}
-                    className="link-underline mt-3 inline-block text-[15px] text-white"
+                    className="link-underline mt-3 inline-block text-[15px] text-[var(--ink)]"
                   >
                     {SITE.email}
                   </a>
                 </div>
                 <div>
                   <p className="eyebrow">Security review</p>
-                  <p className="mt-3 max-w-[320px] text-[14px] leading-relaxed text-[var(--fg-muted)]">
+                  <p className="mt-3 max-w-[320px] text-[14px] leading-relaxed text-[var(--body)]">
                     Send your vendor questionnaire with your first message and we
                     will complete it under NDA before the technical call.
                   </p>
@@ -50,7 +50,7 @@ export default function ContactPage() {
                     href={SITE.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="link-underline mt-3 inline-block text-[14px] text-[var(--fg-muted)] hover:text-white"
+                    className="link-underline mt-3 inline-block text-[14px] text-[var(--body)] hover:text-[var(--ink)]"
                   >
                     LinkedIn
                   </a>

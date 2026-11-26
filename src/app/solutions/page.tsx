@@ -23,12 +23,12 @@ export default function SolutionsPage() {
         <div className="mx-auto max-w-[1180px] px-6 py-20 md:px-10 md:py-24">
           <div className="grid gap-px overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--line)] md:grid-cols-2">
             {USE_CASES.map((item, i) => (
-              <Reveal key={item.id} delay={i * 50} className="bg-black p-8">
+              <Reveal key={item.id} delay={i * 50} className="bg-[var(--canvas)] p-8">
                 <Link href={item.href} className="block">
-                  <h2 className="text-[17px] font-medium tracking-tight text-white">
+                  <h2 className="text-[17px] font-medium tracking-tight text-[var(--ink)]">
                     {item.title}
                   </h2>
-                  <p className="mt-3 max-w-[440px] text-[14px] leading-relaxed text-[var(--fg-muted)]">
+                  <p className="mt-3 max-w-[440px] text-[14px] leading-relaxed text-[var(--body)]">
                     {item.body}
                   </p>
                 </Link>
@@ -36,7 +36,7 @@ export default function SolutionsPage() {
             ))}
           </div>
           <div className="mt-12">
-            <Button href="/contact">Request access</Button>
+            <Button href="/contact">Request a demo</Button>
           </div>
         </div>
       </section>

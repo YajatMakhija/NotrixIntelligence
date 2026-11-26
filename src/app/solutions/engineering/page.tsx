@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { PlaceholderPage } from "@/components/layout/PlaceholderPage";
+import { SolutionPage } from "@/components/layout/SolutionPage";
 import { pageMetadata } from "@/lib/metadata";
+import { USE_CASES } from "@/lib/site";
 
-export const metadata: Metadata = pageMetadata(
-  "Engineering",
-  "Understand architecture, technical decisions, repositories, incidents and documentation with Company Brain.",
-);
+const solution = USE_CASES.find((item) => item.id === "engineering")!;
+
+export const metadata: Metadata = pageMetadata(solution.title, solution.body);
 
 export default function EngineeringSolutionPage() {
   return (
-    <PlaceholderPage
-      eyebrow="Solutions"
-      title="Engineering"
-      intro="Architecture, technical decisions, repositories, incidents and documentation — retrieved with the context around them."
+    <SolutionPage
+      title={solution.title}
+      intro={solution.intro}
+      points={solution.points}
     />
   );
 }

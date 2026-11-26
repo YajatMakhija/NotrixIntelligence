@@ -94,7 +94,7 @@ export const DOCS_SECTIONS: DocsSection[] = [
     slug: "api",
     label: "API",
     title: "API",
-    description: "Programmatic access to Company Brain.",
+    description: "Programmatic access to Company Brain. Reference ships with product access.",
     groups: [
       {
         heading: "Reference",
@@ -102,6 +102,22 @@ export const DOCS_SECTIONS: DocsSection[] = [
           { slug: "overview", label: "API overview" },
           { slug: "authentication", label: "Authentication" },
           { slug: "reference", label: "Reference" },
+        ],
+      },
+    ],
+  },
+  {
+    slug: "console",
+    label: "Console",
+    title: "Console",
+    description:
+      "The Company Brain console is granted after a security review. Operator docs ship with the product.",
+    groups: [
+      {
+        heading: "Access",
+        links: [
+          { slug: "overview", label: "Overview" },
+          { slug: "access", label: "Requesting access" },
         ],
       },
     ],

@@ -1,17 +1,21 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-type Variant = "solid" | "outline" | "quiet";
+type Variant = "solid" | "outline" | "quiet" | "solid-paper" | "outline-paper" | "gold";
 
 const VARIANTS: Record<Variant, string> = {
-  solid: "bg-white text-black hover:bg-[#e8e8e8]",
+  solid: "bg-[var(--cta)] text-[var(--cta-ink)] hover:bg-[#2a2826]",
   outline:
-    "border border-[var(--line-strong)] text-white hover:border-white/50 hover:bg-white/[0.04]",
-  quiet: "text-[var(--fg-muted)] hover:text-white",
+    "border border-[var(--ink)] text-[var(--ink)] hover:bg-[var(--ink)] hover:text-[var(--paper)]",
+  quiet: "text-[var(--body)] hover:text-[var(--ink)]",
+  "solid-paper": "bg-[var(--cta)] text-[var(--cta-ink)] hover:bg-[#2a2826]",
+  "outline-paper":
+    "border border-[var(--ink)] text-[var(--ink)] hover:bg-[var(--ink)] hover:text-[var(--paper)]",
+  gold: "bg-[var(--gold)] text-[var(--ink)] hover:bg-[#b8a36c]",
 };
 
 const BASE =
-  "inline-flex items-center justify-center rounded-md px-5 py-2.5 text-[13.5px] font-medium tracking-tight transition-colors duration-200";
+  "press inline-flex items-center justify-center gap-2 rounded-full px-4 py-2 text-[14px] font-medium tracking-tight transition-[background-color,border-color,color,transform] duration-200 ease-out";
 
 export function Button({
   variant = "solid",

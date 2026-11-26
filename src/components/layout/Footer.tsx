@@ -2,101 +2,30 @@ import Image from "next/image";
 import Link from "next/link";
 import { SITE } from "@/lib/site";
 
-const COLUMNS = [
-  {
-    heading: "Product",
-    links: [
-      { href: "/product/company-brain", label: "Company Brain" },
-      { href: "/product/integrations", label: "Integrations" },
-    ],
-  },
-  {
-    heading: "Solutions",
-    links: [
-      { href: "/solutions/engineering", label: "Engineering" },
-      { href: "/solutions/sales", label: "Sales" },
-      { href: "/solutions/support", label: "Support" },
-      { href: "/solutions/operations", label: "Operations" },
-    ],
-  },
-  {
-    heading: "Trust",
-    links: [
-      { href: "/security", label: "Security" },
-      { href: "/legal/privacy", label: "Privacy" },
-      { href: "/legal/dpa", label: "DPA" },
-    ],
-  },
-  {
-    heading: "Developers",
-    links: [
-      { href: "/docs", label: "Docs" },
-      { href: "/docs/api/overview", label: "API" },
-      { href: "/docs/getting-started/introduction", label: "Changelog" },
-    ],
-  },
-  {
-    heading: "Company",
-    links: [
-      { href: "/company/about", label: "About" },
-      { href: "/contact", label: "Contact" },
-      { href: "/company/careers", label: "Careers" },
-    ],
-  },
-  {
-    heading: "Legal",
-    links: [
-      { href: "/legal/terms", label: "Terms" },
-      { href: "/legal/privacy", label: "Privacy policy" },
-    ],
-  },
-];
+const columns = [
+  { heading: "Product", links: [["/product/company-brain", "Company Brain"], ["/product/how-it-works", "How it works"], ["/product/integrations", "Integrations"]] },
+  { heading: "Resources", links: [["/docs", "Documentation"], ["/security", "Security"], ["/contact", "Request a demo"]] },
+  { heading: "Company", links: [["/company/about", "About"], ["/company/careers", "Careers"], ["/login", "Sign in"]] },
+  { heading: "Legal", links: [["/legal/privacy", "Privacy"], ["/legal/terms", "Terms"], ["/legal/cookies", "Cookies"]] },
+] as const;
 
 export function Footer() {
   return (
-    <footer className="border-t border-[var(--line)]">
-      <div className="mx-auto max-w-[1180px] px-6 py-14 md:px-10 md:py-16">
-        <div className="grid gap-12 lg:grid-cols-[1.1fr_repeat(3,1fr)]">
-          <div>
-            <div className="flex items-center gap-2.5">
-              <Image
-                src="/notrix-monogram.png"
-                alt=""
-                width={48}
-                height={48}
-                className="h-5 w-5 object-contain opacity-90"
-              />
-              <p className="text-[13px] font-medium tracking-[0.14em] text-white">
-                {SITE.name.toUpperCase()}
-              </p>
-            </div>
-          </div>
-
-          <div className="grid gap-10 sm:grid-cols-2 lg:col-span-3 lg:grid-cols-3 xl:grid-cols-6">
-            {COLUMNS.map((column) => (
-              <div key={column.heading}>
-                <p className="eyebrow">{column.heading}</p>
-                <ul className="mt-4 space-y-2.5">
-                  {column.links.map((link) => (
-                    <li key={`${column.heading}-${link.href}-${link.label}`}>
-                      <Link
-                        href={link.href}
-                        className="text-[13px] text-[var(--fg-muted)] transition-colors duration-200 hover:text-white"
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+    <footer className="border-t border-[var(--paper-line)] bg-white text-[var(--ink)]">
+      <div className="mx-auto grid max-w-[1240px] gap-12 px-6 py-16 md:grid-cols-[1.35fr_2fr] md:px-8 lg:px-14">
+        <div>
+          <Link href="/" className="flex w-fit items-center gap-2.5" aria-label={SITE.name}>
+            <span className="relative h-10 w-10 overflow-hidden" aria-hidden="true"><Image src="/notrix-logo-final.png" alt="" width={72} height={72} className="absolute -left-4 -top-[9px] h-[72px] w-[72px] max-w-none" /></span>
+            <span className="leading-none"><span className="block text-[12px] font-semibold tracking-[0.28em]">NOTRIX</span><span className="mt-1.5 block text-[7px] font-medium tracking-[0.34em] text-[var(--body)]">INTELLIGENCE</span></span>
+          </Link>
+          <p className="mt-5 max-w-[330px] text-[14px] leading-relaxed text-[var(--body)]">A shared company brain that connects workplace knowledge and returns answers with sources.</p>
+          <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer" className="mt-5 inline-block text-[13px] font-medium underline decoration-[var(--paper-line)] underline-offset-4">LinkedIn</a>
         </div>
-
-        <p className="mt-14 text-xs text-[var(--fg-faint)]">
-          © {new Date().getFullYear()} {SITE.legal}
-        </p>
+        <div className="grid grid-cols-2 gap-9 sm:grid-cols-4">
+          {columns.map((column) => <div key={column.heading}><p className="text-[13px] font-semibold">{column.heading}</p><ul className="mt-4 space-y-2.5">{column.links.map(([href, label]) => <li key={href}><Link href={href} className="text-[13px] text-[var(--body)] transition-colors hover:text-[var(--ink)]">{label}</Link></li>)}</ul></div>)}
+        </div>
       </div>
+      <div className="mx-auto flex max-w-[1240px] flex-col gap-2 border-t border-[var(--paper-line)] px-6 py-6 text-[11px] text-[var(--body)] sm:flex-row sm:items-center sm:justify-between md:px-8 lg:px-14"><span>© {new Date().getFullYear()} {SITE.legal}</span><span>Built for verifiable company knowledge.</span></div>
     </footer>
   );
 }

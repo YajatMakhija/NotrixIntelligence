@@ -1,0 +1,137 @@
+import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
+import { siteConfig } from '@/data/config/site.settings';
+import { ThemeProviders } from './theme-providers';
+import { Metadata } from 'next';
+
+import { colors } from '@/data/config/colors.js';
+
+import '@/css/globals.css';
+import { SearchProvider } from '@/components/shared/SearchProvider';
+import { AnalyticsWrapper } from '@/components/shared/Analytics';
+
+// Headings: Plus Jakarta Sans; body text: Inter. Used across notrix.si and docs.notrix.si.
+const displayFont = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-space-display',
+});
+
+const baseFont = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-space-default',
+});
+
+const globalColors = colors;
+const style: string[] = [];
+
+Object.keys(globalColors).map((variant) => {
+  return Object.keys(globalColors[variant]).map((color) => {
+    const value = globalColors[variant][color];
+    style.push(`--${variant}-${color}: ${value}`);
+  });
+});
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteConfig.siteUrl),
+  title: {
+    default: siteConfig.title,
+    template: `%s | ${siteConfig.title}`,
+  },
+  description: siteConfig.description,
+  openGraph: {
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: './',
+    siteName: siteConfig.title,
+    images: [siteConfig.socialBanner],
+    locale: 'en_US',
+    type: 'website',
+  },
+  alternates: {
+    canonical: './',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  twitter: {
+    title: siteConfig.title,
+    card: 'summary_large_image',
+    images: [siteConfig.socialBanner],
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html
+      lang={siteConfig.language}
+      className={`${baseFont.variable} ${displayFont.variable} scroll-smooth`}
+      suppressHydrationWarning
+    >
+      <head>
+        <style>
+          {`
+          :root, :before, :after {
+            ${style.join(';')}
+          }
+        `}
+        </style>
+
+        <link
+          rel="apple-touch-icon"
+          href="/static/images/notrix-logo.png?v=2"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          href="/static/images/notrix-logo.png?v=2"
+        />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: light)"
+          content="#fff"
+        />
+        <meta
+          name="theme-color"
+          media="(prefers-color-scheme: dark)"
+          content="#000"
+        />
+        {/* Before first paint: the theme chosen on notrix.si or in the Notrix app (shared cookie) becomes
+            next-themes' saved theme, so the page opens in it and never flashes the other one. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "try{var m=document.cookie.match(/(?:^|; )notrix-theme=(light|dark)(?:;|$)/);localStorage.setItem('theme',m?m[1]:'system')}catch(e){}",
+          }}
+        />
+      </head>
+
+      <body className="flex flex-col bg-white text-black antialiased dark:bg-gray-950 dark:text-white min-h-screen">
+        <ThemeProviders>
+          <AnalyticsWrapper />
+
+          <div className="w-full flex flex-col justify-between items-center font-sans">
+            <SearchProvider>
+              <main className="w-full flex flex-col items-center mb-auto">
+                {children}
+              </main>
+            </SearchProvider>
+          </div>
+        </ThemeProviders>
+      </body>
+    </html>
+  );
+}
