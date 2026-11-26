@@ -96,7 +96,7 @@ function SectionHeading({ eyebrow, title, body }: { eyebrow: string; title: stri
   return (
     <div className="max-w-3xl">
       <p className={notrixEyebrowClass}>{eyebrow}</p>
-      <h2 className="mt-4 text-balance text-3xl font-semibold tracking-[-0.03em] text-primary-950 sm:text-5xl">
+      <h2 className="mt-4 text-balance text-3xl font-semibold tracking-[-0.015em] text-primary-950 sm:text-5xl">
         {title}
       </h2>
       <p className="mt-5 text-base leading-7 text-neutral-600 sm:text-lg">{body}</p>
@@ -130,7 +130,7 @@ export function NotrixHowItWorksPage() {
         <div className="relative z-10 mx-auto grid max-w-[1344px] gap-12 px-5 pb-16 pt-12 sm:px-6 sm:pt-14 md:px-8 lg:min-h-[600px] lg:grid-cols-2 lg:items-center lg:gap-10 lg:px-10 lg:pb-20 xl:px-12">
           <div className="max-w-[600px]">
             <p className={notrixEyebrowClass}>How it works</p>
-            <h1 className="mt-6 text-balance text-4xl font-semibold leading-[1.1] tracking-[-0.03em] sm:text-5xl">
+            <h1 className="mt-6 text-balance text-4xl font-semibold leading-[1.1] tracking-[-0.015em] sm:text-5xl">
               Follow one question through Notrix.
             </h1>
             <p className="mt-6 max-w-xl text-pretty text-base leading-6 text-neutral-600 sm:text-lg sm:leading-7">
@@ -325,7 +325,7 @@ export function NotrixHowItWorksPage() {
       <section className="relative overflow-hidden px-5 py-20 text-center sm:px-6 sm:py-28">
         <NotrixRibbon className="pointer-events-none absolute inset-0 size-full" />
         <NotrixGlassFrame className="relative mx-auto max-w-3xl" innerClassName="px-6 py-12 sm:px-12 sm:py-16">
-          <h2 className="text-balance text-3xl font-semibold tracking-[-0.03em] text-primary-950 sm:text-5xl">
+          <h2 className="text-balance text-3xl font-semibold tracking-[-0.015em] text-primary-950 sm:text-5xl">
             Try it with your own question.
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-neutral-600 sm:text-lg">

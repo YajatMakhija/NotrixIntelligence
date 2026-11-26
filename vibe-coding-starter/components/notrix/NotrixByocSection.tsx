@@ -99,7 +99,7 @@ export function NotrixByocSection() {
             </p>
             <h2
               id="byoc-title"
-              className="mt-4 text-balance text-3xl font-semibold tracking-[-0.03em] text-primary-950 sm:text-5xl"
+              className="mt-4 text-balance text-3xl font-semibold tracking-[-0.015em] text-primary-950 sm:text-5xl"
             >
               Shared memory. On your terms.
             </h2>

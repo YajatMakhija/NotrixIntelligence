@@ -164,7 +164,7 @@ export function NotrixHomeSections() {
             <p className="text-xs font-semibold uppercase tracking-[0.12em] text-secondary-700">
               How it works
             </p>
-            <h2 className="mt-4 text-balance text-3xl font-semibold tracking-[-0.03em] text-primary-950 sm:text-5xl">
+            <h2 className="mt-4 text-balance text-3xl font-semibold tracking-[-0.015em] text-primary-950 sm:text-5xl">
               From scattered knowledge to shared understanding.
             </h2>
           </div>
@@ -226,7 +226,7 @@ export function NotrixHomeSections() {
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-2xl">
-              <h2 className="text-balance text-3xl font-semibold tracking-[-0.03em] text-primary-950 sm:text-5xl">
+              <h2 className="text-balance text-3xl font-semibold tracking-[-0.015em] text-primary-950 sm:text-5xl">
                 Start where your team already works.
               </h2>
               <p className="mt-5 text-base leading-7 text-neutral-600 sm:text-lg">
@@ -283,7 +283,7 @@ export function NotrixHomeSections() {
             <p className="text-xs font-semibold uppercase tracking-[0.12em] text-secondary-700">
               Runs in your AWS account
             </p>
-            <h2 className="mt-4 text-balance text-3xl font-semibold tracking-[-0.03em] text-primary-950 sm:text-5xl">
+            <h2 className="mt-4 text-balance text-3xl font-semibold tracking-[-0.015em] text-primary-950 sm:text-5xl">
               Your knowledge never leaves your cloud.
             </h2>
             <p className="mt-5 text-base leading-7 text-neutral-600 sm:text-lg">
@@ -397,7 +397,7 @@ export function NotrixHomeSections() {
 
       <section className={`px-5 py-20 sm:px-6 sm:py-24 ${notrixWashClass}`}>
         <div className="mx-auto max-w-3xl">
-          <h2 className="text-balance text-center text-3xl font-semibold tracking-[-0.03em] text-primary-950 sm:text-5xl">
+          <h2 className="text-balance text-center text-3xl font-semibold tracking-[-0.015em] text-primary-950 sm:text-5xl">
             A few things you might be wondering.
           </h2>
           <NotrixGlassFrame className="mt-10" innerClassName="bg-white/70 px-5 sm:px-8">
@@ -424,7 +424,7 @@ export function NotrixHomeSections() {
       <section className="relative overflow-hidden px-5 py-20 text-center sm:px-6 sm:py-28">
         <NotrixRibbon className="pointer-events-none absolute inset-0 size-full" />
         <NotrixGlassFrame className="relative mx-auto max-w-3xl" innerClassName="px-6 py-12 sm:px-12 sm:py-16">
-          <h2 className="text-balance text-3xl font-semibold tracking-[-0.03em] text-primary-950 sm:text-5xl">
+          <h2 className="text-balance text-3xl font-semibold tracking-[-0.015em] text-primary-950 sm:text-5xl">
             Bring a question your team asks every week.
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-neutral-600 sm:text-lg">

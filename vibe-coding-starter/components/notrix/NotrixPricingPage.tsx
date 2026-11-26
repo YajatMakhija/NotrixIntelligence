@@ -50,7 +50,7 @@ export function NotrixPricingPage() {
         <NotrixRibbon className="pointer-events-none absolute inset-x-0 bottom-0 h-[300px] w-full sm:h-[380px] lg:h-full" />
         <div className="relative z-10 mx-auto max-w-[1344px] px-5 pb-40 pt-14 sm:px-6 sm:pb-48 sm:pt-20 md:px-8 lg:px-10 xl:px-12">
           <p className={notrixEyebrowClass}>Pricing</p>
-          <h1 className="mt-6 max-w-xl text-balance text-4xl font-semibold leading-[1.1] tracking-[-0.03em] sm:text-5xl">
+          <h1 className="mt-6 max-w-xl text-balance text-4xl font-semibold leading-[1.1] tracking-[-0.015em] sm:text-5xl">
             One plan. Everything included.
           </h1>
           <p className="mt-6 max-w-md text-lg leading-8 text-neutral-600">
@@ -66,7 +66,7 @@ export function NotrixPricingPage() {
               <h2 className="text-xl font-semibold text-primary-950">Notrix</h2>
               <p className="mt-1 text-sm text-neutral-600">Shared memory infrastructure, in your own AWS account</p>
               <p className="mt-6 flex items-baseline gap-1">
-                <span className="text-5xl font-semibold tracking-[-0.03em] text-primary-950">$200</span>
+                <span className="text-5xl font-semibold tracking-[-0.015em] text-primary-950">$200</span>
                 <span className="text-base text-neutral-600">/ month</span>
               </p>
               <p className="mt-2 text-sm text-neutral-500">Per workspace, billed monthly. Your AWS storage and AI API usage are paid directly to AWS and your AI provider.</p>
@@ -90,7 +90,7 @@ export function NotrixPricingPage() {
         <div className="mx-auto max-w-5xl">
           <div className="max-w-3xl">
             <p className={notrixEyebrowClass}>Paid directly by you</p>
-            <h2 className="mt-4 text-balance text-3xl font-semibold tracking-[-0.03em] text-primary-950 sm:text-4xl">
+            <h2 className="mt-4 text-balance text-3xl font-semibold tracking-[-0.015em] text-primary-950 sm:text-4xl">
               Your AWS storage and your AI key. No markup.
             </h2>
             <p className="mt-5 text-base leading-7 text-neutral-600 sm:text-lg">
@@ -112,7 +112,7 @@ export function NotrixPricingPage() {
 
       <section className="px-5 py-20 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-3xl">
-          <h2 className="text-balance text-center text-3xl font-semibold tracking-[-0.03em] text-primary-950 sm:text-4xl">
+          <h2 className="text-balance text-center text-3xl font-semibold tracking-[-0.015em] text-primary-950 sm:text-4xl">
             Questions about pricing
           </h2>
           <dl className="mt-10 divide-y divide-neutral-200 border-y border-neutral-200">

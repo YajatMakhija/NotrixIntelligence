@@ -31,7 +31,7 @@ export function NotrixHero() {
               Shared memory infrastructure<span className="hidden sm:inline"> for AI agents and humans</span>
             </span>
           </p>
-          <h1 className="mt-7 text-balance text-4xl font-semibold leading-[1.1] tracking-[-0.03em] text-neutral-950 sm:text-5xl">
+          <h1 className="mt-7 text-balance text-4xl font-semibold leading-[1.1] tracking-[-0.015em] text-neutral-950 sm:text-5xl">
             One memory for your AI agents and your team.
             <span className="block text-neutral-500">Running in your own cloud.</span>
           </h1>

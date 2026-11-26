@@ -32,7 +32,7 @@ export function NotrixThemePicker() {
             onClick={() => setTheme(id)}
             className={`flex size-7 items-center justify-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-600 ${
               on
-                ? 'bg-neutral-950 text-white dark:bg-white dark:text-neutral-950'
+                ? 'bg-neutral-950 text-white dark:bg-[#ffffff] dark:text-[#0d0c14]'
                 : 'text-neutral-500 hover:text-neutral-950 dark:text-neutral-400 dark:hover:text-white'
             }`}
           >

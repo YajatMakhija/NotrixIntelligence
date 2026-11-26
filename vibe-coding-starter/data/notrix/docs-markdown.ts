@@ -15,7 +15,16 @@ export function notrixDocMarkdown(page: NotrixDocPage) {
     section.paragraphs?.forEach((paragraph) => lines.push(paragraph, ''));
     section.steps?.forEach((step, index) => lines.push(`${index + 1}. ${step}`));
     section.bullets?.forEach((bullet) => lines.push(`- ${bullet}`));
+    section.points?.forEach((point) => lines.push(`- **${point.title}** ${point.text}`));
+    if (section.closing) lines.push('', section.closing);
+    section.tabs?.forEach((tab) => {
+      lines.push('', `### ${tab.label}`, '');
+      tab.asks.forEach((ask) => lines.push(`- ${ask}`));
+      if (tab.see) lines.push('', tab.see);
+    });
+    if (section.callout) lines.push('', `> **${section.callout.title}.** ${section.callout.text}`);
     if (section.note) lines.push('', `> Note: ${section.note}`);
+    if (section.action) lines.push('', `[${section.action.label}](${section.action.href})`);
   }
   return lines.join('\n').replace(/\n{3,}/g, '\n\n').trim() + '\n';
 }

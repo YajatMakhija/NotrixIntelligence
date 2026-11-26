@@ -375,7 +375,7 @@ export function NotrixContextPlayground() {
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-secondary-700">
             Try Notrix
           </p>
-          <h2 className="mt-4 text-balance text-3xl font-semibold tracking-[-0.03em] text-primary-950 sm:text-5xl">
+          <h2 className="mt-4 text-balance text-3xl font-semibold tracking-[-0.015em] text-primary-950 sm:text-5xl">
             Change the context. Ask your question.
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-pretty text-base leading-7 text-neutral-600 sm:text-lg">

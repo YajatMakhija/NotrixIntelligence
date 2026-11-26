@@ -15,7 +15,7 @@ export default function NotFound() {
         <NotrixRibbon className="pointer-events-none absolute inset-x-0 bottom-0 h-[300px] w-full sm:h-[380px] lg:h-full" />
         <div className="relative z-10 mx-auto max-w-[1344px] px-5 pb-40 pt-16 sm:px-6 md:px-8 lg:px-10 xl:px-12">
           <p className={notrixEyebrowClass}>404</p>
-          <h1 className="mt-6 max-w-xl text-balance text-4xl font-semibold leading-[1.1] tracking-[-0.03em] sm:text-5xl">
+          <h1 className="mt-6 max-w-xl text-balance text-4xl font-semibold leading-[1.1] tracking-[-0.015em] sm:text-5xl">
             We couldn&apos;t find this page.
           </h1>
           <p className="mt-6 max-w-md text-lg leading-8 text-neutral-600">

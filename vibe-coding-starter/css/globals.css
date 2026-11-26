@@ -61,6 +61,8 @@
   h5,
   h6 {
     @apply font-semibold font-display;
+    /* Plus Jakarta Sans has narrow word gaps at bold display sizes. */
+    word-spacing: 0.04em;
   }
 }
 
@@ -558,4 +560,14 @@ input:-webkit-autofill:focus {
 @keyframes notrix-glow {
   0%, 100% { box-shadow: 0 0 0 0 rgb(29 78 216 / 0); }
   50% { box-shadow: 0 0 0 6px rgb(29 78 216 / 0.1); }
+}
+
+/* Docs: the article fades in when you move to another page (the header and sidebar stay put). */
+@keyframes notrix-docs-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+.docs-enter { animation: notrix-docs-enter 0.32s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .docs-enter { animation: none; }
 }

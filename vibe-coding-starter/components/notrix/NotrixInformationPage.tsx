@@ -38,7 +38,7 @@ export function NotrixInformationPage({
         <div className="relative z-10 mx-auto max-w-[1344px] px-5 pb-36 pt-14 sm:px-6 sm:pb-44 sm:pt-20 md:px-8 lg:px-10 xl:px-12">
           <div className="max-w-xl">
             <p className={notrixEyebrowClass}>{eyebrow}</p>
-            <h1 className="mt-6 text-balance text-4xl font-semibold leading-[1.1] tracking-[-0.03em] sm:text-5xl">
+            <h1 className="mt-6 text-balance text-4xl font-semibold leading-[1.1] tracking-[-0.015em] sm:text-5xl">
               {title}
             </h1>
             <p className="mt-6 text-lg leading-8 text-neutral-600">

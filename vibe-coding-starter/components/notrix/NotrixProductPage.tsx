@@ -210,7 +210,7 @@ function HowNotrixWorks() {
 
       <div className="relative grid gap-12 p-6 sm:p-10 lg:grid-cols-2 lg:items-center lg:gap-16 lg:p-16">
         <div>
-          <h2 className="text-3xl font-semibold tracking-[-0.03em] text-neutral-950 sm:text-4xl">
+          <h2 className="text-3xl font-semibold tracking-[-0.015em] text-neutral-950 sm:text-4xl">
             How Notrix works
           </h2>
           <ol className="mt-10 lg:mt-14">
@@ -430,7 +430,7 @@ export function NotrixProductPage() {
           <div className="relative z-10 mx-auto grid max-w-[1344px] gap-10 px-5 pb-12 pt-12 sm:gap-12 sm:px-6 sm:pt-14 md:gap-14 md:px-8 md:pt-16 lg:min-h-[620px] lg:grid-cols-2 lg:items-start lg:gap-10 lg:px-10 lg:pb-0 lg:pt-[88px] xl:min-h-[646px] xl:grid-cols-[minmax(0,600px)_608px] xl:justify-between xl:gap-16 xl:px-12 xl:pt-[120px]">
             <div className="max-w-[600px]">
               <p className={notrixEyebrowClass}>The product</p>
-              <h1 className="mt-6 text-[38px] font-semibold leading-[1.08] tracking-[-0.03em] text-neutral-950 sm:text-[44px] md:text-5xl xl:text-[52px] xl:leading-[1.06]">
+              <h1 className="mt-6 text-[38px] font-semibold leading-[1.08] tracking-[-0.015em] text-neutral-950 sm:text-[44px] md:text-5xl xl:text-[52px] xl:leading-[1.06]">
                 <span className="block [@media(min-width:1440px)]:whitespace-nowrap">
                   Your company’s knowledge.
                 </span>
@@ -465,7 +465,7 @@ export function NotrixProductPage() {
               <HowNotrixWorks />
 
               <p className={`${notrixEyebrowClass} mt-24`}>Why Notrix</p>
-              <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.03em] text-neutral-950 sm:text-4xl">
+              <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.015em] text-neutral-950 sm:text-4xl">
                 One place to ask. Every answer shows its sources.
               </h2>
               <div className="mt-12 grid gap-px overflow-hidden rounded-xl border border-neutral-200 bg-neutral-200 sm:grid-cols-2 lg:grid-cols-4">
@@ -488,7 +488,7 @@ export function NotrixProductPage() {
               <div className="mt-24 grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-16">
                 <div>
                   <p className={notrixEyebrowClass}>About Notrix</p>
-                  <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-[-0.03em] text-neutral-950 sm:text-4xl">
+                  <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-[-0.015em] text-neutral-950 sm:text-4xl">
                     Your company’s memory, one question away.
                   </h2>
                   <div className="mt-6 space-y-4 text-base leading-7 text-neutral-600">
@@ -536,7 +536,7 @@ export function NotrixProductPage() {
               </div>
 
               <p className={`${notrixEyebrowClass} mt-24`}>Use cases</p>
-              <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.03em] text-neutral-950 sm:text-4xl">
+              <h2 className="mt-4 max-w-2xl text-3xl font-semibold tracking-[-0.015em] text-neutral-950 sm:text-4xl">
                 Where teams use it first.
               </h2>
               <div className="mt-12 grid gap-4 sm:grid-cols-2">
